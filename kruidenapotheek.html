@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wilma's Kruidenapotheek</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0f0a04;--bg2:#1a1208;--gold:#c9a96e;--gold2:#8B6914;
+    --gold-dim:#6b5a3a;--text:#e8d9b5;--text-dim:#9a8a6a;
+    --purple:#9a7ab0;--green:#7aaa5a;--red:#e87a7a;
+    --card:rgba(255,255,255,0.04);--border:rgba(180,130,60,0.15);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,serif;min-height:100vh;max-width:480px;margin:0 auto;position:relative}
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:0.5}
+
+  #header{padding:20px 20px 0;position:relative;z-index:1}
+  .header-top{display:flex;align-items:flex-start;justify-content:space-between}
+  .app-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:2px}
+  .app-title{font-family:'IM Fell English',serif;font-size:28px;color:var(--gold);text-shadow:0 0 30px rgba(180,130,60,0.3);line-height:1.1}
+  #cloud-status{font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:8px;margin-top:6px;white-space:nowrap;background:rgba(80,140,80,0.15);color:var(--green);border:1px solid rgba(122,170,90,0.3)}
+
+  #nav{display:flex;gap:6px;padding:14px 20px 0;position:relative;z-index:1;flex-wrap:wrap}
+  .nav-btn{padding:6px 13px;border-radius:20px;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:1px solid #3a2e1a;background:rgba(255,255,255,0.03);color:var(--gold-dim);font-family:'Crimson Pro',serif;transition:all 0.2s}
+  .nav-btn.active{border-color:var(--gold);background:rgba(180,130,60,0.18);color:var(--gold)}
+
+  #content{padding:20px;position:relative;z-index:1}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;transition:all 0.2s}
+  .card:hover{background:rgba(255,255,255,0.07);border-color:rgba(180,130,60,0.3)}
+  .card.inactive{opacity:0.45;filter:grayscale(0.5)}
+  .card-name{font-size:18px;color:#d4b483;margin-bottom:5px;font-family:'IM Fell English',serif}
+  .card-snippet{font-size:13px;color:var(--text-dim);margin-top:6px;line-height:1.5}
+
+  /* Toggle */
+  .toggle{position:relative;width:38px;height:20px;flex-shrink:0;display:inline-block}
+  .toggle input{opacity:0;width:0;height:0}
+  .toggle-slider{position:absolute;inset:0;background:#2a1e0a;border-radius:20px;cursor:pointer;transition:0.3s;border:1px solid #3a2e1a}
+  .toggle-slider:before{content:'';position:absolute;height:14px;width:14px;left:2px;top:2px;background:#6b5a3a;border-radius:50%;transition:0.3s}
+  .toggle input:checked+.toggle-slider{background:rgba(180,130,60,0.25);border-color:var(--gold)}
+  .toggle input:checked+.toggle-slider:before{transform:translateX(18px);background:var(--gold)}
+  .toggle-row{display:flex;align-items:center;gap:8px;margin-top:10px}
+  .toggle-lbl{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold-dim)}
+  .toggle-lbl.on{color:var(--green)}
+
+  .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-right:5px}
+  .badge-self{background:rgba(85,107,63,0.2);color:#7aaa5a;border:1px solid rgba(85,107,63,0.3)}
+  .badge-off{background:rgba(80,60,40,0.3);color:#6b5a3a;border:1px solid #3a2e1a}
+
+  .section-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:10px;border-bottom:1px solid #2a1e0a;padding-bottom:6px}
+
+  .tag{display:inline-block;margin:3px;padding:5px 10px;border-radius:14px;font-size:12px;cursor:pointer;transition:all 0.15s;background:rgba(255,255,255,0.04);border:1px solid #2a1e0a;color:#7a6a4a}
+  .tag.active{background:rgba(180,130,60,0.25);border-color:var(--gold);color:var(--gold)}
+  .tag.spiritual{border-color:#3a2a4a;color:var(--purple)}
+  .tag.no-click{cursor:default}
+
+  input,textarea,select{width:100%;background:rgba(255,255,255,0.05);border:1px solid #3a2e1a;border-radius:8px;color:var(--text);padding:10px 12px;font-size:14px;font-family:'Crimson Pro',serif;outline:none;resize:vertical}
+  select{cursor:pointer}
+  .form-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8B7355;margin-bottom:4px;display:block}
+  .form-row{margin-bottom:14px}
+  .input-wrap{position:relative}
+  .mic-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(180,130,60,0.15);border:1px solid rgba(180,130,60,0.3);border-radius:50%;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all 0.2s}
+  .mic-btn.listening{background:rgba(220,80,80,0.25);border-color:var(--red);animation:pulse 1s infinite}
+  .mic-label{font-size:10px;color:var(--red);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+  textarea.with-mic{padding-right:44px;min-height:80px}
+  input.with-mic{padding-right:44px}
+  .textarea-wrap{position:relative}
+  .textarea-wrap .mic-btn{top:10px;transform:none}
+
+  .btn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-family:'Crimson Pro',serif;transition:all 0.2s}
+  .btn-primary{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--bg);font-weight:600}
+  .btn-secondary{background:rgba(255,255,255,0.06);color:var(--gold);border:1px solid #3a2e1a}
+  .btn-danger{background:rgba(139,50,50,0.3);color:var(--red)}
+  .btn-full{width:100%;margin-top:8px}
+  .btn-row{display:flex;gap:8px;margin-top:16px}
+
+  .back-btn{background:none;border:none;color:#8B7355;cursor:pointer;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:0 0 16px;display:flex;align-items:center;gap:6px;font-family:'Crimson Pro',serif}
+
+  .ai-box{background:rgba(90,60,20,0.15);border:1px solid rgba(180,130,60,0.2);border-radius:12px;padding:16px;margin-top:16px}
+  .ai-text{font-size:14px;line-height:1.9;color:#d4b483;white-space:pre-wrap}
+
+  .combo-box{background:rgba(60,40,90,0.2);border:1px solid rgba(154,122,176,0.3);border-radius:12px;padding:16px;margin-top:12px}
+  .combo-title{font-family:'IM Fell English',serif;font-size:18px;color:var(--purple);margin-bottom:10px}
+  .combo-middelen{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+  .combo-chip{padding:6px 14px;border-radius:10px;font-size:13px;background:rgba(154,122,176,0.15);border:1px solid rgba(154,122,176,0.35);color:var(--purple)}
+  .combo-chip.off{background:rgba(80,60,60,0.15);border-color:#3a2e1a;color:#6b5a3a;text-decoration:line-through}
+  .combo-uitleg{font-size:14px;color:var(--text-dim);line-height:1.8}
+  .combo-voorzorg{font-size:12px;color:#e8a87a;margin-top:10px;padding-top:10px;border-top:1px solid rgba(180,130,60,0.12)}
+
+  .detail-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
+  .detail-value{font-size:15px;color:var(--gold);line-height:1.6}
+  .detail-section{margin-bottom:18px}
+  .detail-notes{background:rgba(180,130,60,0.07);border-radius:8px;padding:10px 12px;font-style:italic}
+  .detail-caution{color:#e8a87a}
+
+  .home-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+  .home-tile{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 10px;cursor:pointer;text-align:center;transition:all 0.2s;font-family:'Crimson Pro',serif}
+  .home-tile:hover{background:rgba(255,255,255,0.07)}
+  .home-tile-icon{font-size:26px;margin-bottom:6px}
+  .home-tile-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8B7355}
+
+  .voorraad-row{display:flex;gap:14px;justify-content:center;margin-top:8px;font-size:12px;color:var(--text-dim)}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px}
+  .dot-on{background:var(--green)}
+  .dot-off{background:#3a2e1a}
+  .save-msg{color:var(--green);font-size:13px;margin-top:8px}
+
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .fadein{animation:fadein 0.3s ease}
+</style>
+</head>
+<body>
+<div id="header">
+  <div class="header-top">
+    <div>
+      <div class="app-label">Wilma's Apotheek</div>
+      <div class="app-title">De Kruidenkast</div>
+    </div>
+    <div id="cloud-status">☁ gereed</div>
+  </div>
+</div>
+<div id="nav">
+  <button class="nav-btn active" onclick="showView('home')">Home</button>
+  <button class="nav-btn" onclick="showView('search')">Raadplegen</button>
+  <button class="nav-btn" onclick="showView('browse')">Bladeren</button>
+</div>
+<div id="content"></div>
+
+<script>
+const STORAGE_KEY="wilma_apotheek_v2";
+const initialRemedies=[
+  {id:1,name:"Valeriaan tincture",type:"tincture",selfMade:true,active:true,ingredients:"Valeriana officinalis wortel, 40% alcohol",symptoms:["slaapproblemen","onrust","angst","spanning","zenuwen","piekeren"],spiritual:["bescherming","aarding","grenzen stellen"],description:"Krachtige slaap- en ontspanningstincture. Werkt het best 30 min voor het slapen innemen.",dosage:"20-30 druppels in water, max 3x daags",notes:"Zelfgemaakt sept 2023. Wortel gedroogd van eigen tuin. Sterk exemplaar — halve dosis bij sensitieve mensen.",caution:"Niet combineren met slaapmedicatie.",category:"fysiek"},
+  {id:2,name:"St. Janskruid olie",type:"olie",selfMade:true,active:true,ingredients:"Hypericum perforatum bloemen, olijfolie",symptoms:["spierpijn","zenuwpijn","depressieve gevoelens","winterblues","brandwonden","vermoeidheid"],spiritual:["zonnekracht","vreugde","licht brengen","bescherming"],description:"Vuurrood door de hypericine. Uitwendig voor pijn, inwendig (tincture) voor stemming.",dosage:"Uitwendig: insmeren. Inwendig als tincture: 15-20 druppels",notes:"Geoogst op midzomer, vol in bloei. Kleur is diep rood — goed geslaagd.",caution:"Verhoogt lichtgevoeligheid van de huid bij inwendig gebruik.",category:"fysiek"},
+  {id:3,name:"Vlierbloesemazijn",type:"overig",selfMade:true,active:true,ingredients:"Sambucus nigra bloesem, appelazijn, honing",symptoms:["verkoudheid","koorts","griep","keelpijn","immuunsysteem","lentevermoeidheid"],spiritual:["overgang","Holda","verbinding met voorouders","zuivering"],description:"Seizoensgebonden preparaat. Gemaakt in de vlierbloesentijd. Zuur-zoet, werkt verzachtend.",dosage:"1 eetlepel in warm water, 2-3x daags",notes:"Vlierbloesem geplukt bij de oude vlier achter de begraafplaats. Sterke jaargang.",caution:"",category:"fysiek"},
+  {id:4,name:"Mugwort bundel",type:"spiritueel",selfMade:true,active:true,ingredients:"Artemisia vulgaris, gedroogd en gebundeld",symptoms:["dromen","intuïtie","cyclusstoornissen","vermoeidheid"],spiritual:["dromenwerk","waarzeggerij","maanverbinding","vrouwelijke kracht","vooroudercontact","Rauhnächte"],description:"Gebruikt voor smudging, onder kussen voor levendige dromen, en als theeinfusie voor cyclus.",dosage:"Thee: 1 tl gedroogd kruid op heet water. Smudging: naar behoefte.",notes:"Eigen tuin, geoogst voor volle maan augustus. Ook in Rauhnächte-rituelen.",caution:"Niet gebruiken tijdens zwangerschap.",category:"spiritueel"},
+  {id:5,name:"Kamille tincture",type:"tincture",selfMade:true,active:true,ingredients:"Matricaria chamomilla bloemen, 40% alcohol",symptoms:["maagkramp","darmklachten","onrust","hoofdpijn","spasmen","huid-irritatie"],spiritual:["bescherming van kinderen","reinigend","zonnekracht","vrede"],description:"Veelzijdige tincture. Zacht maar effectief voor maag en zenuwen.",dosage:"15-25 druppels in water, 3x daags bij klachten",notes:"Vlak geoogst op het hoogtepunt van de bloei. Geurig en sterk.",caution:"Allergie mogelijk bij kruisreactie met compositenfamilie.",category:"fysiek"},
+  {id:6,name:"Rozemarijn haarwater",type:"olie",selfMade:true,active:true,ingredients:"Rosmarinus officinalis, appelazijn, water",symptoms:["haaruitval","hoofdpijn","concentratieproblemen","geheugen"],spiritual:["geheugen","helderzinnigheid","bescherming","voorouderherinnering"],description:"Inrijgen in de hoofdhuid stimuleert doorbloeding. Ook gebruikt als ruimtespray.",dosage:"Inrijgen 2-3x per week, niet afspoelen",notes:"Bewezen effectief bij mij. Haaruitval verminderd na 6 weken gebruik.",caution:"",category:"fysiek"},
+  {id:7,name:"Dragonblood hars",type:"spiritueel",selfMade:false,active:true,ingredients:"Dracaena draco hars",symptoms:[],spiritual:["krachtversterkend","bescherming","bannen","grens leggen","magie versterken","zuivering"],description:"Gekocht bij kruidenier. Gebruik als wierook of toevoeging aan rituelen. Versterkt intentie sterk.",dosage:"Klein stukje op kolen of in brand. Naar behoefte.",notes:"Zeer krachtig. Spaarzaam gebruiken. Werkt goed in combinatie met beschermingsrituelen.",caution:"Niet inademen bij luchtwegproblemen.",category:"spiritueel"},
+  {id:8,name:"Berberine HCl capsules",type:"supplement",selfMade:false,active:true,ingredients:"Berberine HCl 500mg",symptoms:["insulineresistentie","bloedsuiker","metabolisme","darmgezondheid","cholesterol"],spiritual:[],description:"Gekocht supplement. Gebruikt om de andere dag bij de maaltijd vanwege gevoeligheid.",dosage:"500mg om de andere dag, bij maaltijd",notes:"CYP2D6 IM status — voorzichtig doseren. Goed verdragen om de andere dag.",caution:"Interactie mogelijk met metformine en bepaalde medicijnen. Niet combineren met cyclosporine.",category:"fysiek"}
+];
+const typeLabels={tincture:"Tincture",olie:"Olie / Zalf",supplement:"Supplement",spiritueel:"Spiritueel",overig:"Overig"};
+const typeColors={tincture:"#8B4513",olie:"#556B2F",supplement:"#4A6741",spiritueel:"#5B3A6B",overig:"#7A6040"};
+const commonSymptoms=["slaapproblemen","onrust","angst","vermoeidheid","pijn","hoofdpijn","maagklachten","darmklachten","infectie","verkoudheid","griep","depressie","concentratie","geheugen","immuunsysteem","huid","gewrichten","spieren","hormonen","cyclus","dromen","intuïtie"];
+
+let remedies=[],currentView="home",selectedRemedy=null,editForm=null;
+let selectedSymptoms=[],directSearch="",filterCategory="alle";
+let aiQuery="",aiResponse=null,comboResponse=null;
+let aiListening=false,directListening=false,aiRec=null,directRec=null;
+
+function loadData(){
+  try{const s=localStorage.getItem(STORAGE_KEY);remedies=s?JSON.parse(s):[...initialRemedies];}
+  catch{remedies=[...initialRemedies];}
+  remedies=remedies.map(r=>({active:true,...r}));
+}
+function saveData(){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(remedies));setStatus("☁ opgeslagen","ok");}
+  catch{setStatus("⚠ fout","fout");}
+}
+function setStatus(txt,type){
+  const el=document.getElementById("cloud-status");if(!el)return;
+  el.textContent=txt;
+  el.style.background=type==="ok"?"rgba(80,140,80,0.15)":"rgba(180,60,60,0.15)";
+  el.style.color=type==="ok"?"#7aaa5a":"#e87a7a";
+  el.style.border=`1px solid ${type==="ok"?"rgba(122,170,90,0.3)":"rgba(232,122,122,0.3)"}`;
+}
+
+function toggleActive(id,ev){
+  ev&&ev.stopPropagation();
+  remedies=remedies.map(r=>r.id===id?{...r,active:!r.active}:r);
+  if(selectedRemedy&&selectedRemedy.id===id)selectedRemedy=remedies.find(r=>r.id===id);
+  saveData();render();
+}
+
+// SPRAAK
+function makeSpeechRec(onResult,onEnd){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR)return null;
+  const rec=new SR();rec.lang="nl-NL";rec.continuous=true;rec.interimResults=true;
+  let final="";
+  rec.onstart=()=>{final="";};rec.onend=onEnd;rec.onerror=onEnd;
+  rec.onresult=(e)=>{
+    let interim="";
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      const t=e.results[i][0].transcript;
+      if(e.results[i].isFinal)final+=t+" ";else interim=t;
+    }
+    onResult(final+interim);
+  };
+  return rec;
+}
+function toggleAiMic(){
+  if(aiListening){aiRec&&aiRec.stop();aiListening=false;}
+  else{
+    aiRec=makeSpeechRec(
+      t=>{aiQuery=t;const el=document.getElementById("ai-input");if(el)el.value=t;},
+      ()=>{aiListening=false;updateMic("ai-mic","ai-mic-label",false);}
+    );
+    if(aiRec){aiRec.start();aiListening=true;}
+  }
+  updateMic("ai-mic","ai-mic-label",aiListening);
+}
+function toggleDirectMic(){
+  if(directListening){directRec&&directRec.stop();directListening=false;}
+  else{
+    directRec=makeSpeechRec(
+      t=>{directSearch=t;const el=document.getElementById("direct-input");if(el)el.value=t;renderDirectResults();},
+      ()=>{directListening=false;updateMic("direct-mic","direct-mic-label",false);}
+    );
+    if(directRec){directRec.start();directListening=true;}
+  }
+  updateMic("direct-mic","direct-mic-label",directListening);
+}
+function updateMic(bid,lid,on){
+  const b=document.getElementById(bid);if(b){b.textContent=on?"⏹":"🎙";b.className="mic-btn"+(on?" listening":"");}
+  const l=document.getElementById(lid);if(l)l.style.display=on?"block":"none";
+}
+
+// AI
+async function askAI(){
+  const inp=document.getElementById("ai-input");
+  aiQuery=inp?inp.value:aiQuery;
+  if(!aiQuery.trim())return;
+  aiResponse=null;comboResponse=null;
+  const btn=document.getElementById("ask-btn");
+  if(btn){btn.textContent="Zoeken...";btn.disabled=true;}
+
+  const lijst=remedies.map(r=>`[${r.active?"BESCHIKBAAR":"UITGESCHAKELD"}] ${r.name} (${typeLabels[r.type]}): symptomen: ${r.symptoms.join(", ")}; spiritueel: ${r.spiritual.join(", ")}; ${r.description}`).join("\n");
+
+  const prompt=`Vraag van Wilma: "${aiQuery}"
+
+Geef twee onderdelen:
+
+1. ENKELVOUDIG ADVIES: max 3 individuele middelen uit de BESCHIKBARE middelen. Als er uitgeschakelde middelen zijn die normaal zouden passen, noem die apart als tip.
+
+2. COMBINATIEVOORSTEL: stel één combinatie voor van 2-4 middelen die samen sterk werken. Gebruik alleen BESCHIKBARE middelen. Gebruik dit exacte formaat:
+COMBO: [naam1] + [naam2] + [naam3]
+UITLEG: [waarom deze combinatie werkt, max 3 zinnen]
+VOORZORG: [aandachtspunten of schrijf: geen bijzondere voorzorgen]
+
+Apotheek:\n${lijst}`;
+
+  try{
+    const resp=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,
+        system:"Je bent de persoonlijke kruidenassistent van Wilma, een erfheks en kruidenvrouw. Antwoord in het Nederlands. Warm, concreet, deskundig. Gebruik altijd exacte namen van de middelen.",
+        messages:[{role:"user",content:prompt}]})});
+    const data=await resp.json();
+    const text=data.content?.find(b=>b.type==="text")?.text||"Geen antwoord ontvangen.";
+    const m=text.match(/COMBO:([\s\S]*?)UITLEG:([\s\S]*?)VOORZORG:([\s\S]*)$/m);
+    if(m){
+      aiResponse=text.substring(0,text.indexOf("COMBO:")).trim();
+      comboResponse={middelen:m[1].trim().split("+").map(s=>s.trim()),uitleg:m[2].trim(),voorzorg:m[3].trim()};
+    } else {
+      aiResponse=text;comboResponse=null;
+    }
+  } catch{aiResponse="Kon de AI niet bereiken. Controleer je verbinding.";}
+
+  if(btn){btn.textContent="Raadpleeg de apotheek";btn.disabled=false;}
+  renderAIResult();
+}
+
+function renderAIResult(){
+  const box=document.getElementById("ai-response");
+  if(box){box.style.display="block";box.querySelector(".ai-text").textContent=aiResponse||"";}
+  const cb=document.getElementById("combo-box");
+  if(!cb)return;
+  if(comboResponse){
+    const chips=comboResponse.middelen.map(naam=>{
+      const r=remedies.find(x=>x.name.toLowerCase()===naam.toLowerCase());
+      const off=r&&!r.active;
+      return`<span class="combo-chip${off?" off":""}">${naam}${off?" (geen voorraad)":""}</span>`;
+    }).join("");
+    const heeftVoorzorg=comboResponse.voorzorg&&comboResponse.voorzorg.toLowerCase()!=="geen bijzondere voorzorgen";
+    cb.style.display="block";
+    cb.innerHTML=`<div class="combo-title">🌿 Combinatievoorstel</div>
+      <div class="combo-middelen">${chips}</div>
+      <div class="combo-uitleg">${comboResponse.uitleg}</div>
+      ${heeftVoorzorg?`<div class="combo-voorzorg">⚠ ${comboResponse.voorzorg}</div>`:""}`;
+  } else {
+    cb.style.display="none";
+  }
+}
+
+// NAVIGATIE
+function showView(view,remedy){
+  currentView=view;
+  if(remedy)selectedRemedy=remedy;
+  document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+  const map={home:"Home",search:"Raadplegen",browse:"Bladeren",detail:"Bladeren",add:"Bladeren",edit:"Bladeren"};
+  document.querySelectorAll(".nav-btn").forEach(b=>{if(b.textContent===map[view])b.classList.add("active");});
+  render();
+}
+function render(){
+  const c=document.getElementById("content");
+  c.innerHTML="";c.className="fadein";
+  if(currentView==="home")renderHome(c);
+  else if(currentView==="search")renderSearch(c);
+  else if(currentView==="browse")renderBrowse(c);
+  else if(currentView==="detail")renderDetail(c);
+  else renderEdit(c);
+}
+
+// HOME
+function renderHome(c){
+  const aan=remedies.filter(r=>r.active).length;
+  const uit=remedies.length-aan;
+  c.innerHTML=`
+    <div style="text-align:center;padding:24px 0 20px">
+      <div style="font-size:46px;margin-bottom:8px">🌿</div>
+      <p style="color:#8B7355;font-size:15px;line-height:1.7">Welkom in je persoonlijke apotheek.</p>
+      <div class="voorraad-row">
+        <span><span class="dot dot-on"></span>${aan} beschikbaar</span>
+        <span><span class="dot dot-off"></span>${uit} uitgeschakeld</span>
+      </div>
+    </div>
+    <div class="home-grid">
+      <div class="home-tile" onclick="showView('search')"><div class="home-tile-icon">✨</div><div class="home-tile-label">AI Raadplegen</div></div>
+      <div class="home-tile" onclick="showView('browse')"><div class="home-tile-icon">📖</div><div class="home-tile-label">Bladeren</div></div>
+      <div class="home-tile" onclick="showView('search');setTimeout(()=>document.getElementById('direct-input')?.focus(),100)"><div class="home-tile-icon">🔍</div><div class="home-tile-label">Direct zoeken</div></div>
+      <div class="home-tile" onclick="startAdd()"><div class="home-tile-icon">＋</div><div class="home-tile-label">Nieuw middel</div></div>
+    </div>
+    <div class="section-title">Recente middelen</div>
+    ${[...remedies].slice(-3).reverse().map(r=>cardHtml(r)).join("")}`;
+}
+
+// SEARCH
+function renderSearch(c){
+  const hs=!!(window.SpeechRecognition||window.webkitSpeechRecognition);
+  const mic=(bid,lid,fn)=>hs?`<button class="mic-btn" id="${bid}" onclick="${fn}()">🎙</button><div class="mic-label" id="${lid}" style="display:none">● Luistert... tik ⏹ om te stoppen</div>`:"";
+  c.innerHTML=`
+    <div style="margin-bottom:24px">
+      <div class="section-title">✨ Vertel wat je nodig hebt</div>
+      <div class="textarea-wrap">
+        <textarea class="with-mic" id="ai-input" placeholder="Bijv: ik ben moe maar kan niet slapen, of: ik heb iets nodig na een zwaar ritueel...">${escHtml(aiQuery)}</textarea>
+        ${mic("ai-mic","ai-mic-label","toggleAiMic")}
+      </div>
+      <button class="btn btn-primary btn-full" id="ask-btn" onclick="askAI()">Raadpleeg de apotheek</button>
+      <div class="ai-box" id="ai-response" style="display:${aiResponse?"block":"none"}">
+        <div class="section-title" style="margin-bottom:8px">Advies</div>
+        <div class="ai-text">${escHtml(aiResponse||"")}</div>
+      </div>
+      <div class="combo-box" id="combo-box" style="display:none"></div>
+    </div>
+    <div style="margin-bottom:24px">
+      <div class="section-title">🔍 Direct zoeken</div>
+      <div class="input-wrap">
+        <input id="direct-input" class="with-mic" placeholder="Naam, symptoom, kruid..." value="${escHtml(directSearch)}" oninput="directSearch=this.value;renderDirectResults()">
+        ${mic("direct-mic","direct-mic-label","toggleDirectMic")}
+      </div>
+      <div id="direct-results"></div>
+    </div>
+    <div>
+      <div class="section-title">🌱 Kies symptomen</div>
+      <div id="symptom-tags">${commonSymptoms.map(s=>`<span class="tag${selectedSymptoms.includes(s)?" active":""}" onclick="toggleSymptom('${s}')">${s}</span>`).join("")}</div>
+      <div id="symptom-results"></div>
+    </div>`;
+  if(aiResponse)renderAIResult();
+  renderDirectResults();renderSymptomResults();
+}
+
+function renderDirectResults(){
+  const box=document.getElementById("direct-results");if(!box)return;
+  if(!directSearch.trim()){box.innerHTML="";return;}
+  const q=directSearch.toLowerCase();
+  const found=remedies.filter(r=>r.name.toLowerCase().includes(q)||r.description.toLowerCase().includes(q)||r.symptoms.some(s=>s.toLowerCase().includes(q))||r.spiritual.some(s=>s.toLowerCase().includes(q)));
+  box.innerHTML=found.length?found.map(r=>`<div style="margin-top:8px">${cardHtml(r)}</div>`).join(""):`<p style="color:var(--text-dim);font-size:13px;margin-top:8px">Niets gevonden.</p>`;
+}
+function toggleSymptom(s){
+  if(selectedSymptoms.includes(s))selectedSymptoms=selectedSymptoms.filter(x=>x!==s);
+  else selectedSymptoms.push(s);
+  document.querySelectorAll("#symptom-tags .tag").forEach(el=>{el.className="tag"+(selectedSymptoms.includes(el.textContent)?" active":"");});
+  renderSymptomResults();
+}
+function renderSymptomResults(){
+  const box=document.getElementById("symptom-results");if(!box)return;
+  if(!selectedSymptoms.length){box.innerHTML="";return;}
+  const found=remedies.filter(r=>selectedSymptoms.some(s=>r.symptoms.some(rs=>rs.toLowerCase().includes(s))||r.spiritual.some(rs=>rs.toLowerCase().includes(s))));
+  box.innerHTML=found.length?`<div style="margin-top:12px"><div class="section-title">Gevonden middelen</div>${found.map(r=>cardHtml(r)).join("")}</div>`:"";
+}
+
+// BROWSE
+function renderBrowse(c){
+  const cats=["alle","actief","uitgeschakeld","fysiek","spiritueel","tincture","olie","supplement","overig"];
+  let filtered=remedies;
+  if(filterCategory==="actief")filtered=remedies.filter(r=>r.active);
+  else if(filterCategory==="uitgeschakeld")filtered=remedies.filter(r=>!r.active);
+  else if(filterCategory!=="alle")filtered=remedies.filter(r=>r.category===filterCategory||r.type===filterCategory);
+  c.innerHTML=`
+    <div style="margin-bottom:14px;display:flex;gap:6px;flex-wrap:wrap">
+      ${cats.map(cat=>`<span class="tag${filterCategory===cat?" active":""}" onclick="setFilter('${cat}')">${cat}</span>`).join("")}
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
+      <button class="btn btn-secondary" onclick="startAdd()">+ Nieuw middel</button>
+    </div>
+    ${filtered.map(r=>cardHtml(r)).join("")||`<p style="color:var(--text-dim);font-size:14px">Geen middelen gevonden.</p>`}`;
+}
+function setFilter(cat){filterCategory=cat;renderBrowse(document.getElementById("content"));}
+
+// DETAIL
+function renderDetail(c){
+  const r=selectedRemedy;if(!r)return;
+  const color=typeColors[r.type]||"#8B7355";
+  c.innerHTML=`
+    <button class="back-btn" onclick="showView('browse')">← Terug</button>
+    <div style="margin-bottom:16px">
+      <div style="font-family:'IM Fell English',serif;font-size:26px;color:${r.active?"#d4b483":"#6b5a3a"};margin-bottom:8px">${r.name}</div>
+      <div>
+        <span class="badge" style="background:${color}33;color:${color};border:1px solid ${color}44">${typeLabels[r.type]||r.type}</span>
+        ${r.selfMade?'<span class="badge badge-self">eigengemaakt</span>':""}
+        ${!r.active?'<span class="badge badge-off">geen voorraad</span>':""}
+      </div>
+      <div class="toggle-row">
+        <label class="toggle"><input type="checkbox" ${r.active?"checked":""} onchange="toggleActive(${r.id},event)"><span class="toggle-slider"></span></label>
+        <span class="toggle-lbl ${r.active?"on":""}">${r.active?"Beschikbaar in apotheek":"Uitgeschakeld / geen voorraad"}</span>
+      </div>
+    </div>
+    ${r.description?`<div class="detail-section"><div class="detail-label">Beschrijving</div><div class="detail-value">${r.description}</div></div>`:""}
+    ${r.ingredients?`<div class="detail-section"><div class="detail-label">Ingrediënten</div><div class="detail-value">${r.ingredients}</div></div>`:""}
+    ${r.dosage?`<div class="detail-section"><div class="detail-label">Dosering & gebruik</div><div class="detail-value">${r.dosage}</div></div>`:""}
+    ${r.symptoms.length?`<div class="detail-section"><div class="detail-label">Fysieke toepassingen</div><div>${r.symptoms.map(s=>`<span class="tag no-click">${s}</span>`).join("")}</div></div>`:""}
+    ${r.spiritual.length?`<div class="detail-section"><div class="detail-label">Spirituele toepassingen</div><div>${r.spiritual.map(s=>`<span class="tag spiritual no-click">${s}</span>`).join("")}</div></div>`:""}
+    ${r.notes?`<div class="detail-section"><div class="detail-label">Mijn notities</div><div class="detail-value detail-notes">${r.notes}</div></div>`:""}
+    ${r.caution?`<div class="detail-section"><div class="detail-label">⚠ Voorzorgen</div><div class="detail-value detail-caution">${r.caution}</div></div>`:""}
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="startEdit()">Bewerken</button>
+      <button class="btn btn-danger" onclick="deleteRemedy(${r.id})">Verwijderen</button>
+    </div>`;
+}
+
+// EDIT/ADD
+function startAdd(){editForm={id:Date.now(),name:"",type:"tincture",selfMade:true,active:true,ingredients:"",symptomsStr:"",spiritualStr:"",description:"",dosage:"",notes:"",caution:"",category:"fysiek"};showView("add");}
+function startEdit(){editForm={...selectedRemedy,symptomsStr:selectedRemedy.symptoms.join(", "),spiritualStr:selectedRemedy.spiritual.join(", ")};showView("edit");}
+
+function renderEdit(c){
+  const isAdd=currentView==="add";const f=editForm;
+  c.innerHTML=`
+    <button class="back-btn" onclick="showView(${isAdd?"'browse'":"'detail'"})">← Terug</button>
+    <div style="font-family:'IM Fell English',serif;font-size:22px;color:#d4b483;margin-bottom:20px">${isAdd?"Nieuw middel toevoegen":"Bewerken: "+f.name}</div>
+    ${fRow("Naam","name","input",f.name)}
+    ${fRow("Ingrediënten / samenstelling","ingredients","input",f.ingredients)}
+    ${fRow("Beschrijving","description","textarea",f.description)}
+    ${fRow("Dosering & gebruik","dosage","textarea",f.dosage)}
+    ${fRow("Fysieke toepassingen (komma-gescheiden)","symptomsStr","textarea",f.symptomsStr)}
+    ${fRow("Spirituele toepassingen (komma-gescheiden)","spiritualStr","textarea",f.spiritualStr)}
+    ${fRow("Mijn notities / receptuur","notes","textarea",f.notes)}
+    ${fRow("Voorzorgen / waarschuwingen","caution","textarea",f.caution)}
+    <div class="form-row"><label class="form-label">Type</label>
+      <select id="f-type" onchange="editForm.type=this.value">${Object.entries(typeLabels).map(([k,v])=>`<option value="${k}"${f.type===k?" selected":""}>${v}</option>`).join("")}</select></div>
+    <div class="form-row"><label class="form-label">Categorie</label>
+      <select id="f-cat" onchange="editForm.category=this.value">
+        <option value="fysiek"${f.category==="fysiek"?" selected":""}>Fysiek</option>
+        <option value="spiritueel"${f.category==="spiritueel"?" selected":""}>Spiritueel</option>
+      </select></div>
+    <div class="form-row" style="display:flex;align-items:center;gap:10px">
+      <input type="checkbox" id="f-self" ${f.selfMade?"checked":""} onchange="editForm.selfMade=this.checked" style="width:auto;accent-color:var(--gold)">
+      <label for="f-self" class="form-label" style="margin:0">Eigengemaakt</label>
+    </div>
+    <div class="form-row" style="display:flex;align-items:center;gap:10px">
+      <input type="checkbox" id="f-active" ${f.active!==false?"checked":""} onchange="editForm.active=this.checked" style="width:auto;accent-color:var(--gold)">
+      <label for="f-active" class="form-label" style="margin:0">Beschikbaar (voorraad aanwezig)</label>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="saveRemedy()">Opslaan</button>
+      <button class="btn btn-secondary" onclick="showView(${isAdd?"'browse'":"'detail'"})">Annuleren</button>
+    </div>
+    <div class="save-msg" id="save-msg"></div>`;
+  ["name","ingredients","description","dosage","symptomsStr","spiritualStr","notes","caution"].forEach(k=>{
+    const el=document.getElementById("f-"+k);if(el)el.addEventListener("input",()=>{editForm[k]=el.value;});
+  });
+}
+function fRow(label,key,type,value){
+  const el=type==="textarea"?`<textarea id="f-${key}" style="min-height:60px">${escHtml(value||"")}</textarea>`:`<input id="f-${key}" value="${escHtml(value||"")}">`;
+  return`<div class="form-row"><label class="form-label">${label}</label>${el}</div>`;
+}
+function saveRemedy(){
+  const r={...editForm,symptoms:editForm.symptomsStr.split(",").map(s=>s.trim()).filter(Boolean),spiritual:editForm.spiritualStr.split(",").map(s=>s.trim()).filter(Boolean)};
+  if(currentView==="add")remedies.push(r);else remedies=remedies.map(x=>x.id===r.id?r:x);
+  saveData();selectedRemedy=r;
+  const msg=document.getElementById("save-msg");if(msg)msg.textContent="Opgeslagen ✓";
+  setTimeout(()=>showView("detail"),600);
+}
+function deleteRemedy(id){
+  if(!confirm("Dit middel verwijderen?"))return;
+  remedies=remedies.filter(r=>r.id!==id);saveData();showView("browse");
+}
+
+// HELPERS
+function cardHtml(r){
+  const color=typeColors[r.type]||"#8B7355";
+  return`<div class="card${r.active?"":" inactive"}" onclick="showView('detail',${JSON.stringify(r).replace(/"/g,"&quot;")})">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+      <div class="card-name" style="color:${r.active?"#d4b483":"#6b5a3a"}">${r.name}</div>
+      <label class="toggle" onclick="event.stopPropagation()">
+        <input type="checkbox" ${r.active?"checked":""} onchange="toggleActive(${r.id},event)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div style="margin:5px 0">
+      <span class="badge" style="background:${color}33;color:${color};border:1px solid ${color}44">${typeLabels[r.type]||r.type}</span>
+      ${r.selfMade?'<span class="badge badge-self">eigengemaakt</span>':""}
+      ${!r.active?'<span class="badge badge-off">geen voorraad</span>':""}
+    </div>
+    <div class="card-snippet">${r.description.slice(0,90)}${r.description.length>90?"...":""}</div>
+  </div>`;
+}
+function escHtml(s){return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+const _orig=showView;
+window.showView=function(view,d){
+  if(typeof d==="string"){try{d=JSON.parse(d.replace(/&quot;/g,'"'));}catch{}}
+  _orig(view,d);
+};
+
+loadData();render();setStatus("☁ gereed","ok");
+</script>
+</body>
+</html>
