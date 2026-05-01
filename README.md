@@ -1,2 +1,2 @@
 # Elins-kruiderij
-Apotheek recepten informatie keuzehulp
+recepten informatie keuzehulp
