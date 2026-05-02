@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elins Kruiderij</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0d2318;--bg2:#1e3a2e;--gold:#c9a96e;--gold2:#8B6914;
+    --gold-dim:#6b5a3a;--text:#e8d9b5;--text-dim:#9a8a6a;
+    --purple:#9a7ab0;--green:#7aaa5a;--red:#e87a7a;
+    --card:rgba(255,255,255,0.04);--border:rgba(180,130,60,0.15);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,serif;min-height:100vh;max-width:480px;margin:0 auto;position:relative}
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:0.5}
+
+  #header{padding:20px 20px 0;position:relative;z-index:1}
+  .header-top{display:flex;align-items:flex-start;justify-content:space-between}
+  .app-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:2px}
+  .app-title{font-family:'IM Fell English',serif;font-size:28px;color:var(--gold);text-shadow:0 0 30px rgba(180,130,60,0.3);line-height:1.1}
+  #cloud-status{font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:8px;margin-top:6px;white-space:nowrap;background:rgba(80,140,80,0.15);color:var(--green);border:1px solid rgba(122,170,90,0.3)}
+
+  #nav{display:flex;gap:6px;padding:14px 20px 0;position:relative;z-index:1;flex-wrap:wrap}
+  .nav-btn{padding:6px 13px;border-radius:20px;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:1px solid #3a2e1a;background:rgba(255,255,255,0.03);color:var(--gold-dim);font-family:'Crimson Pro',serif;transition:all 0.2s}
+  .nav-btn.active{border-color:var(--gold);background:rgba(180,130,60,0.18);color:var(--gold)}
+
+  #content{padding:20px;position:relative;z-index:1}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;transition:all 0.2s}
+  .card:hover{background:rgba(255,255,255,0.07);border-color:rgba(180,130,60,0.3)}
+  .card.inactive{opacity:0.45;filter:grayscale(0.5)}
+  .card-name{font-size:18px;color:#d4b483;margin-bottom:5px;font-family:'IM Fell English',serif}
+  .card-snippet{font-size:13px;color:var(--text-dim);margin-top:6px;line-height:1.5}
+
+  /* Toggle */
+  .toggle{position:relative;width:38px;height:20px;flex-shrink:0;display:inline-block}
+  .toggle input{opacity:0;width:0;height:0}
+  .toggle-slider{position:absolute;inset:0;background:#2a1e0a;border-radius:20px;cursor:pointer;transition:0.3s;border:1px solid #3a2e1a}
+  .toggle-slider:before{content:'';position:absolute;height:14px;width:14px;left:2px;top:2px;background:#6b5a3a;border-radius:50%;transition:0.3s}
+  .toggle input:checked+.toggle-slider{background:rgba(180,130,60,0.25);border-color:var(--gold)}
+  .toggle input:checked+.toggle-slider:before{transform:translateX(18px);background:var(--gold)}
+  .toggle-row{display:flex;align-items:center;gap:8px;margin-top:10px}
+  .toggle-lbl{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold-dim)}
+  .toggle-lbl.on{color:var(--green)}
+
+  .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-right:5px}
+  .badge-self{background:rgba(85,107,63,0.2);color:#7aaa5a;border:1px solid rgba(85,107,63,0.3)}
+  .badge-off{background:rgba(80,60,40,0.3);color:#6b5a3a;border:1px solid #3a2e1a}
+
+  .section-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:10px;border-bottom:1px solid #2a1e0a;padding-bottom:6px}
+
+  .tag{display:inline-block;margin:3px;padding:5px 10px;border-radius:14px;font-size:12px;cursor:pointer;transition:all 0.15s;background:rgba(255,255,255,0.04);border:1px solid #2a1e0a;color:#7a6a4a}
+  .tag.active{background:rgba(180,130,60,0.25);border-color:var(--gold);color:var(--gold)}
+  .tag.spiritual{border-color:#3a2a4a;color:var(--purple)}
+  .tag.no-click{cursor:default}
+
+  input,textarea,select{width:100%;background:rgba(255,255,255,0.05);border:1px solid #3a2e1a;border-radius:8px;color:var(--text);padding:10px 12px;font-size:14px;font-family:'Crimson Pro',serif;outline:none;resize:vertical}
+  select{cursor:pointer}
+  .form-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#8B7355;margin-bottom:4px;display:block}
+  .form-row{margin-bottom:14px}
+  .input-wrap{position:relative}
+  .mic-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:rgba(180,130,60,0.15);border:1px solid rgba(180,130,60,0.3);border-radius:50%;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all 0.2s}
+  .mic-btn.listening{background:rgba(220,80,80,0.25);border-color:var(--red);animation:pulse 1s infinite}
+  .mic-label{font-size:10px;color:var(--red);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+  textarea.with-mic{padding-right:44px;min-height:80px}
+  input.with-mic{padding-right:44px}
+  .textarea-wrap{position:relative}
+  .textarea-wrap .mic-btn{top:10px;transform:none}
+
+  .btn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-family:'Crimson Pro',serif;transition:all 0.2s}
+  .btn-primary{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--bg);font-weight:600}
+  .btn-secondary{background:rgba(255,255,255,0.06);color:var(--gold);border:1px solid #3a2e1a}
+  .btn-danger{background:rgba(139,50,50,0.3);color:var(--red)}
+  .btn-full{width:100%;margin-top:8px}
+  .btn-row{display:flex;gap:8px;margin-top:16px}
+
+  .back-btn{background:none;border:none;color:#8B7355;cursor:pointer;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:0 0 16px;display:flex;align-items:center;gap:6px;font-family:'Crimson Pro',serif}
+
+  .ai-box{background:rgba(90,60,20,0.15);border:1px solid rgba(180,130,60,0.2);border-radius:12px;padding:16px;margin-top:16px}
+  .ai-text{font-size:14px;line-height:1.9;color:#d4b483;white-space:pre-wrap}
+
+  .combo-box{background:rgba(60,40,90,0.2);border:1px solid rgba(154,122,176,0.3);border-radius:12px;padding:16px;margin-top:12px}
+  .combo-title{font-family:'IM Fell English',serif;font-size:18px;color:var(--purple);margin-bottom:10px}
+  .combo-middelen{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+  .combo-chip{padding:6px 14px;border-radius:10px;font-size:13px;background:rgba(154,122,176,0.15);border:1px solid rgba(154,122,176,0.35);color:var(--purple)}
+  .combo-chip.off{background:rgba(80,60,60,0.15);border-color:#3a2e1a;color:#6b5a3a;text-decoration:line-through}
+  .combo-uitleg{font-size:14px;color:var(--text-dim);line-height:1.8}
+  .combo-voorzorg{font-size:12px;color:#e8a87a;margin-top:10px;padding-top:10px;border-top:1px solid rgba(180,130,60,0.12)}
+
+  .detail-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:4px}
+  .detail-value{font-size:15px;color:var(--gold);line-height:1.6}
+  .detail-section{margin-bottom:18px}
+  .detail-notes{background:rgba(180,130,60,0.07);border-radius:8px;padding:10px 12px;font-style:italic}
+  .detail-caution{color:#e8a87a}
+
+  .home-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+  .home-tile{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 10px;cursor:pointer;text-align:center;transition:all 0.2s;font-family:'Crimson Pro',serif}
+  .home-tile:hover{background:rgba(255,255,255,0.07)}
+  .home-tile-icon{font-size:26px;margin-bottom:6px}
+  .home-tile-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8B7355}
+
+  .voorraad-row{display:flex;gap:14px;justify-content:center;margin-top:8px;font-size:12px;color:var(--text-dim)}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px}
+  .dot-on{background:var(--green)}
+  .dot-off{background:#3a2e1a}
+  .save-msg{color:var(--green);font-size:13px;margin-top:8px}
+
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+@keyframes bubblein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.chat-wrap{display:flex;flex-direction:column;gap:12px;padding:12px 0;min-height:200px}
+.bubble-row{display:flex;animation:bubblein 0.3s ease}
+.bubble-row.gebruiker{justify-content:flex-end}
+.bubble-row.assistent{justify-content:flex-start}
+.bubble{max-width:82%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.7}
+.bubble.gebruiker{background:rgba(180,130,60,0.2);border:1px solid rgba(180,130,60,0.3);color:#e8d9b5;border-bottom-right-radius:4px}
+.bubble.assistent{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:#d4b483;border-bottom-left-radius:4px}
+.chat-input-wrap{display:flex;gap:8px;align-items:flex-end;margin-top:12px;border-top:1px solid #2a1e0a;padding-top:12px}
+.chat-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid #3a2e1a;border-radius:12px;color:var(--text);padding:10px 14px;font-size:14px;font-family:'Crimson Pro',serif;outline:none;resize:none;min-height:44px;max-height:120px}
+.chat-send{background:linear-gradient(135deg,#8B6914,#c9a96e);border:none;border-radius:10px;color:#1e3a2e;padding:10px 16px;cursor:pointer;font-size:18px;flex-shrink:0}
+.chat-send:disabled{opacity:0.4;cursor:not-allowed}
+.samenvatting-box{background:rgba(60,40,90,0.2);border:1px solid rgba(154,122,176,0.3);border-radius:12px;padding:14px;margin-top:8px}
+.typing{display:flex;gap:4px;padding:4px 0}
+.typing span{width:7px;height:7px;background:#c9a96e;border-radius:50%;animation:typing 1.2s infinite}
+.typing span:nth-child(2){animation-delay:0.2s}
+.typing span:nth-child(3){animation-delay:0.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes bubblein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.bubble-row{display:flex;animation:bubblein 0.3s ease}
+.bubble-row.gebruiker{justify-content:flex-end}
+.bubble-row.assistent{justify-content:flex-start}
+.bubble{max-width:82%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.7}
+.bubble.gebruiker{background:rgba(180,130,60,0.2);border:1px solid rgba(180,130,60,0.3);color:#e8d9b5;border-bottom-right-radius:4px}
+.bubble.assistent{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:#d4b483;border-bottom-left-radius:4px}
+.chat-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid #3a2e1a;border-radius:12px;color:var(--text);padding:10px 14px;font-size:14px;font-family:'Crimson Pro',serif;outline:none;resize:none;min-height:44px;max-height:120px}
+.chat-send{background:linear-gradient(135deg,#8B6914,#c9a96e);border:none;border-radius:10px;color:#1e3a2e;padding:10px 16px;cursor:pointer;font-size:18px;flex-shrink:0}
+.chat-send:disabled{opacity:0.4;cursor:not-allowed}
+.typing{display:flex;gap:4px;padding:4px 0}
+.typing span{width:7px;height:7px;background:#c9a96e;border-radius:50%;animation:blink 1.2s infinite}
+.typing span:nth-child(2){animation-delay:0.2s}
+.typing span:nth-child(3){animation-delay:0.4s}
+@keyframes blink{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+  .fadein{animation:fadein 0.3s ease}
+</style>
+</head>
+<body>
+<div id="header">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px 0">
+    <div>
+      <div style="font-family:'IM Fell English',serif;font-size:28px;color:#c9a96e;text-shadow:0 0 30px rgba(180,130,60,0.3);line-height:1.1">Elin's Kruiderij</div>
+    </div>
+    <div id="cloud-status">☁ gereed</div>
+  </div>
+</div>
+<div id="nav">
+  <button class="nav-btn active" onclick="showView('home')">Home</button>
+  <button class="nav-btn" onclick="showView('search')">Raadplegen</button>
+  <button class="nav-btn" onclick="showView('browse')">Bladeren</button>
+  <button class="nav-btn" onclick="showView('logview')">📋 Log</button>
+  <button class="nav-btn" onclick="wijzigApiKey()" style="margin-left:auto">⚙</button>
+</div>
+<div id="content"></div>
+
+<script>
+const STORAGE_KEY="elins_kruiderij_v2";
+const initialRemedies=[{"id":1,"name":"Aardbei blad","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Aardbei blad","symptoms":["diarree","keelontsteking","tandvlees","aften","maagklachten","nieren"],"spiritual":["reinigend","zomerse energie","vruchtbaarheid"],"description":"Aardbeiblad werkt samentrekkend en ontstekingsremmend. Geschikt als thee bij darmklachten en voor gorgelen bij keelontsteking.","dosage":"Thee: 1-2 tl gedroogd blad op 200ml heet water, 10 min trekken, 2-3x daags.","notes":"","caution":"","category":"fysiek"},{"id":2,"name":"Agrimonie","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Agrimonie","symptoms":["lever","gal","maagklachten","hoest","keelontsteking","huid","eczeem"],"spiritual":["bescherming","terugsturen negatieve energie","zuivering"],"description":"Agrimonie is een klassiek leverkruid dat ook de spijsvertering ondersteunt. Uitwendig bij huidproblemen en wondjes.","dosage":"Thee: 2 tl op 250ml, 15 min trekken, 3x daags voor de maaltijd.","notes":"","caution":"Niet bij galstenen zonder arts te raadplegen.","category":"fysiek"},{"id":3,"name":"Anijszaad","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Anijszaad","symptoms":["opgeblazen gevoel","winderigheid","hoest","slijm","krampjes","slaap baby"],"spiritual":["bescherming","dromenwerk","helderheid"],"description":"Anijszaad is krampverlichtend en slijmoplossend. Klassiek middel bij baby-krampen en voor luchtwegklachten.","dosage":"Thee: 1 tl gekneusd zaad op 200ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Niet bij zwangerschap in grote hoeveelheden.","category":"fysiek"},{"id":4,"name":"Appelstukjes","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Appelstukjes","symptoms":["diarree","darmbescherming","pectine","cholesterol","detox"],"spiritual":["gezondheid","vitaliteit","kennis"],"description":"Gedroogde appel is rijk aan pectine en ondersteunt de darmflora. Goed in kruidenthee-mengsels.","dosage":"Als thee-ingrediënt meekoken of weken. Vrij te gebruiken.","notes":"","caution":"","category":"fysiek"},{"id":5,"name":"Bijvoet","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Bijvoet","symptoms":["menstruatieklachten","cyclus onregelmatig","dromen","vermoeidheid","spijsvertering","reisziekte"],"spiritual":["dromenwerk","waarzeggerij","maanverbinding","vrouwelijke kracht","vooroudercontact","bescherming op reis"],"description":"Bijvoet is het kruid van de volle maan en de reiziger. Stimuleert de cyclus, bevordert levendige dromen en versterkt de intuïtie.","dosage":"Thee: 1 tl op 200ml, niet langer dan 5 min trekken, 1-2x daags. Tinctuur: 20-30 druppels in water, 2x daags. Smudging: bundel branden naar behoefte.","notes":"","caution":"NIET tijdens zwangerschap — stimuleert baarmoedersamentrekkingen. Niet langdurig innemen.","category":"spiritueel"},{"id":6,"name":"Brandnetel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Brandnetel","symptoms":["ijzertekort","reuma","allergie hooikoorts","nieren","detox","haaruitval","gewrichten"],"spiritual":["bescherming","kracht","grenzen","reinigend"],"description":"Brandnetel is een van de meest voedende kruiden — rijk aan ijzer, mineralen en chlorofyl. Sterk diuretisch en ontstekingsremmend.","dosage":"Thee: 2-3 tl op 250ml, 10 min, 3x daags. Tinctuur: 30-40 druppels 3x daags.","notes":"","caution":"Bij nierproblemen voorzichtig met grote hoeveelheden.","category":"fysiek"},{"id":7,"name":"Cichorei wortel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Cichorei","symptoms":["lever","gal","spijsvertering","eetlust","darmflora","bloedsuiker"],"spiritual":["doorzettingsvermogen","obstakels wegnemen","eigenliefde"],"description":"Cichoreiwortel stimuleert de lever en galblaas, verbetert de spijsvertering en bevat inuline voor de darmflora.","dosage":"Thee van wortel: 1-2 tl op 250ml, 15 min zacht koken, 2x daags voor maaltijd.","notes":"","caution":"Niet bij galstenen.","category":"fysiek"},{"id":8,"name":"Citroengras","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Citroengras","symptoms":["koorts","infectie","spierpijn","gewrichten","spijsvertering","stress"],"spiritual":["zuivering","helderheid","positieve energie","aardend"],"description":"Citroengras heeft antibacteriële en koortswerende werking. Ontspannend voor spieren en ondersteunend bij infecties.","dosage":"Thee: 1-2 stengels of 2 tl gedroogd op 250ml, 10 min, 2-3x daags.","notes":"","caution":"","category":"fysiek"},{"id":9,"name":"Citroenmelisse","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Citroenmelisse","symptoms":["stress","angst","onrust","slaapproblemen","herpes","spijsvertering","krampen"],"spiritual":["vrede","liefde","heling","maanenergie","licht"],"description":"Citroenmelisse is een van de zachtste en veelzijdigste zenuwkruiden. Kalmerend, antiviraal bij herpes en ondersteuning bij de spijsvertering.","dosage":"Thee: 2 tl vers of 1 tl gedroogd op 200ml, 5 min, 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Kan schildkliermedicatie beïnvloeden. Bij schildklierproblematiek overleggen.","category":"fysiek"},{"id":10,"name":"Den","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Den","symptoms":["luchtwegen","hoest","bronchitis","spierpijn","gewrichten","vermoeidheid","sinussen"],"spiritual":["reinigend","bescherming","aarding","kracht van het noorden"],"description":"Dennennaalden en -hars zijn sterk antiseptisch en slijmoplossend. Uitstekend als inhalatie, bad of tinctuur bij luchtwegklachten.","dosage":"Thee: 1 el verse naalden op 250ml, 10 min trekken. Tinctuur: 20-30 druppels 3x daags.","notes":"","caution":"Niet bij nierziekten in grote hoeveelheden. Essentie nooit inwendig.","category":"fysiek"},{"id":11,"name":"Driekleurig viooltje","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Driekleurig viooltje","symptoms":["huidklachten","eczeem","acne","psoriasis","borst","slijmoplossend","reuma"],"spiritual":["liefde","geheugen","dromenwerk","zachtheid"],"description":"Driekleurig viooltje is een van de oudste huidkruiden. Zuivert het bloed en werkt ontstekingsremmend bij chronische huidproblemen.","dosage":"Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels 3x daags.","notes":"","caution":"Langdurig gebruik bij kinderen onder 2 jaar vermijden.","category":"fysiek"},{"id":12,"name":"Duivelsklauw","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Duivelsklauw","symptoms":["gewrichtspijn","reuma","artrose","rugpijn","spierpijn","ontstekingen","pijnstilling"],"spiritual":["kracht","doorzettingsvermogen","gronden"],"description":"Duivelsklauw is een van de krachtigste pijnstillende kruiden bij gewrichts- en spierpijn. Werkt ontstekingsremmend vergelijkbaar met NSAID's.","dosage":"Tinctuur: 30-40 druppels 3x daags bij maaltijd. Olie: insmeren op pijnlijke plekken.","notes":"","caution":"Niet bij maagzweer of gastritis. Niet combineren met bloedverdunners zonder overleg. Niet bij zwangerschap.","category":"fysiek"},{"id":13,"name":"Duizendblad","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Duizendblad","symptoms":["wonden","bloedingen","menstruatie","koorts","reuma","nieren","huid"],"spiritual":["bescherming","moed","grenswerk","liefde","helderziendheid"],"description":"Duizendblad is het klassieke wondkruid — stelt bloedingen, reinigt wonden en werkt koortswerende. Ook bij menstruatieklachten.","dosage":"Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels. Vers blad op wond.","notes":"","caution":"Kan allergische reactie geven (compositenfamilie). Niet bij zwangerschap.","category":"fysiek"},{"id":14,"name":"Eikenbast","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Eikenbast","symptoms":["diarree","tandvlees","keelontsteking","huid","eczeem","bloeding","aften"],"spiritual":["kracht","standvastigheid","bescherming","aarding"],"description":"Eikenbast is sterk samentrekkend door de hoge tanninegehalte. Klassiek bij diarree, tandvleesontstekingen en uitwendig bij huidproblemen.","dosage":"Thee: 1 tl op 250ml, 15 min koken, voor gorgelen of drinken. Max 3x daags.","notes":"","caution":"Niet langdurig innemen. Niet bij obstipatie.","category":"fysiek"},{"id":15,"name":"Engelwortel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Engelwortel","symptoms":["spijsvertering","maag","eetlust","luchtwegen","hoest","vermoeidheid","krampen"],"spiritual":["engelverbinding","bescherming","zuivering","kracht"],"description":"Engelwortel warmt en stimuleert — werkt op maag, darmen en luchtwegen. Traditioneel gebruikt als beschermend kruid en bij vermoeidheid.","dosage":"Tinctuur: 20-25 druppels voor de maaltijd, 3x daags. Thee: 1 tl wortel, 15 min koken.","notes":"","caution":"Verhoogt lichtgevoeligheid. Niet bij zwangerschap. Niet bij bloedverdunners.","category":"fysiek"},{"id":16,"name":"Gember","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Gember","symptoms":["misselijkheid","reisziekte","spijsvertering","verkoudheid","spierpijn","gewrichten","bloedcirculatie"],"spiritual":["vuur","wilskracht","bescherming","succes","energie"],"description":"Gember is verwarmend, anti-misselijkheid en ontstekingsremmend. Een van de meest veelzijdige kruiden voor maag, circulatie en pijn.","dosage":"Thee: 1-2 tl vers geraspt op 250ml, 10 min. Tinctuur: 20-30 druppels. Vrij te doseren.","notes":"","caution":"Voorzichtig bij bloedverdunners en galstenen. Bij grote hoeveelheden maagirritatie.","category":"fysiek"},{"id":17,"name":"Goudsbloem","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Goudsbloem","symptoms":["huid","wonden","eczeem","schimmel","ontsteking","menstruatie","lymfe"],"spiritual":["zonkracht","bescherming","heling","licht"],"description":"Goudsbloem is hét huidkruid — antiseptisch, wondhelend en ontstekingsremmend. Uitstekend als olie of zalf voor alle huidklachten.","dosage":"Olie/zalf: uitwendig naar behoefte. Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Allergie mogelijk (compositenfamilie). Test altijd eerst op kleine huidplek.","category":"fysiek"},{"id":18,"name":"Hazelnoot blad","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Hazelnoot blad","symptoms":["aders","spataderen","aambeien","bloedcirculatie","lever"],"spiritual":["wijsheid","geluk","vruchtbaarheid","wensen"],"description":"Hazelnootblad versterkt de aderwanden en verbetert de bloedcirculatie. Traditioneel bij spataderen en aambeien.","dosage":"Thee: 2 tl op 250ml, 10 min, 2-3x daags.","notes":"","caution":"","category":"fysiek"},{"id":19,"name":"Heermoes","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Heermoes","symptoms":["botten","gewrichten","nieren","blaas","haaruitval","nagels","silica"],"spiritual":["aarding","structuur","doorzettingsvermogen","verbinding aarde"],"description":"Heermoes is extreem rijk aan kiezelzuur (silica) — ondersteunt botten, kraakbeen, haar en nagels. Sterk diuretisch.","dosage":"Thee: 2 tl op 250ml, 15 min koken (niet trekken!), 2x daags. Tinctuur: 25-35 druppels.","notes":"","caution":"Niet langdurig bij nierziekten. Niet bij hartproblemen zonder overleg (diuretisch).","category":"fysiek"},{"id":20,"name":"Herderstasje","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Herderstasje","symptoms":["bloeding","menstruatie","baarmoeder","nieren","bloeddruk","wonden"],"spiritual":["bescherming","thuisgevoel","moederenergie"],"description":"Herderstasje is een krachtig bloedstelpend kruid — klassiek bij zware menstruatie, vleesbomen en wonden.","dosage":"Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels 3x daags.","notes":"","caution":"Niet bij zwangerschap. Niet combineren met bloedverdunners.","category":"fysiek"},{"id":21,"name":"Hibiscus","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Hibiscus","symptoms":["bloeddruk","cholesterol","nieren","blaas","vertering","koorts","antioxidant"],"spiritual":["liefde","schoonheid","vrouwelijke kracht","passie"],"description":"Hibiscus is rijkr aan antioxidanten en heeft een bewezen bloeddrukverlagend effect. Smakelijk en verfrissend als thee.","dosage":"Thee: 2 tl gedroogde bloemen op 250ml, 10 min koud of warm, 2x daags.","notes":"","caution":"Kan bloeddruk verlagen — voorzichtig bij bestaande medicatie.","category":"fysiek"},{"id":22,"name":"Honingklaver","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Honingklaver","symptoms":["aders","spataderen","trombose","lymfe","aambeien","oedeem","bloedcirculatie"],"spiritual":["geluk","bescherming","zuivering","zoete energie"],"description":"Honingklaver bevat coumarine en ondersteunt de bloedcirculatie en het lymfestelsel. Klassiek bij veneuze insufficiëntie.","dosage":"Thee: 2 tl op 250ml, 10 min, 2x daags. Tinctuur: 20-30 druppels 2x daags.","notes":"","caution":"Niet bij bloedverdunners (coumarine-interactie). Niet bij zwangerschap.","category":"fysiek"},{"id":23,"name":"Kamille","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Kamille","symptoms":["maagkramp","darmklachten","onrust","slaap","huid","eczeem","ontsteking","menstruatie"],"spiritual":["bescherming kinderen","reinigend","zonnekracht","vrede","dromenwerk"],"description":"Kamille is het universele kruidenthee-kruid — krampverlichtend, ontstekingsremmend, kalmerend. Zacht genoeg voor baby's, krachtig genoeg voor chronische klachten.","dosage":"Thee: 2 tl op 250ml, 5-10 min afgedekt trekken, 3x daags. Tinctuur: 15-25 druppels. Olie: uitwendig.","notes":"","caution":"Allergie mogelijk bij compositenfamilie. Zelden, maar test bij gevoeligheid.","category":"fysiek"},{"id":24,"name":"Kattenkruid","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Kattenkruid","symptoms":["stress","angst","slaap","hoofdpijn","menstruatie","spijsvertering","koorts"],"spiritual":["kattenenergie","speelsheid","liefde","aantreksracht"],"description":"Kattenkruid (Nepeta cataria) is kalmerend en krampverlichtend. Vergelijkbaar met valeraan maar zachter. Traditioneel bij spanning en menstruatiepijn.","dosage":"Thee: 2 tl op 250ml, 5 min (niet langer — vluchtige oliën!), 2-3x daags.","notes":"","caution":"","category":"fysiek"},{"id":25,"name":"Kersensteeltjes","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Kersensteeltjes","symptoms":["nieren","blaas","blaasontsteking","urinezuur","vochtafdrijving","jicht"],"spiritual":["zuivering","loslaten","reinigend"],"description":"Kersensteeltjes zijn sterk diuretisch en urinezuurverlagend. Klassiek huismiddel bij blaasklachten en jicht.","dosage":"Thee: 1 el steeltjes op 500ml water, 15 min koken, verspreid over dag drinken.","notes":"","caution":"Niet bij nierziekten zonder overleg.","category":"fysiek"},{"id":26,"name":"Kinabast","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Kinabast","symptoms":["koorts","malaria","griep","bitterheid","spijsvertering","eetlust"],"spiritual":["kracht","doorzettingsvermogen","transformatie"],"description":"Kinabast bevat kinine en is van origine het koortswerendste plantenmiddel. Sterk bitter — stimuleert lever en maag.","dosage":"Tinctuur: 10-15 druppels (bitter!), 2x daags voor maaltijd. Kleine dosering volstaat.","notes":"","caution":"Niet bij zwangerschap. Niet bij hartproblemen. Niet langdurig gebruiken zonder overleg.","category":"fysiek"},{"id":27,"name":"Klaproos","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Klaproos","symptoms":["hoest","keelpijn","slaapproblemen","onrust","pijn","angst"],"spiritual":["dromen","herinnering","troost","overgang"],"description":"Klaproos (Papaver rhoeas, niet opium) is zacht kalmerend en slijmvliesverzachtend. Traditioneel bij hoest en als milde slaapondersteuning.","dosage":"Thee: 2 tl bloemblaadjes op 250ml, 10 min, voor het slapen. Olie: uitwendig verzachtend.","notes":"","caution":"Uitsluitend Papaver rhoeas (veldklaproos), niet Papaver somniferum.","category":"fysiek"},{"id":28,"name":"Kleefkruid","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Kleefkruid","symptoms":["lymfe","lymfeklieren","huid","eczeem","nieren","detox","kanker preventie"],"spiritual":["verbinding","vasthouden wat waardevol is","zuivering"],"description":"Kleefkruid is het lymfekruid bij uitstek — activeert de lymfedrainage en ondersteunt de nieren. Het beste vers gebruikt.","dosage":"Vers sap: 1-3 el vers uitgeperst per dag. Tinctuur van vers kruid: 20-30 druppels 3x daags.","notes":"","caution":"","category":"fysiek"},{"id":29,"name":"Kliswortel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Kliswortel","symptoms":["huid","acne","eczeem","psoriasis","lever","bloed zuiveren","haaruitval","nieren"],"spiritual":["bescherming","aarding","vastigheid","reinigend"],"description":"Kliswortel is een van de krachtigste bloedzuiverende kruiden. Uitstekend bij chronische huidklachten, lever en als algemene detox.","dosage":"Tinctuur: 25-35 druppels 3x daags. Thee van wortel: 2 tl op 250ml, 15 min koken, 2x daags.","notes":"","caution":"Langzame werking — minstens 6-8 weken voor resultaat.","category":"fysiek"},{"id":30,"name":"Korenbloem","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Korenbloem","symptoms":["ogen","conjunctivitis","hoest","koorts","maag","lever","huid"],"spiritual":["bescherming","mannelijke energie","hemelsblauw","dromenwerk"],"description":"Korenbloem werkt ontstekingsremmend — klassiek als oogwassing bij irritatie of conjunctivitis. Ook als lever- en maagkruid.","dosage":"Oogwassing: koele thee van 2 tl op 250ml, zeven en spoelen. Thee: 2 tl, 10 min, 2x daags.","notes":"","caution":"","category":"fysiek"},{"id":31,"name":"Kruizemunt","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Kruizemunt","symptoms":["spijsvertering","misselijkheid","maag","winderigheid","hoofdpijn","verkoeling","hoest"],"spiritual":["reinigend","helderheid","bescherming","communicatie"],"description":"Kruizemunt is iets milder dan pepermunt maar vergelijkbaar werkzaam — digestief, verkoelend en hoofdpijnverlichtend.","dosage":"Thee: 2 tl op 250ml, 5 min (geen langer), 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Niet bij zuigelingen direct insmeren met menthol. Niet bij reflux.","category":"fysiek"},{"id":32,"name":"Lavendel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Lavendel","symptoms":["stress","angst","slaapproblemen","hoofdpijn","huidklachten","brandwonden","insecten"],"spiritual":["zuivering","vrede","bescherming","liefde","heling"],"description":"Lavendel is het universele kalmerende kruid — voor zenuwen, slaap en uitwendig voor huid en wonden. Zacht en veelzijdig.","dosage":"Thee: 1-2 tl bloemen op 200ml, 5 min, voor het slapen. Tinctuur: 20 druppels. Olie: uitwendig.","notes":"","caution":"Essentie nooit onverdund op huid. Tinctuur milde dosis voor kinderen.","category":"fysiek"},{"id":33,"name":"Lindebloesem","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Lindebloesem","symptoms":["koorts","verkoudheid","griep","hoest","stress","hoofdpijn","bloeddruk"],"spiritual":["liefde","bescherming","vrede","moederenergie","zachtheid"],"description":"Lindebloesem is een klassiek koortswerende en kalmerend volksthee. Stimuleert zweten bij verkoudheid, kalmeert zenuwen.","dosage":"Thee: 2 tl bloemen op 250ml, 10 min afgedekt, zo heet mogelijk drinken. 3x daags.","notes":"","caution":"","category":"fysiek"},{"id":34,"name":"Madelief bloem","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Madelief bloem","symptoms":["hoest","bronchitis","huid","wonden","eczeem","spijsvertering","lever"],"spiritual":["kinderziel","onschuld","liefde","zonnekracht"],"description":"Madelief is mild slijmoplossend en wondhelend. Zacht genoeg voor kinderen. Uitwendig bij kleine wondjes en huidirritatie.","dosage":"Thee: 2 tl bloemen op 250ml, 10 min, 2-3x daags. Olie: uitwendig verzachtend.","notes":"","caution":"","category":"fysiek"},{"id":35,"name":"Maretak","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Maretak","symptoms":["bloeddruk","hartkloppingen","kanker ondersteunend","immuunsysteem","duizeligheid","tumoren"],"spiritual":["bescherming","vruchtbaarheid","healing","mystiek","druïden"],"description":"Maretak verlaagt bloeddruk en wordt in de antroposofische geneeskunde gebruikt bij kankertherapie (Iscador). Immuunversterkend.","dosage":"Tinctuur: 10-15 druppels 2x daags — LAAG beginnen. Olie: uitwendig.","notes":"","caution":"GIFTIG in grote hoeveelheden — alleen bessen en stengels gedroogd/tinctuur. Nooit verse bessen eten. Overleg met arts bij kankertherapie.","category":"fysiek"},{"id":36,"name":"Mariadistel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Mariadistel","symptoms":["lever","gal","leverontsteking","alcohol schade","detox","galstenen","spijsvertering"],"spiritual":["bescherming","moederkracht","transformatie","reinigend"],"description":"Mariadistel (silymarine) is het krachtigste leverherstellende kruid — beschermt levercellen en stimuleert regeneratie.","dosage":"Tinctuur: 30-40 druppels 3x daags. Zaadpoeder: 1 tl in water of yoghurt, 3x daags.","notes":"","caution":"Kan milde maagklachten geven. Interactie met bepaalde medicijnen via lever — overleg bij medicijngebruik.","category":"fysiek"},{"id":37,"name":"Meidoorn","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Meidoorn","symptoms":["hart","bloeddruk","hartkloppingen","angst","aders","cholesterol","slaap"],"spiritual":["liefde","bescherming","verbinding hemel-aarde","magie"],"description":"Meidoorn is het hartkruid — versterkt en reguleert het hart, verlaagt bloeddruk en kalmeert. Een van de veiligste hartkruiden.","dosage":"Thee: 2 tl bloemen/bessen op 250ml, 15 min, 2x daags. Tinctuur: 30-40 druppels 3x daags.","notes":"","caution":"Bij hartmedicatie overleg met arts. Langzame werking — minstens 6 weken.","category":"fysiek"},{"id":38,"name":"Moeraspirea","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Moeraspirea","symptoms":["pijn","koorts","reuma","gewrichten","hoofdpijn","maagklachten","griep"],"spiritual":["reinigend","loslaten","waterenergie","transformatie"],"description":"Moeraspirea bevat salicylaten (verwant aan aspirine) — pijnstillend, koortswerende en ontstekingsremmend. Het 'kruidenaspirine'.","dosage":"Thee: 2 tl bloemen op 250ml, 10 min (niet koken!), 3x daags. Tinctuur: 25-35 druppels.","notes":"","caution":"Niet bij aspirine-allergie. Niet bij maagzweer. Niet bij kinderen onder 12 met koorts (Reye-syndroom risico).","category":"fysiek"},{"id":39,"name":"Ogentroost","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Ogentroost","symptoms":["ogen","conjunctivitis","oogirritatie","hooikoorts","bijholten","hoest"],"spiritual":["helderziendheid","innerlijk zien","waarheid"],"description":"Ogentroost is hét oogkruid — verlichting bij rode, geïrriteerde of ontstoken ogen. Ook bij hooikoorts en sinusitis.","dosage":"Oogwassing: sterke thee (3 tl op 250ml), koud zeven, spoelen. Thee: 2 tl op 250ml, 2-3x daags. Tinctuur: 20 druppels.","notes":"","caution":"Oogwassing: steriel bereiden en altijd vers.","category":"fysiek"},{"id":40,"name":"Paardenbloem      wortel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Paardenbloem","symptoms":["lever","gal","nieren","detox","eetlust","cholesterol","huid","spijsvertering"],"spiritual":["doorzettingsvermogen","vrijheid","wensen","loslaten"],"description":"Paardenbloemwortel is sterk cholagoog (galstimulerend) en diuretisch — een krachtig lente-detoxkruid voor lever en nieren.","dosage":"Tinctuur: 30-40 druppels voor maaltijd, 3x daags. Thee wortel: 2 tl, 15 min koken, 2x daags.","notes":"","caution":"Niet bij galwegobstructie.","category":"fysiek"},{"id":41,"name":"Paardenbloem pluis","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Paardenbloem","symptoms":["wensen","intenties","loslaten"],"spiritual":["wensen","intentie zenden","loslaten","verbinding wind"],"description":"Paardenbloempluis wordt spiritueel gebruikt — blazen op pluis als ritueel voor het uitzenden van wensen en intenties.","dosage":"Ritueel gebruik naar behoefte.","notes":"","caution":"","category":"fysiek"},{"id":42,"name":"Passiebloemkruid","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Passiebloemkruid","symptoms":["angst","spanning","slaapproblemen","hartkloppingen","hoge bloeddruk","nervositeit","pijn"],"spiritual":["vrede","overgave","spirituele bescherming","Christusbewustzijn"],"description":"Passiebloemkruid is een van de krachtigste angst- en slaapkruiden — kalmeert het zenuwstelsel zonder sufheid. Uitstekend bij spanning-gerelateerde klachten.","dosage":"Tinctuur: 30-40 druppels voor bed of bij angst. Thee: 2 tl op 250ml, 10 min.","notes":"","caution":"Niet combineren met kalmerende medicatie zonder overleg.","category":"fysiek"},{"id":43,"name":"Pepermunt","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Pepermunt","symptoms":["hoofdpijn","migraine","spijsvertering","misselijkheid","prikkelbaredarmsyndroom","koorts","verkoeling"],"spiritual":["reinigend","helderheid","bescherming","communicatie","energie"],"description":"Pepermunt is verkoelend, digestief en pijnverlichtend. Één van de meest gebruikte kruiden ter wereld.","dosage":"Thee: 2 tl op 250ml, 5 min (niet langer!), 3x daags. Tinctuur: 20-25 druppels. Olie verdund uitwendig op slapen.","notes":"","caution":"Niet bij zuigelingen en kleine kinderen. Niet bij reflux. Essentie nooit onverdund.","category":"fysiek"},{"id":44,"name":"Rozemarijn","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Rozemarijn","symptoms":["geheugen","concentratie","hoofdpijn","haaruitval","bloedcirculatie","vermoeidheid","reuma"],"spiritual":["geheugen","zuivering","bescherming","voorouderherinnering","helderzinnigheid"],"description":"Rozemarijn stimuleert de bloedcirculatie naar hersenen en hoofdhuid — verbetert geheugen en helpt bij haaruitval. Uitwendig bij spierpijn.","dosage":"Thee: 1 tl op 200ml, 5 min, 2x daags. Tinctuur: 20-30 druppels. Haarwater: inrijgen, niet afspoelen.","notes":"","caution":"Grote hoeveelheden vermijden bij zwangerschap en epilepsie.","category":"fysiek"},{"id":45,"name":"Rozenbottel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Rozenbottel","symptoms":["vitamine C","immuunsysteem","verkoudheid","griep","vermoeidheid","gewrichten","nieren"],"spiritual":["liefde","bescherming","vreugde","zachtheid"],"description":"Rozenbottel is de rijkste plantaardige bron van vitamine C — tot 20x meer dan sinaasappel. Immunversterkend en antioxidatief.","dosage":"Thee: 2 tl op 250ml, 15 min weken in koud water of 10 min heet. 2-3x daags.","notes":"","caution":"Haartjes in rozenbottel verwijderen voor gebruik — irriteren het maagdarmkanaal.","category":"fysiek"},{"id":46,"name":"Rozenknopjes","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Rozenknopjes","symptoms":["huid","stemming","menstruatie","hart","stress","antioxidant"],"spiritual":["liefde","schoonheid","Venusenergie","vrouwelijke kracht","hart openen"],"description":"Rozenknopjes zijn rijk aan antioxidanten en worden gebruikt bij huidverzorging, als stemmingverbeteraar en hartkruid.","dosage":"Thee: 1 tl op 200ml, 5-8 min, 2x daags. Olie: uitwendig voor huid en hart-chakra.","notes":"","caution":"","category":"fysiek"},{"id":47,"name":"Salie","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Salie","symptoms":["keelontsteking","overgangsklachten","zweetaanvallen","tandvlees","spijsvertering","infectie","geheugen"],"spiritual":["zuivering","wijsheid","bescherming","smudging","voorouderverbinding"],"description":"Salie is antibacterieel, vermindert zweten en is een klassiek kruid bij keelklachten. Spiritueel als smudgekruid.","dosage":"Thee: 1 tl op 200ml, max 5 min, 2-3x daags. Gorgelen bij keelontsteking. Smudging naar behoefte.","notes":"","caution":"Niet langdurig in grote hoeveelheden bij zwangerschap of epilepsie. Bevat thujon.","category":"fysiek"},{"id":48,"name":"Sint janskruid","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Sint janskruid","symptoms":["depressie","winterblues","zenuwpijn","spierpijn","brandwonden","angst","PMS"],"spiritual":["zonnekracht","licht brengen","bescherming","vreugde","midzomerkracht"],"description":"Sint-Janskruid is het antidepressivum uit de natuur — verhoogt serotonine en verlicht lichte tot matige depressie. Uitwendig pijnstillend.","dosage":"Tinctuur: 30-40 druppels 3x daags (minimaal 6 weken). Olie: uitwendig op pijnlijke plekken.","notes":"","caution":"INTERACTIES: vermindert werking anticonceptie, antidepressiva, HIV-medicatie, bloedverdunners. Verhoogt lichtgevoeligheid.","category":"fysiek"},{"id":49,"name":"Smeerwortel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Smeerwortel","symptoms":["gewrichten","botbreuk","pezen","spierpijn","blauwe plekken","wonden","reuma"],"spiritual":["heling","vastigheid","aarding","structuur"],"description":"Smeerwortel (Symphytum) bevat allantoine en is krachtig wondhelend en bot-regenererend. Uitstekend als olie of zalf bij blessures.","dosage":"Olie/zalf: uitwendig 3-4x daags op de pijnlijke plek. Tinctuur: 20-30 druppels 3x daags (kortdurend).","notes":"","caution":"NIET op open wonden (geneest te snel dicht). Niet langdurig innemen — bevat pyrrolizidine-alkaloïden. Uitwendig vrijwel veilig.","category":"fysiek"},{"id":50,"name":"Tijm","type":"kruid","selfMade":true,"active":true,"flesgrootte":"klein","ingredients":"Tijm","symptoms":["hoest","bronchitis","keelontsteking","luchtwegen","infectie","immuunsysteem","schimmel"],"spiritual":["moed","reinigend","bescherming","heldenenergie"],"description":"Tijm is een van de krachtigste antibacteriële kruiden — onmisbaar bij luchtwegklachten. Sterk antiseptisch en slijmoplossend.","dosage":"Thee: 2 tl op 250ml, 10 min afgedekt, 3x daags. Tinctuur: 25-35 druppels. Glycerine: 20-30 druppels.","notes":"","caution":"Essentie nooit innemen. Grote hoeveelheden vermijden bij zwangerschap.","category":"fysiek"},{"id":51,"name":"Vlierbessen","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Vlierbessen","symptoms":["griep","verkoudheid","immuunsysteem","koorts","antiviral","antioxidant","slijmvliezen"],"spiritual":["bescherming","overgang","Holda","voorouderverbinding","dood en wedergeboorte"],"description":"Vlierbes is krachtig antiviraal en immuunstimulerend — wetenschappelijk bewezen effectief bij influenza. Verkort ziekteduur.","dosage":"Tinctuur/stroop: 1 el 4x daags bij ziekte, 1x daags preventief. Glycerine: 30-40 druppels.","notes":"","caution":"Rauw eten maakt misselijk — altijd verhitten of als tinctuur. Niet bij auto-immuunziekten.","category":"fysiek"},{"id":52,"name":"Vlierbloesem","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Vlierbloesem","symptoms":["koorts","verkoudheid","griep","slijmvliezen","allergie","huid","niercleanse"],"spiritual":["overgang","Holda","vrouwelijke kracht","zuivering","zomerzonnewende"],"description":"Vlierbloesem werkt zweet-opwekkend en slijmvliesverzachtend — klassiek bij verkoudheid en hooikoorts. Licht en fris van smaak.","dosage":"Thee: 2 tl bloemen op 250ml, 10 min afgedekt, zo heet mogelijk, 3x daags. Azijn: 1 el in water.","notes":"","caution":"","category":"fysiek"},{"id":53,"name":"Vrouwenmantel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"middel","ingredients":"Vrouwenmantel","symptoms":["menstruatie","overgangsklachten","vruchtbaarheid","baarmoeder","bloeding","PMS","baarmoederverzakking"],"spiritual":["vrouwelijke kracht","bescherming vrouwen","maanenergie","Onze Lieve Vrouwe"],"description":"Vrouwenmantel is hét vrouwenkruid — reguleert de menstruatiecyclus, verlicht overgangsklachten en versterkt de baarmoeder.","dosage":"Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 25-35 druppels 3x daags.","notes":"","caution":"Niet in eerste drie maanden zwangerschap.","category":"fysiek"},{"id":54,"name":"Wilgenbast","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Wilgenbast","symptoms":["pijn","koorts","hoofdpijn","reuma","gewrichten","griep","ontsteking"],"spiritual":["flexibiliteit","emotionele heling","loslaten","waterenergie","dromenwerk"],"description":"Wilgenbast bevat salicine — de oorsprong van aspirine. Pijnstillend, koortswerende en ontstekingsremmend.","dosage":"Tinctuur: 30-40 druppels 3x daags. Thee: 2 tl bast op 250ml, 15 min koken, 3x daags. Olie: uitwendig.","notes":"","caution":"Niet bij aspirine-allergie. Niet bij kinderen met koorts.","category":"fysiek"},{"id":55,"name":"Wilgenblad","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Wilgenblad","symptoms":["pijn","reuma","koorts","huid","eczeem","gewrichten"],"spiritual":["flexibiliteit","loslaten","emotionele heling","waterenergie"],"description":"Wilgenblad heeft vergelijkbare werking als wilgenbast maar milder. Goed in combinatie met bast.","dosage":"Thee: 2 tl blad op 250ml, 10 min, 2-3x daags.","notes":"","caution":"Niet bij aspirine-allergie.","category":"fysiek"},{"id":56,"name":"Zilverschoon","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Zilverschoon","symptoms":["menstruatie","krampen","diarree","maagklachten","baarmoeder","samentrekkend","huid"],"spiritual":["zachtheid","vrouwelijke energie","bescherming","maan"],"description":"Zilverschoon is samentrekkend en krampverlichtend — klassiek bij menstruatiekrampen en darmklachten. Vergelijkbaar met vrouwenmantel.","dosage":"Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Niet bij zwangerschap in grote hoeveelheden.","category":"fysiek"},{"id":57,"name":"Zoethout","type":"kruid","selfMade":true,"active":true,"flesgrootte":"groot","ingredients":"Zoethout","symptoms":["hoest","keelontsteking","maagzweer","spijsvertering","bijnieren","ontsteking","ademhaling"],"spiritual":["zoete energie","harmonie","verbinding","vrouwelijk principe"],"description":"Zoethout is een van de oudste geneeskruiden — verzacht slijmvliezen, is anti-inflammatoir en ondersteunt de bijnieren.","dosage":"Thee: 1 tl op 250ml, 10 min, max 2x daags. Tinctuur: 15-20 druppels (niet meer!).","notes":"","caution":"Niet langer dan 4-6 weken aaneengesloten. Niet bij hoge bloeddruk, nierproblemen of zwangerschap. Verhoogt bloeddruk bij overgebruik.","category":"fysiek"},{"id":58,"name":"Anijszaad","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Anijszaad","symptoms":["opgeblazen gevoel","winderigheid","hoest","slijm","krampjes","slaap baby"],"spiritual":["bescherming","dromenwerk","helderheid"],"description":"Anijszaad is krampverlichtend en slijmoplossend. Klassiek middel bij baby-krampen en voor luchtwegklachten.","dosage":"Thee: 1 tl gekneusd zaad op 200ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Niet bij zwangerschap in grote hoeveelheden.","category":"fysiek"},{"id":59,"name":"Appel","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Appel","symptoms":["diarree","darmbescherming","pectine","cholesterol","detox"],"spiritual":["gezondheid","vitaliteit","kennis"],"description":"Gedroogde appel is rijk aan pectine en ondersteunt de darmflora. Goed in kruidenthee-mengsels.","dosage":"Als thee-ingrediënt meekoken of weken. Vrij te gebruiken.","notes":"","caution":"","category":"fysiek"},{"id":60,"name":"Bijvoet","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Bijvoet","symptoms":["menstruatieklachten","cyclus onregelmatig","dromen","vermoeidheid","spijsvertering","reisziekte"],"spiritual":["dromenwerk","waarzeggerij","maanverbinding","vrouwelijke kracht","vooroudercontact","bescherming op reis"],"description":"Bijvoet is het kruid van de volle maan en de reiziger. Stimuleert de cyclus, bevordert levendige dromen en versterkt de intuïtie.","dosage":"Thee: 1 tl op 200ml, niet langer dan 5 min trekken, 1-2x daags. Tinctuur: 20-30 druppels in water, 2x daags. Smudging: bundel branden naar behoefte.","notes":"","caution":"NIET tijdens zwangerschap — stimuleert baarmoedersamentrekkingen. Niet langdurig innemen.","category":"spiritueel"},{"id":61,"name":"Cistus incana","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Cistus incana","symptoms":["immuunsysteem","virussen","teken","lyme","antioxidant","huid","slijmvliezen"],"spiritual":["bescherming","zuivering","licht","zonkracht"],"description":"Cistus incana is een krachtig antiviraal en antioxidatief kruid — populair bij Lyme-ondersteuning en als immunbooster.","dosage":"Tinctuur: 20-30 druppels 3x daags. Thee: 2 tl op 250ml, 10 min, 3x daags.","notes":"","caution":"","category":"fysiek"},{"id":62,"name":"Citroengras","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Citroengras","symptoms":["koorts","infectie","spierpijn","gewrichten","spijsvertering","stress"],"spiritual":["zuivering","helderheid","positieve energie","aardend"],"description":"Citroengras heeft antibacteriële en koortswerende werking. Ontspannend voor spieren en ondersteunend bij infecties.","dosage":"Thee: 1-2 stengels of 2 tl gedroogd op 250ml, 10 min, 2-3x daags.","notes":"","caution":"","category":"fysiek"},{"id":63,"name":"Citroenmelisse","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Citroenmelisse","symptoms":["stress","angst","onrust","slaapproblemen","herpes","spijsvertering","krampen"],"spiritual":["vrede","liefde","heling","maanenergie","licht"],"description":"Citroenmelisse is een van de zachtste en veelzijdigste zenuwkruiden. Kalmerend, antiviraal bij herpes en ondersteuning bij de spijsvertering.","dosage":"Thee: 2 tl vers of 1 tl gedroogd op 200ml, 5 min, 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Kan schildkliermedicatie beïnvloeden. Bij schildklierproblematiek overleggen.","category":"fysiek"},{"id":64,"name":"Combi Vlierbes, vlierbloesem ma Linde, 1000 blad","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Combi Vlierbes, vlierbloesem ma Linde, 1000 blad","symptoms":["griep","verkoudheid","immuunsysteem","koorts","luchtwegen","antiviral"],"spiritual":["bescherming","overgang","Holda","voorouderverbinding"],"description":"Combinatietincture van vlierbes, vlierbloesem, linde en duizendblad — krachtige griepformule die het immuunsysteem activeert en koorts begeleidt.","dosage":"20-30 druppels in warm water, 4x daags bij ziekte. 15 druppels 1x daags preventief.","notes":"","caution":"Zie individuele kruiden. Niet bij auto-immuunziekten.","category":"fysiek"},{"id":65,"name":"Den","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Den","symptoms":["luchtwegen","hoest","bronchitis","spierpijn","gewrichten","vermoeidheid","sinussen"],"spiritual":["reinigend","bescherming","aarding","kracht van het noorden"],"description":"Dennennaalden en -hars zijn sterk antiseptisch en slijmoplossend. Uitstekend als inhalatie, bad of tinctuur bij luchtwegklachten.","dosage":"Thee: 1 el verse naalden op 250ml, 10 min trekken. Tinctuur: 20-30 druppels 3x daags.","notes":"","caution":"Niet bij nierziekten in grote hoeveelheden. Essentie nooit inwendig.","category":"fysiek"},{"id":66,"name":"Driekleurig viooltje","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Driekleurig viooltje","symptoms":["huidklachten","eczeem","acne","psoriasis","borst","slijmoplossend","reuma"],"spiritual":["liefde","geheugen","dromenwerk","zachtheid"],"description":"Driekleurig viooltje is een van de oudste huidkruiden. Zuivert het bloed en werkt ontstekingsremmend bij chronische huidproblemen.","dosage":"Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels 3x daags.","notes":"","caution":"Langdurig gebruik bij kinderen onder 2 jaar vermijden.","category":"fysiek"},{"id":67,"name":"Duivelsklauw","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Duivelsklauw","symptoms":["gewrichtspijn","reuma","artrose","rugpijn","spierpijn","ontstekingen","pijnstilling"],"spiritual":["kracht","doorzettingsvermogen","gronden"],"description":"Duivelsklauw is een van de krachtigste pijnstillende kruiden bij gewrichts- en spierpijn. Werkt ontstekingsremmend vergelijkbaar met NSAID's.","dosage":"Tinctuur: 30-40 druppels 3x daags bij maaltijd. Olie: insmeren op pijnlijke plekken.","notes":"","caution":"Niet bij maagzweer of gastritis. Niet combineren met bloedverdunners zonder overleg. Niet bij zwangerschap.","category":"fysiek"},{"id":68,"name":"Duizendblad","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Duizendblad","symptoms":["wonden","bloedingen","menstruatie","koorts","reuma","nieren","huid"],"spiritual":["bescherming","moed","grenswerk","liefde","helderziendheid"],"description":"Duizendblad is het klassieke wondkruid — stelt bloedingen, reinigt wonden en werkt koortswerende. Ook bij menstruatieklachten.","dosage":"Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels. Vers blad op wond.","notes":"","caution":"Kan allergische reactie geven (compositenfamilie). Niet bij zwangerschap.","category":"fysiek"},{"id":69,"name":"Engelwortel","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Engelwortel","symptoms":["spijsvertering","maag","eetlust","luchtwegen","hoest","vermoeidheid","krampen"],"spiritual":["engelverbinding","bescherming","zuivering","kracht"],"description":"Engelwortel warmt en stimuleert — werkt op maag, darmen en luchtwegen. Traditioneel gebruikt als beschermend kruid en bij vermoeidheid.","dosage":"Tinctuur: 20-25 druppels voor de maaltijd, 3x daags. Thee: 1 tl wortel, 15 min koken.","notes":"","caution":"Verhoogt lichtgevoeligheid. Niet bij zwangerschap. Niet bij bloedverdunners.","category":"fysiek"},{"id":70,"name":"Gember","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Gember","symptoms":["misselijkheid","reisziekte","spijsvertering","verkoudheid","spierpijn","gewrichten","bloedcirculatie"],"spiritual":["vuur","wilskracht","bescherming","succes","energie"],"description":"Gember is verwarmend, anti-misselijkheid en ontstekingsremmend. Een van de meest veelzijdige kruiden voor maag, circulatie en pijn.","dosage":"Thee: 1-2 tl vers geraspt op 250ml, 10 min. Tinctuur: 20-30 druppels. Vrij te doseren.","notes":"","caution":"Voorzichtig bij bloedverdunners en galstenen. Bij grote hoeveelheden maagirritatie.","category":"fysiek"},{"id":71,"name":"Heermoes","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Heermoes","symptoms":["botten","gewrichten","nieren","blaas","haaruitval","nagels","silica"],"spiritual":["aarding","structuur","doorzettingsvermogen","verbinding aarde"],"description":"Heermoes is extreem rijk aan kiezelzuur (silica) — ondersteunt botten, kraakbeen, haar en nagels. Sterk diuretisch.","dosage":"Thee: 2 tl op 250ml, 15 min koken (niet trekken!), 2x daags. Tinctuur: 25-35 druppels.","notes":"","caution":"Niet langdurig bij nierziekten. Niet bij hartproblemen zonder overleg (diuretisch).","category":"fysiek"},{"id":72,"name":"Honingklaver","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Honingklaver","symptoms":["aders","spataderen","trombose","lymfe","aambeien","oedeem","bloedcirculatie"],"spiritual":["geluk","bescherming","zuivering","zoete energie"],"description":"Honingklaver bevat coumarine en ondersteunt de bloedcirculatie en het lymfestelsel. Klassiek bij veneuze insufficiëntie.","dosage":"Thee: 2 tl op 250ml, 10 min, 2x daags. Tinctuur: 20-30 druppels 2x daags.","notes":"","caution":"Niet bij bloedverdunners (coumarine-interactie). Niet bij zwangerschap.","category":"fysiek"},{"id":73,"name":"Kamille","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Kamille","symptoms":["maagkramp","darmklachten","onrust","slaap","huid","eczeem","ontsteking","menstruatie"],"spiritual":["bescherming kinderen","reinigend","zonnekracht","vrede","dromenwerk"],"description":"Kamille is het universele kruidenthee-kruid — krampverlichtend, ontstekingsremmend, kalmerend. Zacht genoeg voor baby's, krachtig genoeg voor chronische klachten.","dosage":"Thee: 2 tl op 250ml, 5-10 min afgedekt trekken, 3x daags. Tinctuur: 15-25 druppels. Olie: uitwendig.","notes":"","caution":"Allergie mogelijk bij compositenfamilie. Zelden, maar test bij gevoeligheid.","category":"fysiek"},{"id":74,"name":"Kaneel","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Kaneel","symptoms":["bloedsuiker","spijsvertering","verkoudheid","anti-microbieel","warmte","luchtwegen"],"spiritual":["vuur","wilskracht","bescherming","overvloed"],"description":"Kaneelglycerinetincture — verwarmend, bloedsuikerbalancerend en antimicrobieel. Zoet van smaak, goed voor kinderen.","dosage":"20-30 druppels in warm water, 2-3x daags.","notes":"","caution":"Niet bij leveraandoeningen in grote hoeveelheden (cassia-kaneel). Ceylon-kaneel veiliger.","category":"fysiek"},{"id":75,"name":"Kattenkruid","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Kattenkruid","symptoms":["stress","angst","slaap","hoofdpijn","menstruatie","spijsvertering","koorts"],"spiritual":["kattenenergie","speelsheid","liefde","aantreksracht"],"description":"Kattenkruid (Nepeta cataria) is kalmerend en krampverlichtend. Vergelijkbaar met valeraan maar zachter. Traditioneel bij spanning en menstruatiepijn.","dosage":"Thee: 2 tl op 250ml, 5 min (niet langer — vluchtige oliën!), 2-3x daags.","notes":"","caution":"","category":"fysiek"},{"id":76,"name":"Kliswortel","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Kliswortel","symptoms":["huid","acne","eczeem","psoriasis","lever","bloed zuiveren","haaruitval","nieren"],"spiritual":["bescherming","aarding","vastigheid","reinigend"],"description":"Kliswortel is een van de krachtigste bloedzuiverende kruiden. Uitstekend bij chronische huidklachten, lever en als algemene detox.","dosage":"Tinctuur: 25-35 druppels 3x daags. Thee van wortel: 2 tl op 250ml, 15 min koken, 2x daags.","notes":"","caution":"Langzame werking — minstens 6-8 weken voor resultaat.","category":"fysiek"},{"id":77,"name":"Kruizemunt","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Kruizemunt","symptoms":["spijsvertering","misselijkheid","maag","winderigheid","hoofdpijn","verkoeling","hoest"],"spiritual":["reinigend","helderheid","bescherming","communicatie"],"description":"Kruizemunt is iets milder dan pepermunt maar vergelijkbaar werkzaam — digestief, verkoelend en hoofdpijnverlichtend.","dosage":"Thee: 2 tl op 250ml, 5 min (geen langer), 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Niet bij zuigelingen direct insmeren met menthol. Niet bij reflux.","category":"fysiek"},{"id":78,"name":"Kurkuma","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Kurkuma","symptoms":["ontstekingen","gewrichten","lever","spijsvertering","immuunsysteem","cholesterol","depressie"],"spiritual":["reinigend","zonnekracht","bescherming","transformatie"],"description":"Kurkuma bevat curcumine — een van de krachtigste ontstekingsremmers in de plantenwereld. Ondersteunt lever, gewrichten en immuunsysteem.","dosage":"Tinctuur: 20-30 druppels 3x daags bij maaltijd. Altijd met zwarte peper combineren voor opname.","notes":"","caution":"Voorzichtig bij galstenen. Kan bloedverdunning versterken. Bij zwangerschap grote hoeveelheden vermijden.","category":"fysiek"},{"id":79,"name":"Lavendel","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Lavendel","symptoms":["stress","angst","slaapproblemen","hoofdpijn","huidklachten","brandwonden","insecten"],"spiritual":["zuivering","vrede","bescherming","liefde","heling"],"description":"Lavendel is het universele kalmerende kruid — voor zenuwen, slaap en uitwendig voor huid en wonden. Zacht en veelzijdig.","dosage":"Thee: 1-2 tl bloemen op 200ml, 5 min, voor het slapen. Tinctuur: 20 druppels. Olie: uitwendig.","notes":"","caution":"Essentie nooit onverdund op huid. Tinctuur milde dosis voor kinderen.","category":"fysiek"},{"id":80,"name":"Maretak","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Maretak","symptoms":["bloeddruk","hartkloppingen","kanker ondersteunend","immuunsysteem","duizeligheid","tumoren"],"spiritual":["bescherming","vruchtbaarheid","healing","mystiek","druïden"],"description":"Maretak verlaagt bloeddruk en wordt in de antroposofische geneeskunde gebruikt bij kankertherapie (Iscador). Immuunversterkend.","dosage":"Tinctuur: 10-15 druppels 2x daags — LAAG beginnen. Olie: uitwendig.","notes":"","caution":"GIFTIG in grote hoeveelheden — alleen bessen en stengels gedroogd/tinctuur. Nooit verse bessen eten. Overleg met arts bij kankertherapie.","category":"fysiek"},{"id":81,"name":"Meidoorn","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Meidoorn","symptoms":["hart","bloeddruk","hartkloppingen","angst","aders","cholesterol","slaap"],"spiritual":["liefde","bescherming","verbinding hemel-aarde","magie"],"description":"Meidoorn is het hartkruid — versterkt en reguleert het hart, verlaagt bloeddruk en kalmeert. Een van de veiligste hartkruiden.","dosage":"Thee: 2 tl bloemen/bessen op 250ml, 15 min, 2x daags. Tinctuur: 30-40 druppels 3x daags.","notes":"","caution":"Bij hartmedicatie overleg met arts. Langzame werking — minstens 6 weken.","category":"fysiek"},{"id":82,"name":"Moeraspirea","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Moeraspirea","symptoms":["pijn","koorts","reuma","gewrichten","hoofdpijn","maagklachten","griep"],"spiritual":["reinigend","loslaten","waterenergie","transformatie"],"description":"Moeraspirea bevat salicylaten (verwant aan aspirine) — pijnstillend, koortswerende en ontstekingsremmend. Het 'kruidenaspirine'.","dosage":"Thee: 2 tl bloemen op 250ml, 10 min (niet koken!), 3x daags. Tinctuur: 25-35 druppels.","notes":"","caution":"Niet bij aspirine-allergie. Niet bij maagzweer. Niet bij kinderen onder 12 met koorts (Reye-syndroom risico).","category":"fysiek"},{"id":83,"name":"Paardenbloem","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Paardenbloem","symptoms":["lever","gal","nieren","detox","eetlust","cholesterol","huid","spijsvertering"],"spiritual":["doorzettingsvermogen","vrijheid","wensen","loslaten"],"description":"Paardenbloemwortel is sterk cholagoog (galstimulerend) en diuretisch — een krachtig lente-detoxkruid voor lever en nieren.","dosage":"Tinctuur: 30-40 druppels voor maaltijd, 3x daags. Thee wortel: 2 tl, 15 min koken, 2x daags.","notes":"","caution":"Niet bij galwegobstructie.","category":"fysiek"},{"id":84,"name":"Passiebloemkruid","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Passiebloemkruid","symptoms":["angst","spanning","slaapproblemen","hartkloppingen","hoge bloeddruk","nervositeit","pijn"],"spiritual":["vrede","overgave","spirituele bescherming","Christusbewustzijn"],"description":"Passiebloemkruid is een van de krachtigste angst- en slaapkruiden — kalmeert het zenuwstelsel zonder sufheid. Uitstekend bij spanning-gerelateerde klachten.","dosage":"Tinctuur: 30-40 druppels voor bed of bij angst. Thee: 2 tl op 250ml, 10 min.","notes":"","caution":"Niet combineren met kalmerende medicatie zonder overleg.","category":"fysiek"},{"id":85,"name":"Rode zonnehoed","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Rode zonnehoed","symptoms":["immuunsysteem","verkoudheid","griep","infectie","wonden","lymfe","vermoeidheid"],"spiritual":["kracht","bescherming","inheemse wijsheid","heldenenergie"],"description":"Rode zonnehoed (Echinacea) is het bekendste immunversterkende kruid — verhoogt weerstand en verkort ziekteduur.","dosage":"Tinctuur: 30-40 druppels 3-4x daags bij ziekte. NIET langer dan 8 weken aaneengesloten.","notes":"","caution":"Niet bij auto-immuunziekten. Pauze nemen na 8 weken gebruik.","category":"fysiek"},{"id":86,"name":"Roos","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Roos","symptoms":["hart","stemming","huid","menstruatie","keel","stress","antioxidant"],"spiritual":["liefde","hart openen","Venusenergie","schoonheid","zachtheid","troost"],"description":"Roostincture van bloemblaadjes — versterkend voor het hart op alle niveaus, huidverzorgend en emotioneel balancerend.","dosage":"Tinctuur: 20-30 druppels 2-3x daags. Thee: 2 tl bloemblaadjes op 200ml, 5 min.","notes":"","caution":"","category":"spiritueel"},{"id":87,"name":"Rozemarijn","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Rozemarijn","symptoms":["geheugen","concentratie","hoofdpijn","haaruitval","bloedcirculatie","vermoeidheid","reuma"],"spiritual":["geheugen","zuivering","bescherming","voorouderherinnering","helderzinnigheid"],"description":"Rozemarijn stimuleert de bloedcirculatie naar hersenen en hoofdhuid — verbetert geheugen en helpt bij haaruitval. Uitwendig bij spierpijn.","dosage":"Thee: 1 tl op 200ml, 5 min, 2x daags. Tinctuur: 20-30 druppels. Haarwater: inrijgen, niet afspoelen.","notes":"","caution":"Grote hoeveelheden vermijden bij zwangerschap en epilepsie.","category":"fysiek"},{"id":88,"name":"Rozenbottel","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Rozenbottel","symptoms":["vitamine C","immuunsysteem","verkoudheid","griep","vermoeidheid","gewrichten","nieren"],"spiritual":["liefde","bescherming","vreugde","zachtheid"],"description":"Rozenbottel is de rijkste plantaardige bron van vitamine C — tot 20x meer dan sinaasappel. Immunversterkend en antioxidatief.","dosage":"Thee: 2 tl op 250ml, 15 min weken in koud water of 10 min heet. 2-3x daags.","notes":"","caution":"Haartjes in rozenbottel verwijderen voor gebruik — irriteren het maagdarmkanaal.","category":"fysiek"},{"id":89,"name":"sarsaparilla","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"sarsaparilla","symptoms":["reuma","huid","eczeem","psoriasis","bloedsuiker","hormonen","detox","libido"],"spiritual":["aarding","mannelijke kracht","vitaliteit","transformatie"],"description":"Sarsaparilla is een klassiek bloedzuiverend en hormonaal balancerend kruid — traditioneel bij huidklachten en reuma.","dosage":"Tinctuur: 25-35 druppels 3x daags. Langzame werking — 4-8 weken.","notes":"","caution":"Kan interactie geven met digitalis en lithium.","category":"fysiek"},{"id":90,"name":"Smalle weegbree","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Smalle weegbree","symptoms":["hoest","bronchitis","slijmvliezen","wonden","eczeem","insectenbeten","blaas"],"spiritual":["reizigerskruid","bescherming","heling","aarding"],"description":"Smalle weegbree is een universeel huid- en luchtwegkruid — slijmoplossend bij hoest, wondhelend uitwendig.","dosage":"Tinctuur: 25-35 druppels 3x daags. Thee: 2 tl op 250ml, 10 min. Vers blad op wond.","notes":"","caution":"","category":"fysiek"},{"id":91,"name":"Smeerwortel","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Smeerwortel","symptoms":["gewrichten","botbreuk","pezen","spierpijn","blauwe plekken","wonden","reuma"],"spiritual":["heling","vastigheid","aarding","structuur"],"description":"Smeerwortel (Symphytum) bevat allantoine en is krachtig wondhelend en bot-regenererend. Uitstekend als olie of zalf bij blessures.","dosage":"Olie/zalf: uitwendig 3-4x daags op de pijnlijke plek. Tinctuur: 20-30 druppels 3x daags (kortdurend).","notes":"","caution":"NIET op open wonden (geneest te snel dicht). Niet langdurig innemen — bevat pyrrolizidine-alkaloïden. Uitwendig vrijwel veilig.","category":"fysiek"},{"id":92,"name":"Stinkende gouwe","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Stinkende gouwe","symptoms":["wratten","eczeem","psoriasis","lever","gal","ogen"],"spiritual":["transformatie","bescherming","loslaten","onzichtbaarheid"],"description":"Stinkende gouwe heeft sterk celremmende werking — het gele sap wordt uitwendig op wratten gebruikt. Inwendig bij lever en gal.","dosage":"Tinctuur: 5-10 druppels (!) 3x daags — LAAG DOSEREN. Uitwendig sap direct op wratten.","notes":"","caution":"GIFTIG bij overdosis — nooit meer dan 10 druppels per keer. Niet bij leverziekte. Niet bij zwangerschap.","category":"fysiek"},{"id":93,"name":"Tijm","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Tijm","symptoms":["hoest","bronchitis","keelontsteking","luchtwegen","infectie","immuunsysteem","schimmel"],"spiritual":["moed","reinigend","bescherming","heldenenergie"],"description":"Tijm is een van de krachtigste antibacteriële kruiden — onmisbaar bij luchtwegklachten. Sterk antiseptisch en slijmoplossend.","dosage":"Thee: 2 tl op 250ml, 10 min afgedekt, 3x daags. Tinctuur: 25-35 druppels. Glycerine: 20-30 druppels.","notes":"","caution":"Essentie nooit innemen. Grote hoeveelheden vermijden bij zwangerschap.","category":"fysiek"},{"id":94,"name":"Vanille","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Vanille","symptoms":["stemming","energie","spijsvertering"],"spiritual":["liefde","troost","warmte","sensualiteit"],"description":"Vanilletincture op rumbasis — aromatisch en troostend. Traditioneel ingrediënt in kruidenlikeur en stemmingsondersteuning.","dosage":"10-20 druppels in drank of thee. Smaakmaker in combinaties.","notes":"","caution":"Alcoholbasis — niet voor kinderen.","category":"fysiek"},{"id":95,"name":"Vlier zwarte","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Vlier zwarte","symptoms":["immuunsysteem","griep","verkoudheid","antiviral","antioxidant","gewrichten"],"spiritual":["bescherming","overgang","Holda","dood en wedergeboorte"],"description":"Zwarte vlier (Sambucus nigra) — bessen en bloesem samen. Krachtig antiviraal en immunversterkend.","dosage":"Tinctuur: 25-35 druppels 3-4x daags bij ziekte.","notes":"","caution":"Rauwe bessen zijn giftig — altijd verwerkt gebruiken.","category":"fysiek"},{"id":96,"name":"Vlierbes","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Vlierbes","symptoms":["griep","verkoudheid","immuunsysteem","koorts","antiviral","antioxidant","slijmvliezen"],"spiritual":["bescherming","overgang","Holda","voorouderverbinding","dood en wedergeboorte"],"description":"Vlierbes is krachtig antiviraal en immuunstimulerend — wetenschappelijk bewezen effectief bij influenza. Verkort ziekteduur.","dosage":"Tinctuur/stroop: 1 el 4x daags bij ziekte, 1x daags preventief. Glycerine: 30-40 druppels.","notes":"","caution":"Rauw eten maakt misselijk — altijd verhitten of als tinctuur. Niet bij auto-immuunziekten.","category":"fysiek"},{"id":97,"name":"Vlierbessen","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Vlierbessen","symptoms":["griep","verkoudheid","immuunsysteem","koorts","antiviral","antioxidant","slijmvliezen"],"spiritual":["bescherming","overgang","Holda","voorouderverbinding","dood en wedergeboorte"],"description":"Vlierbes is krachtig antiviraal en immuunstimulerend — wetenschappelijk bewezen effectief bij influenza. Verkort ziekteduur.","dosage":"Tinctuur/stroop: 1 el 4x daags bij ziekte, 1x daags preventief. Glycerine: 30-40 druppels.","notes":"","caution":"Rauw eten maakt misselijk — altijd verhitten of als tinctuur. Niet bij auto-immuunziekten.","category":"fysiek"},{"id":98,"name":"Vlierbloesem","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Vlierbloesem","symptoms":["koorts","verkoudheid","griep","slijmvliezen","allergie","huid","niercleanse"],"spiritual":["overgang","Holda","vrouwelijke kracht","zuivering","zomerzonnewende"],"description":"Vlierbloesem werkt zweet-opwekkend en slijmvliesverzachtend — klassiek bij verkoudheid en hooikoorts. Licht en fris van smaak.","dosage":"Thee: 2 tl bloemen op 250ml, 10 min afgedekt, zo heet mogelijk, 3x daags. Azijn: 1 el in water.","notes":"","caution":"","category":"fysiek"},{"id":99,"name":"Vrouwenmantel","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Vrouwenmantel","symptoms":["menstruatie","overgangsklachten","vruchtbaarheid","baarmoeder","bloeding","PMS","baarmoederverzakking"],"spiritual":["vrouwelijke kracht","bescherming vrouwen","maanenergie","Onze Lieve Vrouwe"],"description":"Vrouwenmantel is hét vrouwenkruid — reguleert de menstruatiecyclus, verlicht overgangsklachten en versterkt de baarmoeder.","dosage":"Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 25-35 druppels 3x daags.","notes":"","caution":"Niet in eerste drie maanden zwangerschap.","category":"fysiek"},{"id":100,"name":"Zwarte bes","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Zwarte bes","symptoms":["immuunsysteem","antioxidant","gewrichten","reuma","bloeddruk","vitamine C","ogen"],"spiritual":["bescherming","overvloed","donkere kracht","winterenergie"],"description":"Zwarte bes is extreem rijk aan antioxidanten en vitamine C — immunversterkend, ontstekingsremmend en beschermend voor ogen.","dosage":"Tinctuur: 25-35 druppels 2-3x daags. Vers sap: 50ml per dag.","notes":"","caution":"","category":"fysiek"},{"id":101,"name":"Zwarte bes knoppen maceraat","type":"tinctuur","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Zwarte bes knoppen maceraat","symptoms":["immuunsysteem","bijnieren","cortisol","allergieën","reuma","chronische vermoeidheid"],"spiritual":["oerkracht","regeneratie","nieuw begin"],"description":"Knoppenmaceraat van zwarte bes (gemmotherapie) — werkt op de bijnieren en heeft sterk anti-allergisch en anti-inflammatoir effect.","dosage":"15-25 druppels in water voor ontbijt, 1x daags.","notes":"","caution":"","category":"fysiek"},{"id":102,"name":"Bijvoet","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Bijvoet","symptoms":["menstruatieklachten","cyclus onregelmatig","dromen","vermoeidheid","spijsvertering","reisziekte"],"spiritual":["dromenwerk","waarzeggerij","maanverbinding","vrouwelijke kracht","vooroudercontact","bescherming op reis"],"description":"Bijvoet is het kruid van de volle maan en de reiziger. Stimuleert de cyclus, bevordert levendige dromen en versterkt de intuïtie.","dosage":"Thee: 1 tl op 200ml, niet langer dan 5 min trekken, 1-2x daags. Tinctuur: 20-30 druppels in water, 2x daags. Smudging: bundel branden naar behoefte.","notes":"","caution":"NIET tijdens zwangerschap — stimuleert baarmoedersamentrekkingen. Niet langdurig innemen.","category":"spiritueel"},{"id":103,"name":"Duivelsklauw","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Duivelsklauw","symptoms":["gewrichtspijn","reuma","artrose","rugpijn","spierpijn","ontstekingen","pijnstilling"],"spiritual":["kracht","doorzettingsvermogen","gronden"],"description":"Duivelsklauw is een van de krachtigste pijnstillende kruiden bij gewrichts- en spierpijn. Werkt ontstekingsremmend vergelijkbaar met NSAID's.","dosage":"Tinctuur: 30-40 druppels 3x daags bij maaltijd. Olie: insmeren op pijnlijke plekken.","notes":"","caution":"Niet bij maagzweer of gastritis. Niet combineren met bloedverdunners zonder overleg. Niet bij zwangerschap.","category":"fysiek"},{"id":104,"name":"Duizendblad","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Duizendblad","symptoms":["wonden","bloedingen","menstruatie","koorts","reuma","nieren","huid"],"spiritual":["bescherming","moed","grenswerk","liefde","helderziendheid"],"description":"Duizendblad is het klassieke wondkruid — stelt bloedingen, reinigt wonden en werkt koortswerende. Ook bij menstruatieklachten.","dosage":"Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels. Vers blad op wond.","notes":"","caution":"Kan allergische reactie geven (compositenfamilie). Niet bij zwangerschap.","category":"fysiek"},{"id":105,"name":"Goudsbloem","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Goudsbloem","symptoms":["huid","wonden","eczeem","schimmel","ontsteking","menstruatie","lymfe"],"spiritual":["zonkracht","bescherming","heling","licht"],"description":"Goudsbloem is hét huidkruid — antiseptisch, wondhelend en ontstekingsremmend. Uitstekend als olie of zalf voor alle huidklachten.","dosage":"Olie/zalf: uitwendig naar behoefte. Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Allergie mogelijk (compositenfamilie). Test altijd eerst op kleine huidplek.","category":"fysiek"},{"id":106,"name":"Hazelnoot blad","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Hazelnoot blad","symptoms":["aders","spataderen","aambeien","bloedcirculatie","lever"],"spiritual":["wijsheid","geluk","vruchtbaarheid","wensen"],"description":"Hazelnootblad versterkt de aderwanden en verbetert de bloedcirculatie. Traditioneel bij spataderen en aambeien.","dosage":"Thee: 2 tl op 250ml, 10 min, 2-3x daags.","notes":"","caution":"","category":"fysiek"},{"id":107,"name":"Heermoes","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Heermoes","symptoms":["botten","gewrichten","nieren","blaas","haaruitval","nagels","silica"],"spiritual":["aarding","structuur","doorzettingsvermogen","verbinding aarde"],"description":"Heermoes is extreem rijk aan kiezelzuur (silica) — ondersteunt botten, kraakbeen, haar en nagels. Sterk diuretisch.","dosage":"Thee: 2 tl op 250ml, 15 min koken (niet trekken!), 2x daags. Tinctuur: 25-35 druppels.","notes":"","caution":"Niet langdurig bij nierziekten. Niet bij hartproblemen zonder overleg (diuretisch).","category":"fysiek"},{"id":108,"name":"Kamille","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Kamille","symptoms":["maagkramp","darmklachten","onrust","slaap","huid","eczeem","ontsteking","menstruatie"],"spiritual":["bescherming kinderen","reinigend","zonnekracht","vrede","dromenwerk"],"description":"Kamille is het universele kruidenthee-kruid — krampverlichtend, ontstekingsremmend, kalmerend. Zacht genoeg voor baby's, krachtig genoeg voor chronische klachten.","dosage":"Thee: 2 tl op 250ml, 5-10 min afgedekt trekken, 3x daags. Tinctuur: 15-25 druppels. Olie: uitwendig.","notes":"","caution":"Allergie mogelijk bij compositenfamilie. Zelden, maar test bij gevoeligheid.","category":"fysiek"},{"id":109,"name":"Maretak","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Maretak","symptoms":["bloeddruk","hartkloppingen","kanker ondersteunend","immuunsysteem","duizeligheid","tumoren"],"spiritual":["bescherming","vruchtbaarheid","healing","mystiek","druïden"],"description":"Maretak verlaagt bloeddruk en wordt in de antroposofische geneeskunde gebruikt bij kankertherapie (Iscador). Immuunversterkend.","dosage":"Tinctuur: 10-15 druppels 2x daags — LAAG beginnen. Olie: uitwendig.","notes":"","caution":"GIFTIG in grote hoeveelheden — alleen bessen en stengels gedroogd/tinctuur. Nooit verse bessen eten. Overleg met arts bij kankertherapie.","category":"fysiek"},{"id":110,"name":"Moerasspirea","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Moerasspirea","symptoms":["pijn","koorts","reuma","gewrichten","hoofdpijn","maagklachten","griep"],"spiritual":["reinigend","loslaten","waterenergie","transformatie"],"description":"Moeraspirea bevat salicylaten (verwant aan aspirine) — pijnstillend, koortswerende en ontstekingsremmend. Het 'kruidenaspirine'.","dosage":"Thee: 2 tl bloemen op 250ml, 10 min (niet koken!), 3x daags. Tinctuur: 25-35 druppels.","notes":"","caution":"Niet bij aspirine-allergie. Niet bij maagzweer. Niet bij kinderen onder 12 met koorts (Reye-syndroom risico).","category":"fysiek"},{"id":111,"name":"Ogentroost","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Ogentroost","symptoms":["ogen","conjunctivitis","oogirritatie","hooikoorts","bijholten","hoest"],"spiritual":["helderziendheid","innerlijk zien","waarheid"],"description":"Ogentroost is hét oogkruid — verlichting bij rode, geïrriteerde of ontstoken ogen. Ook bij hooikoorts en sinusitis.","dosage":"Oogwassing: sterke thee (3 tl op 250ml), koud zeven, spoelen. Thee: 2 tl op 250ml, 2-3x daags. Tinctuur: 20 druppels.","notes":"","caution":"Oogwassing: steriel bereiden en altijd vers.","category":"fysiek"},{"id":112,"name":"Rozemarijn","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Rozemarijn","symptoms":["geheugen","concentratie","hoofdpijn","haaruitval","bloedcirculatie","vermoeidheid","reuma"],"spiritual":["geheugen","zuivering","bescherming","voorouderherinnering","helderzinnigheid"],"description":"Rozemarijn stimuleert de bloedcirculatie naar hersenen en hoofdhuid — verbetert geheugen en helpt bij haaruitval. Uitwendig bij spierpijn.","dosage":"Thee: 1 tl op 200ml, 5 min, 2x daags. Tinctuur: 20-30 druppels. Haarwater: inrijgen, niet afspoelen.","notes":"","caution":"Grote hoeveelheden vermijden bij zwangerschap en epilepsie.","category":"fysiek"},{"id":113,"name":"Rozenknop","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Rozenknop","symptoms":["huid","stemming","menstruatie","hart","stress","antioxidant"],"spiritual":["liefde","schoonheid","Venusenergie","vrouwelijke kracht","hart openen"],"description":"Rozenknopjes zijn rijk aan antioxidanten en worden gebruikt bij huidverzorging, als stemmingverbeteraar en hartkruid.","dosage":"Thee: 1 tl op 200ml, 5-8 min, 2x daags. Olie: uitwendig voor huid en hart-chakra.","notes":"","caution":"","category":"fysiek"},{"id":114,"name":"Smeerwortel","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Smeerwortel","symptoms":["gewrichten","botbreuk","pezen","spierpijn","blauwe plekken","wonden","reuma"],"spiritual":["heling","vastigheid","aarding","structuur"],"description":"Smeerwortel (Symphytum) bevat allantoine en is krachtig wondhelend en bot-regenererend. Uitstekend als olie of zalf bij blessures.","dosage":"Olie/zalf: uitwendig 3-4x daags op de pijnlijke plek. Tinctuur: 20-30 druppels 3x daags (kortdurend).","notes":"","caution":"NIET op open wonden (geneest te snel dicht). Niet langdurig innemen — bevat pyrrolizidine-alkaloïden. Uitwendig vrijwel veilig.","category":"fysiek"},{"id":115,"name":"Wilgenbast","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Wilgenbast","symptoms":["pijn","koorts","hoofdpijn","reuma","gewrichten","griep","ontsteking"],"spiritual":["flexibiliteit","emotionele heling","loslaten","waterenergie","dromenwerk"],"description":"Wilgenbast bevat salicine — de oorsprong van aspirine. Pijnstillend, koortswerende en ontstekingsremmend.","dosage":"Tinctuur: 30-40 druppels 3x daags. Thee: 2 tl bast op 250ml, 15 min koken, 3x daags. Olie: uitwendig.","notes":"","caution":"Niet bij aspirine-allergie. Niet bij kinderen met koorts.","category":"fysiek"},{"id":116,"name":"Zilverschoon","type":"olie","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Zilverschoon","symptoms":["menstruatie","krampen","diarree","maagklachten","baarmoeder","samentrekkend","huid"],"spiritual":["zachtheid","vrouwelijke energie","bescherming","maan"],"description":"Zilverschoon is samentrekkend en krampverlichtend — klassiek bij menstruatiekrampen en darmklachten. Vergelijkbaar met vrouwenmantel.","dosage":"Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Niet bij zwangerschap in grote hoeveelheden.","category":"fysiek"},{"id":117,"name":"Gewrichten/ kneuzingen     Smeerwortel","type":"zalf","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Gewrichten/ kneuzingen     Smeerwortel","symptoms":["gewrichtspijn","spierpijn","kneuzingen","blauwe plekken","blessures","reuma"],"spiritual":["heling","vastigheid","aarding"],"description":"Zalf op basis van smeerwortel voor gewrichten en kneuzingen. Uitstekend bij sportblessures en reumapijn.","dosage":"Uitwendig: 3-4x daags insmeren op de pijnlijke plek. Niet op open wond.","notes":"","caution":"NIET op open wonden. Niet langdurig op grote huidoppervlakken.","category":"fysiek"},{"id":118,"name":"Huid/ Eczeem/ wondjes/ verbranding    Goudsbloem/ uizendblad","type":"zalf","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Huid/ Eczeem/ wondjes/ verbranding    Goudsbloem/ uizendblad","symptoms":["huid","wonden","eczeem","schimmel","ontsteking","menstruatie","lymfe"],"spiritual":["zonkracht","bescherming","heling","licht"],"description":"Goudsbloem is hét huidkruid — antiseptisch, wondhelend en ontstekingsremmend. Uitstekend als olie of zalf voor alle huidklachten.","dosage":"Olie/zalf: uitwendig naar behoefte. Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Allergie mogelijk (compositenfamilie). Test altijd eerst op kleine huidplek.","category":"fysiek"},{"id":119,"name":"Huid/Verzachtend    Goudsbloem","type":"zalf","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Huid/Verzachtend    Goudsbloem","symptoms":["huid","wonden","eczeem","schimmel","ontsteking","menstruatie","lymfe"],"spiritual":["zonkracht","bescherming","heling","licht"],"description":"Goudsbloem is hét huidkruid — antiseptisch, wondhelend en ontstekingsremmend. Uitstekend als olie of zalf voor alle huidklachten.","dosage":"Olie/zalf: uitwendig naar behoefte. Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.","notes":"","caution":"Allergie mogelijk (compositenfamilie). Test altijd eerst op kleine huidplek.","category":"fysiek"},{"id":120,"name":"Spiritueel/ Ik neem mijn plaats in   Scharlei/Goudsbloem","type":"zalf","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Spiritueel/ Ik neem mijn plaats in   Scharlei/Goudsbloem","symptoms":["huid"],"spiritual":["eigenwaarde","ik neem mijn plaats in","grenzen","zelfexpressie","eigenheid"],"description":"Rituele zalf van scharlei en goudsbloem — voor bewustzijn van eigenwaarde en het innemen van je plek.","dosage":"Uitwendig: insmeren op hartchakra, polsen of voorhoofd tijdens ritueel of meditatie.","notes":"","caution":"","category":"spiritueel"},{"id":121,"name":"gewrichten  / pijnstillend / verzachtend / ontstekingremmend   Smeerwortel/duivelsklauw / moeraspirea/ rozemarijn","type":"zalf","selfMade":true,"active":true,"flesgrootte":"","ingredients":"gewrichten  / pijnstillend / verzachtend / ontstekingremmend   Smeerwortel/duivelsklauw / moeraspirea/ rozemarijn","symptoms":["gewrichtspijn","spierpijn","kneuzingen","blauwe plekken","blessures","reuma"],"spiritual":["heling","vastigheid","aarding"],"description":"Zalf op basis van smeerwortel voor gewrichten en kneuzingen. Uitstekend bij sportblessures en reumapijn.","dosage":"Uitwendig: 3-4x daags insmeren op de pijnlijke plek. Niet op open wond.","notes":"","caution":"NIET op open wonden. Niet langdurig op grote huidoppervlakken.","category":"fysiek"},{"id":122,"name":"Alantwortel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Alantwortel","symptoms":["lever","gal","nieren","detox","eetlust","cholesterol","huid","spijsvertering"],"spiritual":["doorzettingsvermogen","vrijheid","wensen","loslaten"],"description":"Paardenbloemwortel is sterk cholagoog (galstimulerend) en diuretisch — een krachtig lente-detoxkruid voor lever en nieren.","dosage":"Tinctuur: 30-40 druppels voor maaltijd, 3x daags. Thee wortel: 2 tl, 15 min koken, 2x daags.","notes":"","caution":"Niet bij galwegobstructie.","category":"fysiek"},{"id":123,"name":"Appel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Appel","symptoms":["diarree","darmbescherming","pectine","cholesterol","detox"],"spiritual":["gezondheid","vitaliteit","kennis"],"description":"Gedroogde appel is rijk aan pectine en ondersteunt de darmflora. Goed in kruidenthee-mengsels.","dosage":"Als thee-ingrediënt meekoken of weken. Vrij te gebruiken.","notes":"","caution":"","category":"fysiek"},{"id":124,"name":"Berk","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Berk","symptoms":[],"spiritual":[],"description":"","dosage":"","notes":"","caution":"","category":"fysiek"},{"id":125,"name":"Braam","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Braam","symptoms":[],"spiritual":[],"description":"","dosage":"","notes":"","caution":"","category":"fysiek"},{"id":126,"name":"Eik","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Eik","symptoms":["diarree","tandvlees","keelontsteking","huid","eczeem","bloeding","aften"],"spiritual":["kracht","standvastigheid","bescherming","aarding"],"description":"Eikenbast is sterk samentrekkend door de hoge tanninegehalte. Klassiek bij diarree, tandvleesontstekingen en uitwendig bij huidproblemen.","dosage":"Thee: 1 tl op 250ml, 15 min koken, voor gorgelen of drinken. Max 3x daags.","notes":"","caution":"Niet langdurig innemen. Niet bij obstipatie.","category":"fysiek"},{"id":127,"name":"Heemst","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Heemst","symptoms":[],"spiritual":[],"description":"","dosage":"","notes":"","caution":"","category":"fysiek"},{"id":128,"name":"Jenerverbes","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Jenerverbes","symptoms":[],"spiritual":[],"description":"","dosage":"","notes":"","caution":"","category":"fysiek"},{"id":129,"name":"Kaasjeskruid","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Kaasjeskruid","symptoms":[],"spiritual":[],"description":"","dosage":"","notes":"","caution":"","category":"fysiek"},{"id":130,"name":"Klitwortel","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Klitwortel","symptoms":["lever","gal","nieren","detox","eetlust","cholesterol","huid","spijsvertering"],"spiritual":["doorzettingsvermogen","vrijheid","wensen","loslaten"],"description":"Paardenbloemwortel is sterk cholagoog (galstimulerend) en diuretisch — een krachtig lente-detoxkruid voor lever en nieren.","dosage":"Tinctuur: 30-40 druppels voor maaltijd, 3x daags. Thee wortel: 2 tl, 15 min koken, 2x daags.","notes":"","caution":"Niet bij galwegobstructie.","category":"fysiek"},{"id":131,"name":"Paardenbloem","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Paardenbloem","symptoms":["lever","gal","nieren","detox","eetlust","cholesterol","huid","spijsvertering"],"spiritual":["doorzettingsvermogen","vrijheid","wensen","loslaten"],"description":"Paardenbloemwortel is sterk cholagoog (galstimulerend) en diuretisch — een krachtig lente-detoxkruid voor lever en nieren.","dosage":"Tinctuur: 30-40 druppels voor maaltijd, 3x daags. Thee wortel: 2 tl, 15 min koken, 2x daags.","notes":"","caution":"Niet bij galwegobstructie.","category":"fysiek"},{"id":132,"name":"Rode klaver","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Rode klaver","symptoms":[],"spiritual":[],"description":"","dosage":"","notes":"","caution":"","category":"fysiek"},{"id":133,"name":"Rode zonnehoed","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Rode zonnehoed","symptoms":["immuunsysteem","verkoudheid","griep","infectie","wonden","lymfe","vermoeidheid"],"spiritual":["kracht","bescherming","inheemse wijsheid","heldenenergie"],"description":"Rode zonnehoed (Echinacea) is het bekendste immunversterkende kruid — verhoogt weerstand en verkort ziekteduur.","dosage":"Tinctuur: 30-40 druppels 3-4x daags bij ziekte. NIET langer dan 8 weken aaneengesloten.","notes":"","caution":"Niet bij auto-immuunziekten. Pauze nemen na 8 weken gebruik.","category":"fysiek"},{"id":134,"name":"Tea Tree","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Tea Tree","symptoms":[],"spiritual":[],"description":"","dosage":"","notes":"","caution":"","category":"fysiek"},{"id":135,"name":"Toorts","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Toorts","symptoms":[],"spiritual":[],"description":"","dosage":"","notes":"","caution":"","category":"fysiek"},{"id":136,"name":"Valeriaan","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Valeriaan","symptoms":[],"spiritual":[],"description":"","dosage":"","notes":"","caution":"","category":"fysiek"},{"id":137,"name":"Vlier","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Vlier","symptoms":["griep","verkoudheid","immuunsysteem","koorts","antiviral","antioxidant","slijmvliezen"],"spiritual":["bescherming","overgang","Holda","voorouderverbinding","dood en wedergeboorte"],"description":"Vlierbes is krachtig antiviraal en immuunstimulerend — wetenschappelijk bewezen effectief bij influenza. Verkort ziekteduur.","dosage":"Tinctuur/stroop: 1 el 4x daags bij ziekte, 1x daags preventief. Glycerine: 30-40 druppels.","notes":"","caution":"Rauw eten maakt misselijk — altijd verhitten of als tinctuur. Niet bij auto-immuunziekten.","category":"fysiek"},{"id":138,"name":"Weegbree","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Weegbree","symptoms":["hoest","bronchitis","slijmvliezen","wonden","eczeem","insectenbeten","blaas"],"spiritual":["reizigerskruid","bescherming","heling","aarding"],"description":"Smalle weegbree is een universeel huid- en luchtwegkruid — slijmoplossend bij hoest, wondhelend uitwendig.","dosage":"Tinctuur: 25-35 druppels 3x daags. Thee: 2 tl op 250ml, 10 min. Vers blad op wond.","notes":"","caution":"","category":"fysiek"},{"id":139,"name":"Wilg","type":"kruid","selfMade":true,"active":true,"flesgrootte":"","ingredients":"Wilg","symptoms":["pijn","koorts","hoofdpijn","reuma","gewrichten","griep","ontsteking"],"spiritual":["flexibiliteit","emotionele heling","loslaten","waterenergie","dromenwerk"],"description":"Wilgenbast bevat salicine — de oorsprong van aspirine. Pijnstillend, koortswerende en ontstekingsremmend.","dosage":"Tinctuur: 30-40 druppels 3x daags. Thee: 2 tl bast op 250ml, 15 min koken, 3x daags. Olie: uitwendig.","notes":"","caution":"Niet bij aspirine-allergie. Niet bij kinderen met koorts.","category":"fysiek"}]
+const typeLabels={kruid:"Kruid",tinctuur:"Tinctuur",olie:"Olie / Zalf",zalf:"Zalf",supplement:"Supplement",spiritueel:"Spiritueel",overig:"Overig"};
+const typeColors={kruid:"#5a7a3a",tinctuur:"#8B4513",olie:"#556B2F",zalf:"#4a6b6b",supplement:"#4A6741",spiritueel:"#5B3A6B",overig:"#7A6040"};
+const commonSymptoms=["slaapproblemen","onrust","angst","vermoeidheid","pijn","hoofdpijn","maagklachten","darmklachten","infectie","verkoudheid","griep","depressie","concentratie","geheugen","immuunsysteem","huid","gewrichten","spieren","hormonen","cyclus","dromen","intuïtie"];
+
+let remedies=[],currentView="home",selectedRemedy=null,editForm=null;
+let selectedSymptoms=[],directSearch="",filterCategory="alle";
+let aiQuery="",aiResponse=null,comboResponse=null,aiGesprek=[],sessielog=[],chatBerichten=[],chatFilter={vormen:[],categorieen:[]};
+let aiListening=false,directListening=false,aiRec=null,directRec=null;
+
+function getApiKey(){return localStorage.getItem('elins_api_key')||'';}
+function saveApiKey(k){localStorage.setItem('elins_api_key',k.trim());}
+
+function loadData(){
+  try{const log=localStorage.getItem("elins_log");if(log)sessielog=JSON.parse(log);}catch{}
+  try{
+    const opgeslagen=sessionStorage.getItem("elins_chat");
+    if(opgeslagen){
+      const d=JSON.parse(opgeslagen);
+      chatBerichten=d.berichten||[];
+      aiGesprek=d.gesprek||[];
+      chatFilter=d.filter||{vormen:[],categorieen:[]};
+      aiResponse=d.aiResponse||null;
+    }
+  }catch{}
+  try{const s=localStorage.getItem(STORAGE_KEY);remedies=s?JSON.parse(s):[...initialRemedies];}
+  catch{remedies=[...initialRemedies];}
+  // Migratie: oude "tincture" naar "tinctuur"
+  remedies=remedies.map(r=>({active:true,...r,type:r.type==="tincture"?"tinctuur":r.type}));
+}
+function saveData(){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(remedies));setStatus("☁ opgeslagen","ok");}
+  catch{setStatus("⚠ fout","fout");}
+}
+function setStatus(txt,type){
+  const el=document.getElementById("cloud-status");if(!el)return;
+  el.textContent=txt;
+  el.style.background=type==="ok"?"rgba(80,140,80,0.15)":"rgba(180,60,60,0.15)";
+  el.style.color=type==="ok"?"#7aaa5a":"#e87a7a";
+  el.style.border=`1px solid ${type==="ok"?"rgba(122,170,90,0.3)":"rgba(232,122,122,0.3)"}`;
+}
+
+function toggleActive(id,ev){
+  ev&&ev.stopPropagation();
+  remedies=remedies.map(r=>r.id===id?{...r,active:!r.active}:r);
+  if(selectedRemedy&&selectedRemedy.id===id)selectedRemedy=remedies.find(r=>r.id===id);
+  saveData();render();
+}
+
+// SPRAAK
+function makeSpeechRec(onResult,onEnd){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR)return null;
+  const rec=new SR();rec.lang="nl-NL";rec.continuous=true;rec.interimResults=true;
+  let final="";
+  rec.onstart=()=>{final="";};rec.onend=onEnd;rec.onerror=onEnd;
+  rec.onresult=(e)=>{
+    let interim="";
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      const t=e.results[i][0].transcript;
+      if(e.results[i].isFinal)final+=t+" ";else interim=t;
+    }
+    onResult(final+interim);
+  };
+  return rec;
+}
+function toggleAiMic(){
+  if(aiListening){aiRec&&aiRec.stop();aiListening=false;}
+  else{
+    aiRec=makeSpeechRec(
+      t=>{aiQuery=t;const el=document.getElementById("ai-input");if(el)el.value=t;},
+      ()=>{aiListening=false;updateMic("ai-mic","ai-mic-label",false);}
+    );
+    if(aiRec){aiRec.start();aiListening=true;}
+  }
+  updateMic("ai-mic","ai-mic-label",aiListening);
+}
+function toggleDirectMic(){
+  if(directListening){directRec&&directRec.stop();directListening=false;}
+  else{
+    directRec=makeSpeechRec(
+      t=>{directSearch=t;const el=document.getElementById("direct-input");if(el)el.value=t;renderDirectResults();},
+      ()=>{directListening=false;updateMic("direct-mic","direct-mic-label",false);}
+    );
+    if(directRec){directRec.start();directListening=true;}
+  }
+  updateMic("direct-mic","direct-mic-label",directListening);
+}
+function updateMic(bid,lid,on){
+  const b=document.getElementById(bid);if(b){b.textContent=on?"⏹":"🎙";b.className="mic-btn"+(on?" listening":"");}
+  const l=document.getElementById(lid);if(l)l.style.display=on?"block":"none";
+}
+
+// AI
+async function askAI(){
+  const inp=document.getElementById("ai-input");
+  aiQuery=inp?inp.value:aiQuery;
+  if(!aiQuery.trim())return;
+  let apiKey=getApiKey();
+  if(!apiKey){
+    const k=prompt("Voer je Anthropic API key in (begint met sk-ant-):");
+    if(!k||!k.startsWith('sk-')){alert("Geen geldige key ingevoerd.");return;}
+    saveApiKey(k);
+    apiKey=k;
+  }
+  aiResponse=null;comboResponse=null;
+  const btn=document.getElementById("ask-btn");
+  if(btn){btn.textContent="Zoeken...";btn.disabled=true;}
+
+  const lijst=remedies.map(r=>`[${r.active?"BESCHIKBAAR":"UITGESCHAKELD"}] ${r.name} (${typeLabels[r.type]}): symptomen: ${r.symptoms.join(", ")}; spiritueel: ${r.spiritual.join(", ")}; ${r.description}`).join("\n");
+
+  const conversatieHistorie = aiGesprek.map(m => ({role: m.role, content: m.content}));
+  const nieuwBericht = `Vraag: "${aiQuery}"
+
+Geef advies in drie lagen (gebruik alleen BESCHIKBARE middelen uit de apotheek):
+
+FYSIEK: [max 2-3 middelen met dosering]
+EMOTIONEEL/MENTAAL: [max 2 middelen]  
+SPIRITUEEL: [max 2 middelen]
+
+Daarna een COMBINATIEVOORSTEL in dit formaat:
+COMBO: [naam1] + [naam2] + [naam3]
+UITLEG: [waarom samen, max 2 zinnen]
+VOORZORG: [of: geen bijzondere voorzorgen]
+
+Sluit af met één korte vervolgvraag.
+
+Apotheek:\n${lijst}`;
+  conversatieHistorie.push({role:"user", content: nieuwBericht});
+
+  try{
+    const resp=await fetch("/api/proxy",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":apiKey,"anthropic-version":"2023-06-01"},
+      body:JSON.stringify({model:"claude-sonnet-4-5",max_tokens:1000,
+        system:`Je bent de persoonlijke kruiden assistent van Elin's Kruiderij — warm, wijs en praktisch. Je geeft altijd een antwoord in drie lagen:
+
+FYSIEK: welke middelen helpen lichamelijk, met dosering
+EMOTIONEEL/MENTAAL: welke middelen ondersteunen de geest en emoties
+SPIRITUEEL: welke middelen werken op energetisch of spiritueel niveau
+
+Gebruik ALLEEN middelen uit de apotheek van Wilma. Noem altijd de exacte naam. Wees concreet maar warm van toon. Antwoord in het Nederlands.
+
+Sluit af met één gerichte vervolgvraag aan Wilma om het advies nog persoonlijker te maken — kort en direct.`,
+        messages:conversatieHistorie})});
+    const data=await resp.json();
+    const text=data.content?.find(b=>b.type==="text")?.text||(data.error?("API fout: "+data.error.message):"Geen antwoord ontvangen. Raw: "+JSON.stringify(data).slice(0,200));
+    aiGesprek.push({role:"user",content:nieuwBericht});
+    aiGesprek.push({role:"assistant",content:text});
+    sessielog.push({
+      tijd: new Date().toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"}),
+      datum: new Date().toLocaleDateString("nl-NL"),
+      vraag: aiQuery,
+      antwoord: text
+    });
+    const m=text.match(/COMBO:([\s\S]*?)UITLEG:([\s\S]*?)VOORZORG:([\s\S]*)$/m);
+    if(m){
+      aiResponse=text.substring(0,text.indexOf("COMBO:")).trim();
+      comboResponse={middelen:m[1].trim().split("+").map(s=>s.trim()),uitleg:m[2].trim(),voorzorg:m[3].trim()};
+    } else {
+      aiResponse=text;comboResponse=null;
+    }
+  } catch(err){aiResponse="Fout: " + err.message + " | proxy: /api/proxy | key: " + (apiKey ? apiKey.slice(0,8)+"..." : "LEEG");}
+
+  if(btn){btn.textContent="Raadpleeg de kruiden assistent";btn.disabled=false;}
+  renderAIResult();
+  const akn=document.getElementById("actie-knoppen");
+  if(akn)akn.style.display="flex";
+}
+
+function renderAIResult(){
+  const box=document.getElementById("ai-response");
+  if(box){box.style.display="block";box.querySelector(".ai-text").textContent=aiResponse||"";}
+  const cb=document.getElementById("combo-box");
+  if(!cb)return;
+  if(comboResponse){
+    const chips=comboResponse.middelen.map(naam=>{
+      const r=remedies.find(x=>x.name.toLowerCase()===naam.toLowerCase());
+      const off=r&&!r.active;
+      return`<span class="combo-chip${off?" off":""}">${naam}${off?" (geen voorraad)":""}</span>`;
+    }).join("");
+    const heeftVoorzorg=comboResponse.voorzorg&&comboResponse.voorzorg.toLowerCase()!=="geen bijzondere voorzorgen";
+    cb.style.display="block";
+    cb.innerHTML=`<div class="combo-title">🌿 Combinatievoorstel</div>
+      <div class="combo-middelen">${chips}</div>
+      <div class="combo-uitleg">${comboResponse.uitleg}</div>
+      ${heeftVoorzorg?`<div class="combo-voorzorg">⚠ ${comboResponse.voorzorg}</div>`:""}
+      <div style="margin-top:12px">
+        <button class="btn btn-secondary" onclick="maakComboEtiket()" style="font-size:12px;padding:7px 14px">🏷 Etiket voor dit combinatiemiddel</button>
+      </div>`;
+    cb.style.display="none";
+  }
+}
+
+// NAVIGATIE
+function showView(view,remedy){
+  currentView=view;
+  if(remedy)selectedRemedy=remedy;
+  document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+  const map={home:"Home",search:"Raadplegen",browse:"Bladeren",detail:"Bladeren",add:"Bladeren",edit:"Bladeren",logview:"📋 Log"};
+  document.querySelectorAll(".nav-btn").forEach(b=>{if(b.textContent===map[view])b.classList.add("active");});
+  render();
+}
+function render(){
+  const c=document.getElementById("content");
+  c.innerHTML="";c.className="fadein";
+  if(currentView==="home")renderHome(c);
+  else if(currentView==="search")renderSearch(c);
+  else if(currentView==="browse")renderBrowse(c);
+  else if(currentView==="detail")renderDetail(c);
+  else if(currentView==="logview")renderLog(c);
+  else renderEdit(c);
+}
+
+// HOME
+function renderHome(c){
+  const aan=remedies.filter(r=>r.active).length;
+  const uit=remedies.length-aan;
+  c.innerHTML=`
+    <div style="text-align:center;padding:24px 0 20px">
+      <div style="font-size:46px;margin-bottom:8px">🌿</div>
+      <p style="color:#8B7355;font-size:15px;line-height:1.7">Welkom bij je persoonlijke kruidenvraagbaak.</p>
+      <div class="voorraad-row">
+        <span><span class="dot dot-on"></span>${aan} beschikbaar</span>
+        <span><span class="dot dot-off"></span>${uit} uitgeschakeld</span>
+      </div>
+    </div>
+    <div class="home-grid">
+      <div class="home-tile" onclick="showView('search')"><div class="home-tile-icon">✨</div><div class="home-tile-label">AI Raadplegen</div></div>
+      <div class="home-tile" onclick="showView('browse')"><div class="home-tile-icon">📖</div><div class="home-tile-label">Bladeren</div></div>
+      <div class="home-tile" onclick="showView('search');setTimeout(()=>document.getElementById('direct-input')?.focus(),100)"><div class="home-tile-icon">🔍</div><div class="home-tile-label">Direct zoeken</div></div>
+      <div class="home-tile" onclick="startAdd()"><div class="home-tile-icon">＋</div><div class="home-tile-label">Nieuw middel</div></div>
+    </div>
+    <div class="section-title">Recente middelen</div>
+    ${[...remedies].slice(-3).reverse().map(r=>cardHtml(r)).join("")}`;
+}
+
+// SEARCH
+function renderSearch(c){
+  const hs=!!(window.SpeechRecognition||window.webkitSpeechRecognition);
+  c.innerHTML=`
+    <div style="position:relative;display:flex;flex-direction:column;height:calc(100vh - 160px)">
+
+      <!-- Snelfilter -->
+      <div style="margin-bottom:10px;flex-shrink:0">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px">Wat zoek je?</div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+          ${["Tinctuur","Olie","Thee","Zalf"].map(v=>`<span class="tag${chatFilter.vormen.includes(v)?" active":""}" onclick="setChatFilter('vorm','${v}')">${v}</span>`).join("")}
+        </div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px">Waarvoor?</div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap">
+          ${["Fysiek","Mentaal","Spiritueel"].map(v=>`<span class="tag${chatFilter.categorieen.includes(v)?" active":""}" onclick="setChatFilter('categorie','${v}')">${v}</span>`).join("")}
+        </div>
+      </div>
+
+      <!-- Chatberichten -->
+      <div id="chat-berichten" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 0;margin-bottom:8px">
+        <div style="color:var(--text-dim);font-size:13px;font-style:italic;padding:8px 0" id="chat-placeholder">Stel je vraag over kruiden, klachten of spirituele ondersteuning...</div>
+      </div>
+
+      <!-- Laadanimatie -->
+      <div id="chat-laden" style="display:none;padding:4px 0;flex-shrink:0">
+        <div class="bubble assistent" style="display:inline-flex;align-items:center;gap:4px;padding:10px 14px">
+          <div class="typing"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+
+      <!-- Invoer -->
+      <div style="flex-shrink:0;border-top:1px solid #2a1e0a;padding-top:10px">
+        <div style="display:flex;gap:6px;align-items:flex-end;margin-bottom:6px">
+          <textarea id="ai-input" class="chat-input" placeholder="Typ je vraag..." rows="1"
+            oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px'"
+            ></textarea>
+          
+          <button class="chat-send" id="ask-btn" onclick="stuurChatBericht()" style="height:36px;padding:0 14px">➤</button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <button class="btn btn-primary" style="width:100%;font-size:13px;padding:10px" onclick="werkHetUit()">✦ Werk het uit</button>
+          <div id="actie-knoppen" style="display:none;gap:10px">
+            <button class="btn btn-secondary" style="flex:1;font-size:12px;padding:10px" onclick="slaOp()">💾 Opslaan</button>
+            <button class="btn btn-danger" style="flex:1;font-size:12px;padding:10px" onclick="gooiWeg()">✕ Weggooien</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px">
+      <div class="section-title">🔍 Direct zoeken op naam of trefwoord</div>
+      <input id="direct-input" placeholder="Naam, symptoom, klacht, kruid..." value="${escHtml(directSearch)}"
+        oninput="directSearch=this.value;renderDirectResults()"
+        style="width:100%;background:rgba(255,255,255,0.05);border:1px solid #3a2e1a;border-radius:8px;color:var(--text);padding:10px 12px;font-size:14px;font-family:'Crimson Pro',serif;outline:none;margin-bottom:8px">
+      <div id="direct-results"></div>
+    </div>
+    <div style="margin-top:16px">
+      <div class="section-title">🌱 Kies symptomen</div>
+      <div id="symptom-tags">${commonSymptoms.map(s=>`<span class="tag${selectedSymptoms.includes(s)?" active":""}" onclick="toggleSymptom('${s}')">${s}</span>`).join("")}</div>
+      <div id="symptom-results"></div>
+    </div>`;
+
+  renderChatBerichten();
+  renderDirectResults();
+  renderSymptomResults();
+}
+
+function renderChatBerichten(){
+  try{sessionStorage.setItem("elins_chat",JSON.stringify({berichten:chatBerichten,gesprek:aiGesprek,filter:chatFilter,aiResponse:aiResponse}));}catch{}
+  const wrap=document.getElementById("chat-berichten");
+  if(!wrap)return;
+  if(chatBerichten.length===0){
+    wrap.innerHTML=`<div style="color:var(--text-dim);font-size:13px;font-style:italic;padding:8px 0">Stel een vraag over kruiden, klachten of spirituele ondersteuning...</div>`;
+    return;
+  }
+  wrap.innerHTML=chatBerichten.map(b=>`
+    <div class="bubble-row ${b.rol}">
+      <div class="bubble ${b.rol}">${b.tekst.split(String.fromCharCode(10)).join("<br>")}</div>
+
+    </div>`).join("");
+  // Scroll naar begin van laatste bericht
+  const berichten=wrap.querySelectorAll(".bubble-row");
+  if(berichten.length>0){
+    const laatste=berichten[berichten.length-1];
+    laatste.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+}
+
+function stripOpmaak(tekst){
+  let t=tekst;
+  t=t.replace(/#{1,6} */g,"");
+  t=t.replace(/\*\*([^*]+)\*\*/g,"$1");
+  t=t.replace(/\*([^*]+)\*/g,"$1");
+  t=t.replace(/^[-*] +/gm,"• ");
+  t=t.replace(/^\d+\. +/gm,"");
+  return t.trim();
+}
+
+async function stuurChatBericht(){
+  const inp=document.getElementById("ai-input");
+  const tekst=inp?inp.value.trim():"";
+  if(!tekst)return;
+
+  // Voeg gebruikersbericht toe
+  chatBerichten.push({rol:"gebruiker",tekst});
+  aiQuery=tekst;
+  if(inp){inp.value="";inp.style.height="auto";}
+  renderChatBerichten();
+
+  // Toon laadanimatie
+  const laden=document.getElementById("chat-laden");
+  if(laden)laden.style.display="block";
+  const btn=document.getElementById("ask-btn");
+  if(btn)btn.disabled=true;
+
+  const actief=remedies.filter(r=>r.active);
+  const lijst=remedies.map(r=>`[${r.active?"BESCHIKBAAR":"UITGESCHAKELD"}] ${r.name} (${typeLabels[r.type]}): symptomen: ${r.symptoms.join(", ")}; spiritueel: ${r.spiritual.join(", ")}`).join("\n");
+
+  aiGesprek.push({role:"user",content:tekst});
+
+  try{
+    const apiKey=getApiKey();
+    if(!apiKey){
+      const k=prompt("Voer je Anthropic API key in (begint met sk-):");
+      if(!k||!k.startsWith('sk-')){if(laden)laden.style.display="none";if(btn)btn.disabled=false;return;}
+      saveApiKey(k);
+    }
+
+    const resp=await fetch("/api/proxy",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":apiKey,"anthropic-version":"2023-06-01"},
+      body:JSON.stringify({model:"claude-sonnet-4-5",max_tokens:1000,
+        system:`Je bent de kruiden assistent van Elin's Kruiderij. Je voert een gewoon gesprek — warm, direct, geen opsommingstekens, geen sterretjes, geen hashtags. Gewone lopende tekst. Je geeft advies vanuit drie invalshoeken: lichamelijk, emotioneel en spiritueel, maar verweeft dat natuurlijk in je antwoord. Gebruik alleen middelen uit de apotheek. Noem de naam van het middel en zeg kort waarom. Sluit af met één gerichte vervolgvraag. Als het gesprek afgerond is en de gebruiker tevreden is, geef dan een korte samenvatting met alleen de aanbevolen middelen en dosering — begin die samenvatting met het woord SAMENVATTING:
+
+Apotheek:
+${lijst}`,
+        messages:aiGesprek})});
+
+    const data=await resp.json();
+    const rauw=data.content?.find(b=>b.type==="text")?.text||(data.error?("Fout: "+data.error.message):"Geen antwoord ontvangen.");
+    const schoon=stripOpmaak(rauw);
+
+    aiGesprek.push({role:"assistant",content:rauw});
+    aiResponse=rauw;
+
+    // Check op samenvatting
+    if(rauw.includes("SAMENVATTING:")){
+      const delen=schoon.split("SAMENVATTING:");
+      chatBerichten.push({rol:"assistent",tekst:delen[0].trim()});
+      comboResponse={samenvatting:delen[1].trim()};
+      chatBerichten.push({rol:"assistent",tekst:"Samenvatting:\n"+delen[1].trim()});
+    } else {
+      chatBerichten.push({rol:"assistent",tekst:schoon});
+      comboResponse=null;
+    }
+
+    const akn=document.getElementById("actie-knoppen");
+    if(akn)akn.style.display="flex";
+
+  } catch(err){
+    chatBerichten.push({rol:"assistent",tekst:"Fout: "+err.message});
+  }
+
+  if(laden)laden.style.display="none";
+  if(btn)btn.disabled=false;
+  renderChatBerichten();
+}
+
+function renderDirectResults(){
+  const box=document.getElementById("direct-results");if(!box)return;
+  if(!directSearch.trim()){box.innerHTML="";return;}
+  const q=directSearch.toLowerCase();
+  const found=remedies.filter(r=>r.name.toLowerCase().includes(q)||r.description.toLowerCase().includes(q)||r.symptoms.some(s=>s.toLowerCase().includes(q))||r.spiritual.some(s=>s.toLowerCase().includes(q)));
+  box.innerHTML=found.length?found.map(r=>`<div style="margin-top:8px">${cardHtml(r)}</div>`).join(""):`<p style="color:var(--text-dim);font-size:13px;margin-top:8px">Niets gevonden.</p>`;
+}
+function toggleSymptom(s){
+  if(selectedSymptoms.includes(s))selectedSymptoms=selectedSymptoms.filter(x=>x!==s);
+  else selectedSymptoms.push(s);
+  document.querySelectorAll("#symptom-tags .tag").forEach(el=>{el.className="tag"+(selectedSymptoms.includes(el.textContent)?" active":"");});
+  renderSymptomResults();
+}
+function renderSymptomResults(){
+  const box=document.getElementById("symptom-results");if(!box)return;
+  if(!selectedSymptoms.length){box.innerHTML="";return;}
+  const found=remedies.filter(r=>selectedSymptoms.some(s=>r.symptoms.some(rs=>rs.toLowerCase().includes(s))||r.spiritual.some(rs=>rs.toLowerCase().includes(s))));
+  box.innerHTML=found.length?`<div style="margin-top:12px"><div class="section-title">Gevonden middelen</div>${found.map(r=>cardHtml(r)).join("")}</div>`:"";
+}
+
+// BROWSE
+let browseSearch="";
+function renderBrowse(c){
+  const cats=["alle","actief","uitgeschakeld","fysiek","spiritueel","tinctuur","olie","thee","zalf","supplement","overig"];
+  const catLabels={"alle":"Alle","actief":"Actief","uitgeschakeld":"Uitgeschakeld","fysiek":"Fysiek","spiritueel":"Spiritueel","tinctuur":"Tinctuur","olie":"Olie","thee":"Thee","zalf":"Zalf","supplement":"Supplement","overig":"Overig"};
+  let filtered=remedies;
+  if(filterCategory==="actief")filtered=remedies.filter(r=>r.active);
+  else if(filterCategory==="uitgeschakeld")filtered=remedies.filter(r=>!r.active);
+  else if(filterCategory==="thee")filtered=remedies.filter(r=>r.type==="kruid");
+  else if(filterCategory!=="alle")filtered=remedies.filter(r=>r.category===filterCategory||r.type===filterCategory);
+  if(browseSearch.trim()){
+    const q=browseSearch.toLowerCase();
+    filtered=filtered.filter(r=>r.name.toLowerCase().includes(q)||r.symptoms.some(s=>s.toLowerCase().includes(q))||r.spiritual.some(s=>s.toLowerCase().includes(q)));
+  }
+  c.innerHTML=`
+    <div style="margin-bottom:12px">
+      <input id="browse-search" placeholder="🔍 Zoek in kruidenkast..." value="${escHtml(browseSearch)}"
+        oninput="browseSearch=this.value;renderBrowse(document.getElementById('content'))"
+        style="width:100%;background:rgba(255,255,255,0.05);border:1px solid #3a2e1a;border-radius:8px;color:var(--text);padding:10px 12px;font-size:14px;font-family:'Crimson Pro',serif;outline:none">
+    </div>
+    <div style="margin-bottom:14px;display:flex;gap:6px;flex-wrap:wrap">
+      ${cats.map(cat=>`<span class="tag${filterCategory===cat?" active":""}" onclick="setFilter('${cat}')">${catLabels[cat]||cat}</span>`).join("")}
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
+      <button class="btn btn-secondary" onclick="startAdd()">+ Nieuw middel</button>
+    </div>
+    ${filtered.map(r=>cardHtml(r)).join("")||`<p style="color:var(--text-dim);font-size:14px">Geen middelen gevonden.</p>`}`;
+}
+function setFilter(cat){filterCategory=cat;renderBrowse(document.getElementById("content"));}
+
+// DETAIL
+function renderDetail(c){
+  const r=selectedRemedy;if(!r)return;
+  const color=typeColors[r.type]||"#8B7355";
+  c.innerHTML=`
+    <button class="back-btn" onclick="showView('browse')">← Terug</button>
+    <div style="margin-bottom:16px">
+      <div style="font-family:'IM Fell English',serif;font-size:26px;color:${r.active?"#d4b483":"#6b5a3a"};margin-bottom:8px">${r.name}</div>
+      <div>
+        <span class="badge" style="background:${color}33;color:${color};border:1px solid ${color}44">${typeLabels[r.type]||r.type}</span>
+        ${r.selfMade?'<span class="badge badge-self">eigengemaakt</span>':""}
+        ${!r.active?'<span class="badge badge-off">geen voorraad</span>':""}
+      </div>
+      <div class="toggle-row">
+        <label class="toggle"><input type="checkbox" ${r.active?"checked":""} onchange="toggleActive(${r.id},event)"><span class="toggle-slider"></span></label>
+        <span class="toggle-lbl ${r.active?"on":""}">${r.active?"Beschikbaar in apotheek":"Uitgeschakeld / geen voorraad"}</span>
+      </div>
+    </div>
+    ${r.flesgrootte?`<div class="detail-section"><div class="detail-label">Flesgrootte</div><div class="detail-value">${r.flesgrootte}</div></div>`:""}
+    ${r.description?`<div class="detail-section"><div class="detail-label">Beschrijving</div><div class="detail-value">${r.description}</div></div>`:""}
+    ${r.ingredients?`<div class="detail-section"><div class="detail-label">Ingrediënten</div><div class="detail-value">${r.ingredients}</div></div>`:""}
+    ${r.dosage?`<div class="detail-section"><div class="detail-label">Dosering & gebruik</div><div class="detail-value">${escHtml(doseringVoorType(r.dosage,r.type))}</div></div>`:""}
+    ${r.symptoms.length?`<div class="detail-section"><div class="detail-label">Fysieke toepassingen</div><div>${r.symptoms.map(s=>`<span class="tag no-click">${s}</span>`).join("")}</div></div>`:""}
+    ${r.spiritual.length?`<div class="detail-section"><div class="detail-label">Spirituele toepassingen</div><div>${r.spiritual.map(s=>`<span class="tag spiritual no-click">${s}</span>`).join("")}</div></div>`:""}
+    ${r.notes?`<div class="detail-section"><div class="detail-label">Mijn notities</div><div class="detail-value detail-notes">${r.notes}</div></div>`:""}
+    ${r.caution?`<div class="detail-section"><div class="detail-label">⚠ Voorzorgen</div><div class="detail-value detail-caution">${r.caution}</div></div>`:""}
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="startEdit()">Bewerken</button>
+      <button class="btn btn-primary" onclick="maakEtiket()">🏷 Etiket</button>
+      <button class="btn btn-danger" onclick="deleteRemedy(${r.id})">Verwijderen</button>
+    </div>`;
+}
+
+// EDIT/ADD
+function startAdd(){editForm={id:Date.now(),name:"",type:"tincture",selfMade:true,active:true,ingredients:"",symptomsStr:"",spiritualStr:"",description:"",dosage:"",notes:"",caution:"",category:"fysiek"};showView("add");}
+function startEdit(){editForm={...selectedRemedy,symptomsStr:selectedRemedy.symptoms.join(", "),spiritualStr:selectedRemedy.spiritual.join(", ")};showView("edit");}
+
+function renderEdit(c){
+  const isAdd=currentView==="add";const f=editForm;
+  c.innerHTML=`
+    <button class="back-btn" onclick="showView(${isAdd?"'browse'":"'detail'"})">← Terug</button>
+    <div style="font-family:'IM Fell English',serif;font-size:22px;color:#d4b483;margin-bottom:20px">${isAdd?"Nieuw middel toevoegen":"Bewerken: "+f.name}</div>
+    ${fRow("Naam","name","input",f.name)}
+    ${fRow("Ingrediënten / samenstelling","ingredients","input",f.ingredients)}
+    ${fRow("Beschrijving","description","textarea",f.description)}
+    ${fRow("Dosering & gebruik","dosage","textarea",f.dosage)}
+    ${fRow("Fysieke toepassingen (komma-gescheiden)","symptomsStr","textarea",f.symptomsStr)}
+    ${fRow("Spirituele toepassingen (komma-gescheiden)","spiritualStr","textarea",f.spiritualStr)}
+    ${fRow("Mijn notities / receptuur","notes","textarea",f.notes)}
+    ${fRow("Voorzorgen / waarschuwingen","caution","textarea",f.caution)}
+    <div class="form-row"><label class="form-label">Type</label>
+      <select id="f-type" onchange="editForm.type=this.value">${Object.entries(typeLabels).map(([k,v])=>`<option value="${k}"${f.type===k?" selected":""}>${v}</option>`).join("")}</select></div>
+    <div class="form-row"><label class="form-label">Flesgrootte</label>
+      <select id="f-fles" onchange="editForm.flesgrootte=this.value">
+        <option value=""${!f.flesgrootte?" selected":""}>—</option>
+        <option value="klein"${f.flesgrootte==="klein"?" selected":""}>Klein</option>
+        <option value="middel"${f.flesgrootte==="middel"?" selected":""}>Middel</option>
+        <option value="groot"${f.flesgrootte==="groot"?" selected":""}>Groot</option>
+      </select></div>
+    <div class="form-row"><label class="form-label">Categorie</label>
+      <select id="f-cat" onchange="editForm.category=this.value">
+        <option value="fysiek"${f.category==="fysiek"?" selected":""}>Fysiek</option>
+        <option value="spiritueel"${f.category==="spiritueel"?" selected":""}>Spiritueel</option>
+      </select></div>
+    <div class="form-row" style="display:flex;align-items:center;gap:10px">
+      <input type="checkbox" id="f-self" ${f.selfMade?"checked":""} onchange="editForm.selfMade=this.checked" style="width:auto;accent-color:var(--gold)">
+      <label for="f-self" class="form-label" style="margin:0">Eigengemaakt</label>
+    </div>
+    <div class="form-row" style="display:flex;align-items:center;gap:10px">
+      <input type="checkbox" id="f-active" ${f.active!==false?"checked":""} onchange="editForm.active=this.checked" style="width:auto;accent-color:var(--gold)">
+      <label for="f-active" class="form-label" style="margin:0">Beschikbaar (voorraad aanwezig)</label>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="saveRemedy()">Opslaan</button>
+      <button class="btn btn-secondary" onclick="showView(${isAdd?"'browse'":"'detail'"})">Annuleren</button>
+    </div>
+    <div class="save-msg" id="save-msg"></div>`;
+  ["name","ingredients","description","dosage","symptomsStr","spiritualStr","notes","caution"].forEach(k=>{
+    const el=document.getElementById("f-"+k);if(el)el.addEventListener("input",()=>{editForm[k]=el.value;});
+  });
+}
+function fRow(label,key,type,value){
+  const el=type==="textarea"?`<textarea id="f-${key}" style="min-height:60px">${escHtml(value||"")}</textarea>`:`<input id="f-${key}" value="${escHtml(value||"")}">`;
+  return`<div class="form-row"><label class="form-label">${label}</label>${el}</div>`;
+}
+function saveRemedy(){
+  const r={...editForm,symptoms:editForm.symptomsStr.split(",").map(s=>s.trim()).filter(Boolean),spiritual:editForm.spiritualStr.split(",").map(s=>s.trim()).filter(Boolean)};
+  if(currentView==="add")remedies.push(r);else remedies=remedies.map(x=>x.id===r.id?r:x);
+  saveData();selectedRemedy=r;
+  const msg=document.getElementById("save-msg");if(msg)msg.textContent="Opgeslagen ✓";
+  setTimeout(()=>showView("detail"),600);
+}
+function deleteRemedy(id){
+  if(!confirm("Dit middel verwijderen?"))return;
+  remedies=remedies.filter(r=>r.id!==id);saveData();showView("browse");
+}
+
+// SESSIE FUNCTIES
+function resetScherm(bewaargesprek){
+  aiResponse=null;comboResponse=null;aiQuery="";
+  if(!bewaargesprek){
+    aiGesprek=[];chatBerichten=[];
+    try{sessionStorage.removeItem("elins_chat");}catch{}
+  }
+  const el=document.getElementById("ai-input");if(el){el.value="";el.style.height="auto";}
+  const akn=document.getElementById("actie-knoppen");if(akn)akn.style.display="none";
+  renderChatBerichten();
+}
+function slaOp(){
+  try{localStorage.setItem("elins_log",JSON.stringify(sessielog));}catch{}
+  resetScherm(false);
+}
+function gooiWeg(){
+  if(!confirm("Dit gesprek weggooien? Het wordt niet opgeslagen."))return;
+  resetScherm(false);
+}
+
+// WERK HET UIT
+function setChatFilter(key,val){
+  const arr=key==="vorm"?chatFilter.vormen:chatFilter.categorieen;
+  const idx=arr.indexOf(val);
+  if(idx===-1)arr.push(val);else arr.splice(idx,1);
+  if(currentView==="search")render();
+}
+
+async function werkHetUit(){
+  if(aiGesprek.length===0){
+    chatBerichten.push({rol:"assistent",tekst:"We hebben nog geen gesprek gevoerd. Stel eerst een vraag!"});
+    renderChatBerichten();return;
+  }
+  const btn=document.getElementById("ask-btn");
+  const laden=document.getElementById("chat-laden");
+  if(btn)btn.disabled=true;
+  if(laden)laden.style.display="block";
+  const vormenTekst=chatFilter.vormen.length>0?"gewenste vorm: "+chatFilter.vormen.join(" of "):"";
+  const catTekst=chatFilter.categorieen.length>0?"focus op: "+chatFilter.categorieen.join(" en "):"";
+  const filterContext=[vormenTekst,catTekst].filter(Boolean).join(", ");
+  const filterZin=filterContext?" Houd rekening met: "+filterContext+". Vermeld aan het einde kort welke andere vormen ook mogelijk zijn als korte tip.":"";
+  aiGesprek.push({role:"user",content:"Werk het nu uit."+filterZin+" Geef een korte samenvatting van maximaal 3 zinnen, gevolgd door de concrete middelen met dosering. Geen opmaaktekens."});
+  try{
+    const apiKey=getApiKey();
+    const resp=await fetch("/api/proxy",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":apiKey,"anthropic-version":"2023-06-01"},
+      body:JSON.stringify({model:"claude-sonnet-4-5",max_tokens:600,
+        system:"Je bent de kruiden assistent van Elins Kruiderij. Geef een heldere uitwerking zonder opmaaktekens, sterretjes of hashtags. Gewone lopende tekst.",
+        messages:aiGesprek})});
+    const data=await resp.json();
+    const rauw=data.content?.find(b=>b.type==="text")?.text||"Kon niet uitwerken.";
+    const schoon=stripOpmaak(rauw);
+    chatBerichten.push({rol:"assistent",tekst:schoon});
+    aiResponse=rauw;
+    const logItem={
+      tijd:new Date().toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"}),
+      datum:new Date().toLocaleDateString("nl-NL"),
+      vraag:chatBerichten.filter(b=>b.rol==="gebruiker").map(b=>b.tekst).join(" / "),
+      antwoord:schoon,
+      berichten:[...chatBerichten],
+      gesprek:[...aiGesprek]
+    };
+    sessielog.push(logItem);
+    try{localStorage.setItem("elins_log",JSON.stringify(sessielog));}catch{}
+    const akn=document.getElementById("actie-knoppen");
+    if(akn)akn.style.display="flex";
+  }catch(err){chatBerichten.push({rol:"assistent",tekst:"Fout bij uitwerken: "+err.message});}
+  if(btn)btn.disabled=false;
+  if(laden)laden.style.display="none";
+  renderChatBerichten();
+}
+
+// LOG
+let logZoek="";
+function renderLog(c){
+  const gefilterd=sessielog.filter(item=>
+    !logZoek||item.vraag.toLowerCase().includes(logZoek.toLowerCase())||item.antwoord.toLowerCase().includes(logZoek.toLowerCase())
+  ).reverse();
+  c.innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div style="font-family:'IM Fell English',serif;font-size:22px;color:#d4b483">Gespreksgeschiedenis</div>
+      ${sessielog.length?`<button class="btn btn-danger" style="font-size:11px;padding:6px 12px" onclick="if(confirm('Gehele log wissen?')){sessielog=[];localStorage.removeItem('elins_log');renderLog(document.getElementById('content'));}">Wis alles</button>`:""}
+    </div>
+    <input placeholder="🔍 Zoek op trefwoord..." value="${escHtml(logZoek)}"
+      oninput="logZoek=this.value;renderLog(document.getElementById('content'))"
+      style="width:100%;background:rgba(255,255,255,0.05);border:1px solid #3a2e1a;border-radius:8px;color:var(--text);padding:10px 12px;font-size:14px;font-family:'Crimson Pro',serif;outline:none;margin-bottom:14px">
+    ${sessielog.length===0
+      ?`<p style="color:var(--text-dim);font-size:14px">Nog geen gesprekken opgeslagen.</p>`
+      :gefilterd.length===0
+        ?`<p style="color:var(--text-dim);font-size:14px">Niets gevonden.</p>`
+        :gefilterd.map(item=>{const idx=sessielog.indexOf(item);return`
+          <div class="card" style="position:relative">
+            <div onclick="toonLogItem(${idx})" style="padding-right:36px;cursor:pointer">
+              <div style="font-size:10px;letter-spacing:2px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:4px">${item.datum} · ${item.tijd}</div>
+              <div style="font-size:16px;color:#d4b483;margin-bottom:4px">${escHtml((item.vraag||"").slice(0,80))}${(item.vraag||"").length>80?"...":""}</div>
+              <div style="font-size:12px;color:var(--text-dim)">${escHtml((item.antwoord||"").slice(0,100))}...</div>
+              <div style="display:flex;gap:8px;margin-top:10px">
+                <button onclick="event.stopPropagation();toonLogItem(${idx})" style="flex:1;background:rgba(180,130,60,0.1);border:1px solid rgba(180,130,60,0.2);color:var(--gold);border-radius:6px;padding:6px;cursor:pointer;font-size:11px;letter-spacing:1px;text-transform:uppercase">📄 Lezen</button>
+                ${item.berichten?`<button onclick="event.stopPropagation();hervatChat(${idx})" style="flex:1;background:rgba(80,140,80,0.15);border:1px solid rgba(122,170,90,0.3);color:#7aaa5a;border-radius:6px;padding:6px;cursor:pointer;font-size:11px;letter-spacing:1px;text-transform:uppercase">💬 Verder</button>`:""}
+              </div>
+            </div>
+            <button onclick="event.stopPropagation();if(confirm('Dit gesprek verwijderen?')){sessielog.splice(${idx},1);try{localStorage.setItem('elins_log',JSON.stringify(sessielog));}catch{}renderLog(document.getElementById('content'));}"
+              style="position:absolute;top:12px;right:12px;background:rgba(139,50,50,0.3);border:none;color:#e87a7a;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:12px">✕</button>
+          </div>`}).join("")
+    }`;
+}
+
+function toonLogItem(idx){
+  const item=sessielog[idx];if(!item)return;
+  const win=window.open("","_blank","width=480,height=700");
+  if(!win)return;
+  win.document.write(`<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><title>Advies</title>
+    <style>body{font-family:Georgia,serif;background:#1e3a2e;color:#e8d9b5;padding:24px;max-width:480px;margin:0 auto}
+    h2{color:#c9a96e;font-size:20px;margin-bottom:4px}.meta{font-size:11px;color:#6b5a3a;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+    .vraag{background:rgba(180,130,60,0.1);border-left:3px solid #c9a96e;padding:10px 14px;border-radius:4px;margin-bottom:16px;font-style:italic}
+    .antwoord{font-size:14px;line-height:1.9;white-space:pre-wrap}
+    .btn{display:block;margin:20px auto 0;padding:10px 24px;background:linear-gradient(135deg,#8B6914,#c9a96e);color:#1e3a2e;border:none;border-radius:8px;font-size:13px;cursor:pointer;letter-spacing:1px;text-transform:uppercase;font-family:Georgia,serif;font-weight:bold}
+    @media print{.btn{display:none}}</style></head><body>
+    <h2>Elin's Kruiderij — Advies</h2>
+    <div class="meta">${item.datum} · ${item.tijd}</div>
+    <div class="vraag">${escHtml(item.vraag||"")}</div>
+    <div class="antwoord">${escHtml(item.antwoord||"")}</div>
+    <button class="btn" onclick="window.print()">Afdrukken</button>
+    </body></html>`);
+  win.document.close();
+}
+
+function hervatChat(idx){
+  const item=sessielog[idx];
+  if(!item||!item.berichten)return;
+  chatBerichten=[...item.berichten];
+  aiGesprek=[...item.gesprek];
+  aiResponse=item.antwoord||null;
+  showView("search");
+  setTimeout(()=>{
+    renderChatBerichten();
+    const akn=document.getElementById("actie-knoppen");
+    if(akn)akn.style.display="flex";
+  },100);
+}
+
+// COMBO ETIKET
+function maakComboEtiket(){
+  if(!comboResponse)return;
+  const naam=prompt("Geef de combinatie een naam:","Combinatiemiddel");
+  if(!naam)return;
+
+  // Verzamel info van de middelen in de combo
+  const middelenData=comboResponse.middelen.map(n=>{
+    const r=remedies.find(x=>x.name.toLowerCase()===n.toLowerCase());
+    return r||{name:n,ingredients:n,dosage:"",caution:""};
+  });
+  const alleIngred=middelenData.map(r=>r.ingredients||r.name).filter(Boolean).join(" · ");
+  const alleCautions=middelenData.map(r=>r.caution).filter(Boolean).join(" ");
+
+  // Maak een tijdelijk remedy-object voor maakEtiket
+  const comboRemedy={
+    name:naam,
+    type:"overig",
+    ingredients:alleIngred,
+    description:comboResponse.uitleg,
+    dosage:middelenData.map(r=>r.dosage).filter(Boolean).join(" / ")||"Zie aparte middelen",
+    caution:alleCautions||comboResponse.voorzorg||"",
+    symptoms:[],spiritual:[]
+  };
+  const prev=selectedRemedy;
+  selectedRemedy=comboRemedy;
+  maakEtiket();
+  selectedRemedy=prev;
+}
+
+// ETIKET
+function maakEtiket(){
+  const r=selectedRemedy;if(!r)return;
+  const jaar=new Date().getFullYear();
+  const werkzaamheid=[...r.symptoms,...r.spiritual].filter(Boolean).join(" · ")||"Zie bijsluiter";
+
+  // Botanische SVG decoraties (vereenvoudigd, in stijl van het etiket)
+  const bloem=`<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.55">
+    <circle cx="35" cy="35" r="8" fill="none" stroke="#c9a96e" stroke-width="1"/>
+    <ellipse cx="35" cy="18" rx="5" ry="10" fill="none" stroke="#c9a96e" stroke-width="1" transform="rotate(0 35 35)"/>
+    <ellipse cx="35" cy="18" rx="5" ry="10" fill="none" stroke="#c9a96e" stroke-width="1" transform="rotate(45 35 35)"/>
+    <ellipse cx="35" cy="18" rx="5" ry="10" fill="none" stroke="#c9a96e" stroke-width="1" transform="rotate(90 35 35)"/>
+    <ellipse cx="35" cy="18" rx="5" ry="10" fill="none" stroke="#c9a96e" stroke-width="1" transform="rotate(135 35 35)"/>
+    <ellipse cx="35" cy="18" rx="5" ry="10" fill="none" stroke="#c9a96e" stroke-width="1" transform="rotate(180 35 35)"/>
+    <ellipse cx="35" cy="18" rx="5" ry="10" fill="none" stroke="#c9a96e" stroke-width="1" transform="rotate(225 35 35)"/>
+    <ellipse cx="35" cy="18" rx="5" ry="10" fill="none" stroke="#c9a96e" stroke-width="1" transform="rotate(270 35 35)"/>
+    <ellipse cx="35" cy="18" rx="5" ry="10" fill="none" stroke="#c9a96e" stroke-width="1" transform="rotate(315 35 35)"/>
+  </svg>`;
+
+  const takje=`<svg width="60" height="80" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.5">
+    <line x1="30" y1="80" x2="30" y2="10" stroke="#c9a96e" stroke-width="1"/>
+    <line x1="30" y1="60" x2="10" y2="40" stroke="#c9a96e" stroke-width="1"/>
+    <line x1="30" y1="60" x2="50" y2="40" stroke="#c9a96e" stroke-width="1"/>
+    <line x1="30" y1="40" x2="14" y2="24" stroke="#c9a96e" stroke-width="1"/>
+    <line x1="30" y1="40" x2="46" y2="24" stroke="#c9a96e" stroke-width="1"/>
+    <line x1="30" y1="25" x2="20" y2="10" stroke="#c9a96e" stroke-width="1"/>
+    <line x1="30" y1="25" x2="40" y2="10" stroke="#c9a96e" stroke-width="1"/>
+    <ellipse cx="10" cy="40" rx="5" ry="8" fill="none" stroke="#c9a96e" stroke-width="0.8" transform="rotate(-30 10 40)"/>
+    <ellipse cx="50" cy="40" rx="5" ry="8" fill="none" stroke="#c9a96e" stroke-width="0.8" transform="rotate(30 50 40)"/>
+    <ellipse cx="14" cy="24" rx="4" ry="7" fill="none" stroke="#c9a96e" stroke-width="0.8" transform="rotate(-20 14 24)"/>
+    <ellipse cx="46" cy="24" rx="4" ry="7" fill="none" stroke="#c9a96e" stroke-width="0.8" transform="rotate(20 46 24)"/>
+  </svg>`;
+
+  const kruidTop=`<svg width="50" height="40" viewBox="0 0 50 40" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.6">
+    <line x1="25" y1="40" x2="25" y2="5" stroke="#c9a96e" stroke-width="1.2"/>
+    <ellipse cx="15" cy="20" rx="6" ry="10" fill="none" stroke="#c9a96e" stroke-width="0.9" transform="rotate(-20 15 20)"/>
+    <ellipse cx="35" cy="20" rx="6" ry="10" fill="none" stroke="#c9a96e" stroke-width="0.9" transform="rotate(20 35 20)"/>
+    <ellipse cx="25" cy="8" rx="5" ry="9" fill="none" stroke="#c9a96e" stroke-width="0.9"/>
+  </svg>`;
+
+  // Gouden frame (SVG border)
+  const frame=(w,h)=>`<svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    <rect x="8" y="8" width="${w-16}" height="${h-16}" rx="4" fill="none" stroke="#c9a96e" stroke-width="1.5" opacity="0.7"/>
+    <rect x="14" y="14" width="${w-28}" height="${h-28}" rx="2" fill="none" stroke="#c9a96e" stroke-width="0.6" opacity="0.4"/>
+    <path d="M${w/2-30} 8 Q${w/2} 2 ${w/2+30} 8" fill="none" stroke="#c9a96e" stroke-width="1.2" opacity="0.6"/>
+    <circle cx="${w/2}" cy="8" r="2" fill="#c9a96e" opacity="0.5"/>
+    <circle cx="8" cy="8" r="3" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.5"/>
+    <circle cx="${w-8}" cy="8" r="3" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.5"/>
+    <circle cx="8" cy="${h-8}" r="3" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.5"/>
+    <circle cx="${w-8}" cy="${h-8}" r="3" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.5"/>
+  </svg>`;
+
+  const etiketStijl=`
+    @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Crimson+Pro:wght@300;400;600&display=swap');
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#e8e0d0;font-family:'Crimson Pro',Georgia,serif;display:flex;flex-direction:column;align-items:center;gap:24px;padding:30px 20px}
+    .etiket{position:relative;background:#1e3a2e;border-radius:6px;overflow:hidden;page-break-inside:avoid}
+    .voor{width:320px;height:200px}
+    .achter{width:320px;height:200px}
+    .inhoud{position:relative;z-index:2;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 24px;text-align:center}
+    .merk{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;opacity:0.8;margin-bottom:1px}
+    .naam-groot{font-family:'IM Fell English',serif;font-size:42px;color:#c9a96e;line-height:1;letter-spacing:2px;text-transform:uppercase;margin:4px 0}
+    .naam-groot.lang{font-size:28px}
+    .naam-groot.heel-lang{font-size:22px}
+    .streep{display:flex;align-items:center;gap:8px;margin:5px 0;width:100%}
+    .streep-lijn{flex:1;height:1px;background:#c9a96e;opacity:0.4}
+    .streep-tekst{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;opacity:0.9;white-space:nowrap}
+    .type-label{font-size:14px;color:#c9a96e;opacity:0.85;font-style:italic}
+    .stippen{font-size:10px;color:#c9a96e;opacity:0.5;letter-spacing:4px;margin:2px 0}
+    .hoek-deco{position:absolute;z-index:1}
+    .hoek-tl{top:4px;left:4px}
+    .hoek-tr{top:4px;right:4px;transform:scaleX(-1)}
+    .hoek-bl{bottom:4px;left:4px;transform:scaleY(-1)}
+    .hoek-br{bottom:4px;right:4px;transform:scale(-1)}
+    .midden-deco{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:1}
+
+    /* Achterkant */
+    .achter-inhoud{position:relative;z-index:2;width:100%;height:100%;padding:16px 22px;display:flex;flex-direction:column;justify-content:space-between}
+    .achter-header{display:flex;justify-content:space-between;align-items:flex-start}
+    .achter-naam{font-family:'IM Fell English',serif;font-size:16px;color:#c9a96e}
+    .achter-merk{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;opacity:0.6;text-align:right}
+    .achter-body{flex:1;padding:6px 0}
+    .rij{display:flex;gap:6px;margin-bottom:5px;align-items:flex-start}
+    .rij-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#c9a96e;opacity:0.6;white-space:nowrap;padding-top:2px;min-width:72px}
+    .rij-waarde{font-size:10px;color:#d4b483;line-height:1.5;flex:1}
+    .achter-footer{font-size:8px;color:#c9a96e;opacity:0.45;letter-spacing:1px;text-align:center;border-top:1px solid rgba(180,130,60,0.2);padding-top:5px}
+
+    @media print{
+      body{background:white;padding:10px;gap:8mm}
+      .btn-wrap{display:none}
+      .etiket{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    }
+  `;
+
+  const naamLen=r.name.length;
+  const naamClass=naamLen>16?"naam-groot heel-lang":naamLen>10?"naam-groot lang":"naam-groot";
+  const typeStr=typeLabels[r.type]||r.type;
+  const alcMatch=r.ingredients&&r.ingredients.match(/(\d+[\.,]?\d*)\s*%\s*alc/i);
+  const alcStr=alcMatch?`  alc. ${alcMatch[1]} %`:"";
+
+  // Werkzaamheid inkorten voor etiket
+  const werkKort=werkzaamheid.length>120?werkzaamheid.slice(0,117)+"…":werkzaamheid;
+  const cautionKort=r.caution&&r.caution.length>100?r.caution.slice(0,97)+"…":r.caution||"—";
+  // Dosering: pak de juiste regel op basis van type
+  function doseringVoorType(dosage, type){
+    if(!dosage)return"—";
+    const regels=dosage.split(".");
+    const typeSleutel={tinctuur:"tinctuur",olie:"uitwendig",zalf:"uitwendig",kruid:"thee",supplement:"capsule",overig:""};
+    const zoek=typeSleutel[type]||"";
+    if(zoek){
+      const gevonden=regels.find(r=>r.toLowerCase().includes(zoek));
+      if(gevonden)return gevonden.trim()+".";
+    }
+    // Geen match — pak eerste zin
+    return regels[0].trim()+".";
+  }
+  const dosageKort=doseringVoorType(r.dosage, r.type);
+  const ingredKort=r.ingredients&&r.ingredients.length>100?r.ingredients.slice(0,97)+"…":r.ingredients||"—";
+
+  const html=`<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8">
+  <title>Etiket — ${r.name}</title>
+  <style>${etiketStijl}</style></head><body>
+
+  <div class="btn-wrap" style="text-align:center">
+    <button onclick="window.print()" style="padding:10px 28px;background:#1e3a2e;color:#c9a96e;border:1px solid #c9a96e;border-radius:6px;font-size:14px;cursor:pointer;letter-spacing:2px;text-transform:uppercase;font-family:'Crimson Pro',serif">Afdrukken</button>
+  </div>
+
+  <!-- VOORKANT -->
+  <div class="etiket voor">
+    ${frame(320,200)}
+    <div class="hoek-deco hoek-tl">${takje}</div>
+    <div class="hoek-deco hoek-tr">${takje}</div>
+    <div class="midden-deco">${kruidTop}</div>
+    <div class="inhoud">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
+        <div style="width:20px;height:1px;background:#c9a96e;opacity:0.4"></div>
+        <div class="merk">Elin's Kruiderij</div>
+        <div style="width:20px;height:1px;background:#c9a96e;opacity:0.4"></div>
+      </div>
+      <div class="stippen">· · ·</div>
+      <div class="${naamClass}">${r.name}</div>
+      <div class="streep" style="margin-top:8px">
+        <div class="streep-lijn"></div>
+        <div class="streep-tekst">${typeStr}${alcStr}</div>
+        <div class="streep-lijn"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACHTERKANT -->
+  <div class="etiket achter">
+    ${frame(320,200)}
+    <div class="hoek-deco hoek-bl">${bloem}</div>
+    <div class="hoek-deco hoek-br">${bloem}</div>
+    <div class="achter-inhoud">
+      <div class="achter-header">
+        <div class="achter-naam">${r.name}</div>
+        <div class="achter-merk">Elin's<br>Kruiderij</div>
+      </div>
+      <div class="achter-body">
+        <div class="rij">
+          <div class="rij-label">Inhoud</div>
+          <div class="rij-waarde">${ingredKort}</div>
+        </div>
+        <div class="rij">
+          <div class="rij-label">Werkzaamheid</div>
+          <div class="rij-waarde">${werkKort}</div>
+        </div>
+        <div class="rij">
+          <div class="rij-label">Dosering</div>
+          <div class="rij-waarde">${dosageKort}</div>
+        </div>
+        ${r.caution?`<div class="rij">
+          <div class="rij-label">⚠ Let op</div>
+          <div class="rij-waarde" style="color:#e8a87a">${cautionKort}</div>
+        </div>`:""}
+      </div>
+      <div class="achter-footer">Handgemaakt met zorg · Elin's Kruiderij · ${jaar}</div>
+    </div>
+  </div>
+
+  </body></html>`;
+
+  const win=window.open("","_blank","width=420,height=700");
+  if(win){win.document.write(html);win.document.close();}
+  else{alert("Sta pop-ups toe voor deze pagina om het etiket te openen.");}
+}
+
+function wijzigApiKey(){
+  const huidig=getApiKey();
+  const k=prompt("API key invoeren of wijzigen:"+(huidig?"\n(huidig: ..."+huidig.slice(-6)+")":""));
+  if(k===null)return;
+  if(k.startsWith('sk-')){saveApiKey(k);alert("Key opgeslagen ✓");}
+  else if(k===""){localStorage.removeItem('elins_api_key');alert("Key verwijderd.");}
+  else{alert("Ongeldige key — moet beginnen met sk-");}
+}
+
+// SESSIE FUNCTIES
+function resetScherm(bewaargesprek){
+  aiResponse=null;comboResponse=null;aiQuery="";
+  if(!bewaargesprek){
+    aiGesprek=[];chatBerichten=[];
+    try{sessionStorage.removeItem("elins_chat");}catch{}
+  }
+  const el=document.getElementById("ai-input");if(el){el.value="";el.style.height="auto";}
+  const akn=document.getElementById("actie-knoppen");if(akn)akn.style.display="none";
+  renderChatBerichten();
+}
+function slaOp(){
+  try{localStorage.setItem("elins_log",JSON.stringify(sessielog));}catch{}
+  resetScherm(true); // bewaar gesprek voor vervolgvraag
+}
+function gooiWeg(){
+  if(sessielog.length>0)sessielog.pop();
+  resetScherm(false); // wis gesprek
+}
+
+// LOG VIEW
+
+function renderLog(c){
+  const gefilterd=sessielog.filter(item=>
+    !logZoek||
+    item.vraag.toLowerCase().includes(logZoek.toLowerCase())||
+    item.antwoord.toLowerCase().includes(logZoek.toLowerCase())
+  ).reverse();
+
+  c.innerHTML=`
+    <div style="font-family:'IM Fell English',serif;font-size:22px;color:#d4b483;margin-bottom:12px">Sessiegeschiedenis</div>
+    <input placeholder="🔍 Zoek op trefwoord..." value="${escHtml(logZoek)}"
+      oninput="logZoek=this.value;renderLog(document.getElementById('content'))"
+      style="width:100%;background:rgba(255,255,255,0.05);border:1px solid #3a2e1a;border-radius:8px;color:var(--text);padding:10px 12px;font-size:14px;font-family:'Crimson Pro',serif;outline:none;margin-bottom:14px">
+    ${sessielog.length===0
+      ? `<p style="color:var(--text-dim);font-size:14px">Nog geen vragen gesteld in deze sessie.</p>`
+      : gefilterd.length===0
+        ? `<p style="color:var(--text-dim);font-size:14px">Niets gevonden.</p>`
+        : gefilterd.map((item)=>{const idx=sessielog.indexOf(item);return`
+          <div class="card" style="position:relative">
+            <div onclick="toonLogItem(${idx})" style="padding-right:32px">
+              <div style="font-size:10px;letter-spacing:2px;color:var(--gold-dim);text-transform:uppercase;margin-bottom:4px">${item.datum} · ${item.tijd}</div>
+              <div style="font-size:16px;color:#d4b483;margin-bottom:4px">${escHtml(item.vraag.slice(0,80))}${item.vraag.length>80?"...":""}</div>
+              <div style="font-size:12px;color:var(--text-dim)">${escHtml(item.antwoord.slice(0,100))}...</div>
+              <div style="display:flex;gap:8px;margin-top:10px">
+                <button onclick="event.stopPropagation();toonLogItem(${idx})" style="flex:1;background:rgba(180,130,60,0.1);border:1px solid rgba(180,130,60,0.2);color:var(--gold);border-radius:6px;padding:6px;cursor:pointer;font-size:11px;letter-spacing:1px;text-transform:uppercase">📄 Lezen</button>
+                ${item.berichten?`<button onclick="event.stopPropagation();hervatChat(${idx})" style="flex:1;background:rgba(80,140,80,0.15);border:1px solid rgba(122,170,90,0.3);color:#7aaa5a;border-radius:6px;padding:6px;cursor:pointer;font-size:11px;letter-spacing:1px;text-transform:uppercase">💬 Verder</button>`:""}
+              </div>
+            </div>
+            <button onclick="event.stopPropagation();if(confirm('Dit gesprek verwijderen?')){sessielog.splice(${idx},1);try{localStorage.setItem('elins_log',JSON.stringify(sessielog));}catch{}renderLog(document.getElementById('content'));}"
+              style="position:absolute;top:12px;right:12px;background:rgba(139,50,50,0.3);border:none;color:#e87a7a;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:12px">✕</button>
+          </div>`}).join("")
+    }`;
+}
+
+function toonLogItem(idx){
+  const item=sessielog[idx];
+  if(!item)return;
+  const win=window.open("","_blank","width=480,height=700");
+  if(!win)return;
+  win.document.write(`<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8">
+    <title>Advies ${item.datum}</title>
+    <style>
+      body{font-family:Georgia,serif;background:#1e3a2e;color:#e8d9b5;padding:24px;max-width:480px;margin:0 auto}
+      h2{color:#c9a96e;font-size:20px;margin-bottom:4px}
+      .meta{font-size:11px;color:#6b5a3a;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+      .vraag{background:rgba(180,130,60,0.1);border-left:3px solid #c9a96e;padding:10px 14px;border-radius:4px;margin-bottom:16px;font-style:italic}
+      .antwoord{font-size:14px;line-height:1.9;white-space:pre-wrap}
+      .btn{display:block;margin:20px auto 0;padding:10px 24px;background:linear-gradient(135deg,#8B6914,#c9a96e);color:#1e3a2e;border:none;border-radius:8px;font-size:13px;cursor:pointer;letter-spacing:1px;text-transform:uppercase;font-family:Georgia,serif;font-weight:bold}
+      @media print{.btn{display:none}}
+    </style></head><body>
+    <h2>Elin's Kruiderij — Advies</h2>
+    <div class="meta">${item.datum} · ${item.tijd}</div>
+    <div class="vraag">${escHtml(item.vraag)}</div>
+    <div class="antwoord">${escHtml(item.antwoord)}</div>
+    <button class="btn" onclick="window.print()">Afdrukken</button>
+    </body></html>`);
+  win.document.close();
+}
+
+function setChatFilter(key,val){
+  const arr=key==="vorm"?chatFilter.vormen:chatFilter.categorieen;
+  const idx=arr.indexOf(val);
+  if(idx===-1)arr.push(val);
+  else arr.splice(idx,1);
+  if(currentView==="search")render();
+}
+
+async function werkHetUit(){
+  if(aiGesprek.length===0){
+    chatBerichten.push({rol:"assistent",tekst:"We hebben nog geen gesprek gevoerd. Stel eerst een vraag!"});
+    renderChatBerichten();
+    return;
+  }
+  const btn=document.getElementById("ask-btn");
+  const laden=document.getElementById("chat-laden");
+  if(btn)btn.disabled=true;
+  if(laden)laden.style.display="block";
+
+  const vormenTekst=chatFilter.vormen.length>0?"gewenste vorm: "+chatFilter.vormen.join(" of "):"";
+  const catTekst=chatFilter.categorieen.length>0?"focus op: "+chatFilter.categorieen.join(" en "):"";
+  const filterContext=[vormenTekst,catTekst].filter(Boolean).join(", ");
+  const filterZin=filterContext?" Houd rekening met: "+filterContext+". Vermeld aan het einde kort welke andere vormen ook mogelijk zijn (bijv. ook als thee of zalf), maar alleen als korte tip onderaan, niet als hoofdadvies.":"  Vermeld aan het einde kort welke andere vormen ook mogelijk zijn als korte tip onderaan.";
+
+  aiGesprek.push({role:"user",content:"Werk het nu uit."+filterZin+" Geef een korte samenvatting van maximaal 3 zinnen, gevolgd door de concrete middelen met dosering. Helemaal onderaan, gescheiden door een witregel, een korte zin over andere vormen die ook mogelijk zijn. Geen opmaaktekens."});
+
+  try{
+    const apiKey=getApiKey();
+    const resp=await fetch("/api/proxy",{method:"POST",headers:{"Content-Type":"application/json","x-api-key":apiKey,"anthropic-version":"2023-06-01"},
+      body:JSON.stringify({model:"claude-sonnet-4-5",max_tokens:600,
+        system:"Je bent de kruiden assistent van Elins Kruiderij. Geef een heldere uitwerking zonder opmaaktekens, sterretjes of hashtags. Gewone lopende tekst met een regel per middel.",
+        messages:aiGesprek})});
+    const data=await resp.json();
+    const rauw=data.content?.find(b=>b.type==="text")?.text||"Kon niet uitwerken.";
+    const schoon=stripOpmaak(rauw);
+
+    chatBerichten.push({rol:"assistent",tekst:schoon});
+    aiResponse=rauw;
+
+    // Uitwerking opslaan in log en direct wegschrijven
+    const logItem={
+      tijd:new Date().toLocaleTimeString("nl-NL",{hour:"2-digit",minute:"2-digit"}),
+      datum:new Date().toLocaleDateString("nl-NL"),
+      vraag:chatBerichten.filter(b=>b.rol==="gebruiker").map(b=>b.tekst).join(" / "),
+      antwoord:schoon,
+      berichten:[...chatBerichten],
+      gesprek:[...aiGesprek]
+    };
+    sessielog.push(logItem);
+    try{localStorage.setItem("elins_log",JSON.stringify(sessielog));}catch{}
+    aiResponse=rauw;
+
+    const akn=document.getElementById("actie-knoppen");
+    if(akn)akn.style.display="flex";
+  } catch(err){
+    chatBerichten.push({rol:"assistent",tekst:"Fout bij uitwerken: "+err.message});
+  }
+
+  if(btn)btn.disabled=false;
+  if(laden)laden.style.display="none";
+  renderChatBerichten();
+}
+
+function hervatChat(idx){
+  const item=sessielog[idx];
+  if(!item||!item.berichten)return;
+  chatBerichten=[...item.berichten];
+  aiGesprek=[...item.gesprek];
+  aiResponse=item.antwoord||null;
+  showView("search");
+  setTimeout(()=>{
+    renderChatBerichten();
+    const akn=document.getElementById("actie-knoppen");
+    if(akn)akn.style.display="flex";
+  },100);
+}
+
+// HELPERS
+function cardHtml(r){
+  const color=typeColors[r.type]||"#8B7355";
+  return`<div class="card${r.active?"":" inactive"}" onclick="openRemedyById(${r.id})">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+      <div class="card-name" style="color:${r.active?"#d4b483":"#6b5a3a"}">${r.name}</div>
+      <label class="toggle" onclick="event.stopPropagation()">
+        <input type="checkbox" ${r.active?"checked":""} onchange="toggleActive(${r.id},event)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div style="margin:5px 0">
+      <span class="badge" style="background:${color}33;color:${color};border:1px solid ${color}44">${typeLabels[r.type]||r.type}</span>
+      ${r.selfMade?'<span class="badge badge-self">eigengemaakt</span>':""}
+      ${!r.active?'<span class="badge badge-off">geen voorraad</span>':""}
+    </div>
+    <div class="card-snippet">${r.description.slice(0,90)}${r.description.length>90?"...":""}</div>
+  </div>`;
+}
+function escHtml(s){return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+function openRemedyById(id){
+  try{
+    const r=remedies.find(x=>x.id===id);
+    if(!r){alert("Kruid niet gevonden (id="+id+", totaal="+remedies.length+")");return;}
+    selectedRemedy=r;
+    currentView="detail";
+    const c=document.getElementById("content");
+    c.innerHTML="";
+    renderDetail(c);
+  }catch(e){
+    alert("Fout: "+e.message);
+  }
+}
+
+const _orig=showView;
+window.showView=function(view,d){
+  if(typeof d==="string"){try{d=JSON.parse(d.replace(/&quot;/g,'"'));}catch{}}
+  _orig(view,d);
+};
+
+loadData();render();setStatus("☁ gereed","ok");
+
+window.addEventListener("beforeunload", function(){
+  // Automatisch opslaan bij afsluiten als er een open antwoord is
+  if(aiResponse){
+    try{localStorage.setItem("elins_log",JSON.stringify(sessielog));}catch{}
+  }
+});
+</script>
+</body>
+</html>
