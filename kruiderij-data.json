@@ -1,0 +1,3897 @@
+[
+  {
+    "id": 1,
+    "name": "Aardbei blad",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Aardbei blad",
+    "symptoms": [
+      "diarree",
+      "keelontsteking",
+      "tandvlees",
+      "aften",
+      "maagklachten",
+      "nieren"
+    ],
+    "spiritual": [
+      "reinigend",
+      "zomerse energie",
+      "vruchtbaarheid"
+    ],
+    "description": "Aardbeiblad werkt samentrekkend en ontstekingsremmend. Geschikt als thee bij darmklachten en voor gorgelen bij keelontsteking.",
+    "dosage": "Thee: 1-2 tl gedroogd blad op 200ml heet water, 10 min trekken, 2-3x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 2,
+    "name": "Agrimonie",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Agrimonie",
+    "symptoms": [
+      "lever",
+      "gal",
+      "maagklachten",
+      "hoest",
+      "keelontsteking",
+      "huid",
+      "eczeem"
+    ],
+    "spiritual": [
+      "bescherming",
+      "terugsturen negatieve energie",
+      "zuivering"
+    ],
+    "description": "Agrimonie is een klassiek leverkruid dat ook de spijsvertering ondersteunt. Uitwendig bij huidproblemen en wondjes.",
+    "dosage": "Thee: 2 tl op 250ml, 15 min trekken, 3x daags voor de maaltijd.",
+    "notes": "",
+    "caution": "Niet bij galstenen zonder arts te raadplegen.",
+    "category": "fysiek"
+  },
+  {
+    "id": 3,
+    "name": "Anijszaad",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Anijszaad",
+    "symptoms": [
+      "opgeblazen gevoel",
+      "winderigheid",
+      "hoest",
+      "slijm",
+      "krampjes",
+      "slaap baby"
+    ],
+    "spiritual": [
+      "bescherming",
+      "dromenwerk",
+      "helderheid"
+    ],
+    "description": "Anijszaad is krampverlichtend en slijmoplossend. Klassiek middel bij baby-krampen en voor luchtwegklachten.",
+    "dosage": "Thee: 1 tl gekneusd zaad op 200ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Niet bij zwangerschap in grote hoeveelheden.",
+    "category": "fysiek"
+  },
+  {
+    "id": 4,
+    "name": "Appelstukjes",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Appelstukjes",
+    "symptoms": [
+      "diarree",
+      "darmbescherming",
+      "pectine",
+      "cholesterol",
+      "detox"
+    ],
+    "spiritual": [
+      "gezondheid",
+      "vitaliteit",
+      "kennis"
+    ],
+    "description": "Gedroogde appel is rijk aan pectine en ondersteunt de darmflora. Goed in kruidenthee-mengsels.",
+    "dosage": "Als thee-ingrediënt meekoken of weken. Vrij te gebruiken.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 5,
+    "name": "Bijvoet",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Bijvoet",
+    "symptoms": [
+      "menstruatieklachten",
+      "cyclus onregelmatig",
+      "dromen",
+      "vermoeidheid",
+      "spijsvertering",
+      "reisziekte"
+    ],
+    "spiritual": [
+      "dromenwerk",
+      "waarzeggerij",
+      "maanverbinding",
+      "vrouwelijke kracht",
+      "vooroudercontact",
+      "bescherming op reis"
+    ],
+    "description": "Bijvoet is het kruid van de volle maan en de reiziger. Stimuleert de cyclus, bevordert levendige dromen en versterkt de intuïtie.",
+    "dosage": "Thee: 1 tl op 200ml, niet langer dan 5 min trekken, 1-2x daags. Tinctuur: 20-30 druppels in water, 2x daags. Smudging: bundel branden naar behoefte.",
+    "notes": "",
+    "caution": "NIET tijdens zwangerschap — stimuleert baarmoedersamentrekkingen. Niet langdurig innemen.",
+    "category": "spiritueel"
+  },
+  {
+    "id": 6,
+    "name": "Brandnetel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Brandnetel",
+    "symptoms": [
+      "ijzertekort",
+      "reuma",
+      "allergie hooikoorts",
+      "nieren",
+      "detox",
+      "haaruitval",
+      "gewrichten"
+    ],
+    "spiritual": [
+      "bescherming",
+      "kracht",
+      "grenzen",
+      "reinigend"
+    ],
+    "description": "Brandnetel is een van de meest voedende kruiden — rijk aan ijzer, mineralen en chlorofyl. Sterk diuretisch en ontstekingsremmend.",
+    "dosage": "Thee: 2-3 tl op 250ml, 10 min, 3x daags. Tinctuur: 30-40 druppels 3x daags.",
+    "notes": "",
+    "caution": "Bij nierproblemen voorzichtig met grote hoeveelheden.",
+    "category": "fysiek"
+  },
+  {
+    "id": 7,
+    "name": "Cichorei wortel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Cichorei",
+    "symptoms": [
+      "lever",
+      "gal",
+      "spijsvertering",
+      "eetlust",
+      "darmflora",
+      "bloedsuiker"
+    ],
+    "spiritual": [
+      "doorzettingsvermogen",
+      "obstakels wegnemen",
+      "eigenliefde"
+    ],
+    "description": "Cichoreiwortel stimuleert de lever en galblaas, verbetert de spijsvertering en bevat inuline voor de darmflora.",
+    "dosage": "Thee van wortel: 1-2 tl op 250ml, 15 min zacht koken, 2x daags voor maaltijd.",
+    "notes": "",
+    "caution": "Niet bij galstenen.",
+    "category": "fysiek"
+  },
+  {
+    "id": 8,
+    "name": "Citroengras",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Citroengras",
+    "symptoms": [
+      "koorts",
+      "infectie",
+      "spierpijn",
+      "gewrichten",
+      "spijsvertering",
+      "stress"
+    ],
+    "spiritual": [
+      "zuivering",
+      "helderheid",
+      "positieve energie",
+      "aardend"
+    ],
+    "description": "Citroengras heeft antibacteriële en koortswerende werking. Ontspannend voor spieren en ondersteunend bij infecties.",
+    "dosage": "Thee: 1-2 stengels of 2 tl gedroogd op 250ml, 10 min, 2-3x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 9,
+    "name": "Citroenmelisse",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Citroenmelisse",
+    "symptoms": [
+      "stress",
+      "angst",
+      "onrust",
+      "slaapproblemen",
+      "herpes",
+      "spijsvertering",
+      "krampen"
+    ],
+    "spiritual": [
+      "vrede",
+      "liefde",
+      "heling",
+      "maanenergie",
+      "licht"
+    ],
+    "description": "Citroenmelisse is een van de zachtste en veelzijdigste zenuwkruiden. Kalmerend, antiviraal bij herpes en ondersteuning bij de spijsvertering.",
+    "dosage": "Thee: 2 tl vers of 1 tl gedroogd op 200ml, 5 min, 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Kan schildkliermedicatie beïnvloeden. Bij schildklierproblematiek overleggen.",
+    "category": "fysiek"
+  },
+  {
+    "id": 10,
+    "name": "Den",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Den",
+    "symptoms": [
+      "luchtwegen",
+      "hoest",
+      "bronchitis",
+      "spierpijn",
+      "gewrichten",
+      "vermoeidheid",
+      "sinussen"
+    ],
+    "spiritual": [
+      "reinigend",
+      "bescherming",
+      "aarding",
+      "kracht van het noorden"
+    ],
+    "description": "Dennennaalden en -hars zijn sterk antiseptisch en slijmoplossend. Uitstekend als inhalatie, bad of tinctuur bij luchtwegklachten.",
+    "dosage": "Thee: 1 el verse naalden op 250ml, 10 min trekken. Tinctuur: 20-30 druppels 3x daags.",
+    "notes": "",
+    "caution": "Niet bij nierziekten in grote hoeveelheden. Essentie nooit inwendig.",
+    "category": "fysiek"
+  },
+  {
+    "id": 11,
+    "name": "Driekleurig viooltje",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Driekleurig viooltje",
+    "symptoms": [
+      "huidklachten",
+      "eczeem",
+      "acne",
+      "psoriasis",
+      "borst",
+      "slijmoplossend",
+      "reuma"
+    ],
+    "spiritual": [
+      "liefde",
+      "geheugen",
+      "dromenwerk",
+      "zachtheid"
+    ],
+    "description": "Driekleurig viooltje is een van de oudste huidkruiden. Zuivert het bloed en werkt ontstekingsremmend bij chronische huidproblemen.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels 3x daags.",
+    "notes": "",
+    "caution": "Langdurig gebruik bij kinderen onder 2 jaar vermijden.",
+    "category": "fysiek"
+  },
+  {
+    "id": 12,
+    "name": "Duivelsklauw",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Duivelsklauw",
+    "symptoms": [
+      "gewrichtspijn",
+      "reuma",
+      "artrose",
+      "rugpijn",
+      "spierpijn",
+      "ontstekingen",
+      "pijnstilling"
+    ],
+    "spiritual": [
+      "kracht",
+      "doorzettingsvermogen",
+      "gronden"
+    ],
+    "description": "Duivelsklauw is een van de krachtigste pijnstillende kruiden bij gewrichts- en spierpijn. Werkt ontstekingsremmend vergelijkbaar met NSAID's.",
+    "dosage": "Tinctuur: 30-40 druppels 3x daags bij maaltijd. Olie: insmeren op pijnlijke plekken.",
+    "notes": "",
+    "caution": "Niet bij maagzweer of gastritis. Niet combineren met bloedverdunners zonder overleg. Niet bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 13,
+    "name": "Duizendblad",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Duizendblad",
+    "symptoms": [
+      "wonden",
+      "bloedingen",
+      "menstruatie",
+      "koorts",
+      "reuma",
+      "nieren",
+      "huid"
+    ],
+    "spiritual": [
+      "bescherming",
+      "moed",
+      "grenswerk",
+      "liefde",
+      "helderziendheid"
+    ],
+    "description": "Duizendblad is het klassieke wondkruid — stelt bloedingen, reinigt wonden en werkt koortswerende. Ook bij menstruatieklachten.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels. Vers blad op wond.",
+    "notes": "",
+    "caution": "Kan allergische reactie geven (compositenfamilie). Niet bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 14,
+    "name": "Eikenbast",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Eikenbast",
+    "symptoms": [
+      "diarree",
+      "tandvlees",
+      "keelontsteking",
+      "huid",
+      "eczeem",
+      "bloeding",
+      "aften"
+    ],
+    "spiritual": [
+      "kracht",
+      "standvastigheid",
+      "bescherming",
+      "aarding"
+    ],
+    "description": "Eikenbast is sterk samentrekkend door de hoge tanninegehalte. Klassiek bij diarree, tandvleesontstekingen en uitwendig bij huidproblemen.",
+    "dosage": "Thee: 1 tl op 250ml, 15 min koken, voor gorgelen of drinken. Max 3x daags.",
+    "notes": "",
+    "caution": "Niet langdurig innemen. Niet bij obstipatie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 15,
+    "name": "Engelwortel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Engelwortel",
+    "symptoms": [
+      "spijsvertering",
+      "maag",
+      "eetlust",
+      "luchtwegen",
+      "hoest",
+      "vermoeidheid",
+      "krampen"
+    ],
+    "spiritual": [
+      "engelverbinding",
+      "bescherming",
+      "zuivering",
+      "kracht"
+    ],
+    "description": "Engelwortel warmt en stimuleert — werkt op maag, darmen en luchtwegen. Traditioneel gebruikt als beschermend kruid en bij vermoeidheid.",
+    "dosage": "Tinctuur: 20-25 druppels voor de maaltijd, 3x daags. Thee: 1 tl wortel, 15 min koken.",
+    "notes": "",
+    "caution": "Verhoogt lichtgevoeligheid. Niet bij zwangerschap. Niet bij bloedverdunners.",
+    "category": "fysiek"
+  },
+  {
+    "id": 16,
+    "name": "Gember",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Gember",
+    "symptoms": [
+      "misselijkheid",
+      "reisziekte",
+      "spijsvertering",
+      "verkoudheid",
+      "spierpijn",
+      "gewrichten",
+      "bloedcirculatie"
+    ],
+    "spiritual": [
+      "vuur",
+      "wilskracht",
+      "bescherming",
+      "succes",
+      "energie"
+    ],
+    "description": "Gember is verwarmend, anti-misselijkheid en ontstekingsremmend. Een van de meest veelzijdige kruiden voor maag, circulatie en pijn.",
+    "dosage": "Thee: 1-2 tl vers geraspt op 250ml, 10 min. Tinctuur: 20-30 druppels. Vrij te doseren.",
+    "notes": "",
+    "caution": "Voorzichtig bij bloedverdunners en galstenen. Bij grote hoeveelheden maagirritatie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 17,
+    "name": "Goudsbloem",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Goudsbloem",
+    "symptoms": [
+      "huid",
+      "wonden",
+      "eczeem",
+      "schimmel",
+      "ontsteking",
+      "menstruatie",
+      "lymfe"
+    ],
+    "spiritual": [
+      "zonkracht",
+      "bescherming",
+      "heling",
+      "licht"
+    ],
+    "description": "Goudsbloem is hét huidkruid — antiseptisch, wondhelend en ontstekingsremmend. Uitstekend als olie of zalf voor alle huidklachten.",
+    "dosage": "Olie/zalf: uitwendig naar behoefte. Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Allergie mogelijk (compositenfamilie). Test altijd eerst op kleine huidplek.",
+    "category": "fysiek"
+  },
+  {
+    "id": 18,
+    "name": "Hazelnoot blad",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Hazelnoot blad",
+    "symptoms": [
+      "aders",
+      "spataderen",
+      "aambeien",
+      "bloedcirculatie",
+      "lever"
+    ],
+    "spiritual": [
+      "wijsheid",
+      "geluk",
+      "vruchtbaarheid",
+      "wensen"
+    ],
+    "description": "Hazelnootblad versterkt de aderwanden en verbetert de bloedcirculatie. Traditioneel bij spataderen en aambeien.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 2-3x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 19,
+    "name": "Heermoes",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Heermoes",
+    "symptoms": [
+      "botten",
+      "gewrichten",
+      "nieren",
+      "blaas",
+      "haaruitval",
+      "nagels",
+      "silica"
+    ],
+    "spiritual": [
+      "aarding",
+      "structuur",
+      "doorzettingsvermogen",
+      "verbinding aarde"
+    ],
+    "description": "Heermoes is extreem rijk aan kiezelzuur (silica) — ondersteunt botten, kraakbeen, haar en nagels. Sterk diuretisch.",
+    "dosage": "Thee: 2 tl op 250ml, 15 min koken (niet trekken!), 2x daags. Tinctuur: 25-35 druppels.",
+    "notes": "",
+    "caution": "Niet langdurig bij nierziekten. Niet bij hartproblemen zonder overleg (diuretisch).",
+    "category": "fysiek"
+  },
+  {
+    "id": 20,
+    "name": "Herderstasje",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Herderstasje",
+    "symptoms": [
+      "bloeding",
+      "menstruatie",
+      "baarmoeder",
+      "nieren",
+      "bloeddruk",
+      "wonden"
+    ],
+    "spiritual": [
+      "bescherming",
+      "thuisgevoel",
+      "moederenergie"
+    ],
+    "description": "Herderstasje is een krachtig bloedstelpend kruid — klassiek bij zware menstruatie, vleesbomen en wonden.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels 3x daags.",
+    "notes": "",
+    "caution": "Niet bij zwangerschap. Niet combineren met bloedverdunners.",
+    "category": "fysiek"
+  },
+  {
+    "id": 21,
+    "name": "Hibiscus",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Hibiscus",
+    "symptoms": [
+      "bloeddruk",
+      "cholesterol",
+      "nieren",
+      "blaas",
+      "vertering",
+      "koorts",
+      "antioxidant"
+    ],
+    "spiritual": [
+      "liefde",
+      "schoonheid",
+      "vrouwelijke kracht",
+      "passie"
+    ],
+    "description": "Hibiscus is rijkr aan antioxidanten en heeft een bewezen bloeddrukverlagend effect. Smakelijk en verfrissend als thee.",
+    "dosage": "Thee: 2 tl gedroogde bloemen op 250ml, 10 min koud of warm, 2x daags.",
+    "notes": "",
+    "caution": "Kan bloeddruk verlagen — voorzichtig bij bestaande medicatie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 22,
+    "name": "Honingklaver",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Honingklaver",
+    "symptoms": [
+      "aders",
+      "spataderen",
+      "trombose",
+      "lymfe",
+      "aambeien",
+      "oedeem",
+      "bloedcirculatie"
+    ],
+    "spiritual": [
+      "geluk",
+      "bescherming",
+      "zuivering",
+      "zoete energie"
+    ],
+    "description": "Honingklaver bevat coumarine en ondersteunt de bloedcirculatie en het lymfestelsel. Klassiek bij veneuze insufficiëntie.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 2x daags. Tinctuur: 20-30 druppels 2x daags.",
+    "notes": "",
+    "caution": "Niet bij bloedverdunners (coumarine-interactie). Niet bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 23,
+    "name": "Kamille",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Kamille",
+    "symptoms": [
+      "maagkramp",
+      "darmklachten",
+      "onrust",
+      "slaap",
+      "huid",
+      "eczeem",
+      "ontsteking",
+      "menstruatie"
+    ],
+    "spiritual": [
+      "bescherming kinderen",
+      "reinigend",
+      "zonnekracht",
+      "vrede",
+      "dromenwerk"
+    ],
+    "description": "Kamille is het universele kruidenthee-kruid — krampverlichtend, ontstekingsremmend, kalmerend. Zacht genoeg voor baby's, krachtig genoeg voor chronische klachten.",
+    "dosage": "Thee: 2 tl op 250ml, 5-10 min afgedekt trekken, 3x daags. Tinctuur: 15-25 druppels. Olie: uitwendig.",
+    "notes": "",
+    "caution": "Allergie mogelijk bij compositenfamilie. Zelden, maar test bij gevoeligheid.",
+    "category": "fysiek"
+  },
+  {
+    "id": 24,
+    "name": "Kattenkruid",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Kattenkruid",
+    "symptoms": [
+      "stress",
+      "angst",
+      "slaap",
+      "hoofdpijn",
+      "menstruatie",
+      "spijsvertering",
+      "koorts"
+    ],
+    "spiritual": [
+      "kattenenergie",
+      "speelsheid",
+      "liefde",
+      "aantreksracht"
+    ],
+    "description": "Kattenkruid (Nepeta cataria) is kalmerend en krampverlichtend. Vergelijkbaar met valeraan maar zachter. Traditioneel bij spanning en menstruatiepijn.",
+    "dosage": "Thee: 2 tl op 250ml, 5 min (niet langer — vluchtige oliën!), 2-3x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 25,
+    "name": "Kersensteeltjes",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Kersensteeltjes",
+    "symptoms": [
+      "nieren",
+      "blaas",
+      "blaasontsteking",
+      "urinezuur",
+      "vochtafdrijving",
+      "jicht"
+    ],
+    "spiritual": [
+      "zuivering",
+      "loslaten",
+      "reinigend"
+    ],
+    "description": "Kersensteeltjes zijn sterk diuretisch en urinezuurverlagend. Klassiek huismiddel bij blaasklachten en jicht.",
+    "dosage": "Thee: 1 el steeltjes op 500ml water, 15 min koken, verspreid over dag drinken.",
+    "notes": "",
+    "caution": "Niet bij nierziekten zonder overleg.",
+    "category": "fysiek"
+  },
+  {
+    "id": 26,
+    "name": "Kinabast",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Kinabast",
+    "symptoms": [
+      "koorts",
+      "malaria",
+      "griep",
+      "bitterheid",
+      "spijsvertering",
+      "eetlust"
+    ],
+    "spiritual": [
+      "kracht",
+      "doorzettingsvermogen",
+      "transformatie"
+    ],
+    "description": "Kinabast bevat kinine en is van origine het koortswerendste plantenmiddel. Sterk bitter — stimuleert lever en maag.",
+    "dosage": "Tinctuur: 10-15 druppels (bitter!), 2x daags voor maaltijd. Kleine dosering volstaat.",
+    "notes": "",
+    "caution": "Niet bij zwangerschap. Niet bij hartproblemen. Niet langdurig gebruiken zonder overleg.",
+    "category": "fysiek"
+  },
+  {
+    "id": 27,
+    "name": "Klaproos",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Klaproos",
+    "symptoms": [
+      "hoest",
+      "keelpijn",
+      "slaapproblemen",
+      "onrust",
+      "pijn",
+      "angst"
+    ],
+    "spiritual": [
+      "dromen",
+      "herinnering",
+      "troost",
+      "overgang"
+    ],
+    "description": "Klaproos (Papaver rhoeas, niet opium) is zacht kalmerend en slijmvliesverzachtend. Traditioneel bij hoest en als milde slaapondersteuning.",
+    "dosage": "Thee: 2 tl bloemblaadjes op 250ml, 10 min, voor het slapen. Olie: uitwendig verzachtend.",
+    "notes": "",
+    "caution": "Uitsluitend Papaver rhoeas (veldklaproos), niet Papaver somniferum.",
+    "category": "fysiek"
+  },
+  {
+    "id": 28,
+    "name": "Kleefkruid",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Kleefkruid",
+    "symptoms": [
+      "lymfe",
+      "lymfeklieren",
+      "huid",
+      "eczeem",
+      "nieren",
+      "detox",
+      "kanker preventie"
+    ],
+    "spiritual": [
+      "verbinding",
+      "vasthouden wat waardevol is",
+      "zuivering"
+    ],
+    "description": "Kleefkruid is het lymfekruid bij uitstek — activeert de lymfedrainage en ondersteunt de nieren. Het beste vers gebruikt.",
+    "dosage": "Vers sap: 1-3 el vers uitgeperst per dag. Tinctuur van vers kruid: 20-30 druppels 3x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 29,
+    "name": "Kliswortel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Kliswortel",
+    "symptoms": [
+      "huid",
+      "acne",
+      "eczeem",
+      "psoriasis",
+      "lever",
+      "bloed zuiveren",
+      "haaruitval",
+      "nieren"
+    ],
+    "spiritual": [
+      "bescherming",
+      "aarding",
+      "vastigheid",
+      "reinigend"
+    ],
+    "description": "Kliswortel is een van de krachtigste bloedzuiverende kruiden. Uitstekend bij chronische huidklachten, lever en als algemene detox.",
+    "dosage": "Tinctuur: 25-35 druppels 3x daags. Thee van wortel: 2 tl op 250ml, 15 min koken, 2x daags.",
+    "notes": "",
+    "caution": "Langzame werking — minstens 6-8 weken voor resultaat.",
+    "category": "fysiek"
+  },
+  {
+    "id": 30,
+    "name": "Korenbloem",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Korenbloem",
+    "symptoms": [
+      "ogen",
+      "conjunctivitis",
+      "hoest",
+      "koorts",
+      "maag",
+      "lever",
+      "huid"
+    ],
+    "spiritual": [
+      "bescherming",
+      "mannelijke energie",
+      "hemelsblauw",
+      "dromenwerk"
+    ],
+    "description": "Korenbloem werkt ontstekingsremmend — klassiek als oogwassing bij irritatie of conjunctivitis. Ook als lever- en maagkruid.",
+    "dosage": "Oogwassing: koele thee van 2 tl op 250ml, zeven en spoelen. Thee: 2 tl, 10 min, 2x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 31,
+    "name": "Kruizemunt",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Kruizemunt",
+    "symptoms": [
+      "spijsvertering",
+      "misselijkheid",
+      "maag",
+      "winderigheid",
+      "hoofdpijn",
+      "verkoeling",
+      "hoest"
+    ],
+    "spiritual": [
+      "reinigend",
+      "helderheid",
+      "bescherming",
+      "communicatie"
+    ],
+    "description": "Kruizemunt is iets milder dan pepermunt maar vergelijkbaar werkzaam — digestief, verkoelend en hoofdpijnverlichtend.",
+    "dosage": "Thee: 2 tl op 250ml, 5 min (geen langer), 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Niet bij zuigelingen direct insmeren met menthol. Niet bij reflux.",
+    "category": "fysiek"
+  },
+  {
+    "id": 32,
+    "name": "Lavendel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Lavendel",
+    "symptoms": [
+      "stress",
+      "angst",
+      "slaapproblemen",
+      "hoofdpijn",
+      "huidklachten",
+      "brandwonden",
+      "insecten"
+    ],
+    "spiritual": [
+      "zuivering",
+      "vrede",
+      "bescherming",
+      "liefde",
+      "heling"
+    ],
+    "description": "Lavendel is het universele kalmerende kruid — voor zenuwen, slaap en uitwendig voor huid en wonden. Zacht en veelzijdig.",
+    "dosage": "Thee: 1-2 tl bloemen op 200ml, 5 min, voor het slapen. Tinctuur: 20 druppels. Olie: uitwendig.",
+    "notes": "",
+    "caution": "Essentie nooit onverdund op huid. Tinctuur milde dosis voor kinderen.",
+    "category": "fysiek"
+  },
+  {
+    "id": 33,
+    "name": "Lindebloesem",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Lindebloesem",
+    "symptoms": [
+      "koorts",
+      "verkoudheid",
+      "griep",
+      "hoest",
+      "stress",
+      "hoofdpijn",
+      "bloeddruk"
+    ],
+    "spiritual": [
+      "liefde",
+      "bescherming",
+      "vrede",
+      "moederenergie",
+      "zachtheid"
+    ],
+    "description": "Lindebloesem is een klassiek koortswerende en kalmerend volksthee. Stimuleert zweten bij verkoudheid, kalmeert zenuwen.",
+    "dosage": "Thee: 2 tl bloemen op 250ml, 10 min afgedekt, zo heet mogelijk drinken. 3x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 34,
+    "name": "Madelief bloem",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Madelief bloem",
+    "symptoms": [
+      "hoest",
+      "bronchitis",
+      "huid",
+      "wonden",
+      "eczeem",
+      "spijsvertering",
+      "lever"
+    ],
+    "spiritual": [
+      "kinderziel",
+      "onschuld",
+      "liefde",
+      "zonnekracht"
+    ],
+    "description": "Madelief is mild slijmoplossend en wondhelend. Zacht genoeg voor kinderen. Uitwendig bij kleine wondjes en huidirritatie.",
+    "dosage": "Thee: 2 tl bloemen op 250ml, 10 min, 2-3x daags. Olie: uitwendig verzachtend.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 35,
+    "name": "Maretak",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Maretak",
+    "symptoms": [
+      "bloeddruk",
+      "hartkloppingen",
+      "kanker ondersteunend",
+      "immuunsysteem",
+      "duizeligheid",
+      "tumoren"
+    ],
+    "spiritual": [
+      "bescherming",
+      "vruchtbaarheid",
+      "healing",
+      "mystiek",
+      "druïden"
+    ],
+    "description": "Maretak verlaagt bloeddruk en wordt in de antroposofische geneeskunde gebruikt bij kankertherapie (Iscador). Immuunversterkend.",
+    "dosage": "Tinctuur: 10-15 druppels 2x daags — LAAG beginnen. Olie: uitwendig.",
+    "notes": "",
+    "caution": "GIFTIG in grote hoeveelheden — alleen bessen en stengels gedroogd/tinctuur. Nooit verse bessen eten. Overleg met arts bij kankertherapie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 36,
+    "name": "Mariadistel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Mariadistel",
+    "symptoms": [
+      "lever",
+      "gal",
+      "leverontsteking",
+      "alcohol schade",
+      "detox",
+      "galstenen",
+      "spijsvertering"
+    ],
+    "spiritual": [
+      "bescherming",
+      "moederkracht",
+      "transformatie",
+      "reinigend"
+    ],
+    "description": "Mariadistel (silymarine) is het krachtigste leverherstellende kruid — beschermt levercellen en stimuleert regeneratie.",
+    "dosage": "Tinctuur: 30-40 druppels 3x daags. Zaadpoeder: 1 tl in water of yoghurt, 3x daags.",
+    "notes": "",
+    "caution": "Kan milde maagklachten geven. Interactie met bepaalde medicijnen via lever — overleg bij medicijngebruik.",
+    "category": "fysiek"
+  },
+  {
+    "id": 37,
+    "name": "Meidoorn",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Meidoorn",
+    "symptoms": [
+      "hart",
+      "bloeddruk",
+      "hartkloppingen",
+      "angst",
+      "aders",
+      "cholesterol",
+      "slaap"
+    ],
+    "spiritual": [
+      "liefde",
+      "bescherming",
+      "verbinding hemel-aarde",
+      "magie"
+    ],
+    "description": "Meidoorn is het hartkruid — versterkt en reguleert het hart, verlaagt bloeddruk en kalmeert. Een van de veiligste hartkruiden.",
+    "dosage": "Thee: 2 tl bloemen/bessen op 250ml, 15 min, 2x daags. Tinctuur: 30-40 druppels 3x daags.",
+    "notes": "",
+    "caution": "Bij hartmedicatie overleg met arts. Langzame werking — minstens 6 weken.",
+    "category": "fysiek"
+  },
+  {
+    "id": 38,
+    "name": "Moeraspirea",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Moeraspirea",
+    "symptoms": [
+      "pijn",
+      "koorts",
+      "reuma",
+      "gewrichten",
+      "hoofdpijn",
+      "maagklachten",
+      "griep"
+    ],
+    "spiritual": [
+      "reinigend",
+      "loslaten",
+      "waterenergie",
+      "transformatie"
+    ],
+    "description": "Moeraspirea bevat salicylaten (verwant aan aspirine) — pijnstillend, koortswerende en ontstekingsremmend. Het 'kruidenaspirine'.",
+    "dosage": "Thee: 2 tl bloemen op 250ml, 10 min (niet koken!), 3x daags. Tinctuur: 25-35 druppels.",
+    "notes": "",
+    "caution": "Niet bij aspirine-allergie. Niet bij maagzweer. Niet bij kinderen onder 12 met koorts (Reye-syndroom risico).",
+    "category": "fysiek"
+  },
+  {
+    "id": 39,
+    "name": "Ogentroost",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Ogentroost",
+    "symptoms": [
+      "ogen",
+      "conjunctivitis",
+      "oogirritatie",
+      "hooikoorts",
+      "bijholten",
+      "hoest"
+    ],
+    "spiritual": [
+      "helderziendheid",
+      "innerlijk zien",
+      "waarheid"
+    ],
+    "description": "Ogentroost is hét oogkruid — verlichting bij rode, geïrriteerde of ontstoken ogen. Ook bij hooikoorts en sinusitis.",
+    "dosage": "Oogwassing: sterke thee (3 tl op 250ml), koud zeven, spoelen. Thee: 2 tl op 250ml, 2-3x daags. Tinctuur: 20 druppels.",
+    "notes": "",
+    "caution": "Oogwassing: steriel bereiden en altijd vers.",
+    "category": "fysiek"
+  },
+  {
+    "id": 40,
+    "name": "Paardenbloem      wortel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Paardenbloem",
+    "symptoms": [
+      "lever",
+      "gal",
+      "nieren",
+      "detox",
+      "eetlust",
+      "cholesterol",
+      "huid",
+      "spijsvertering"
+    ],
+    "spiritual": [
+      "doorzettingsvermogen",
+      "vrijheid",
+      "wensen",
+      "loslaten"
+    ],
+    "description": "Paardenbloemwortel is sterk cholagoog (galstimulerend) en diuretisch — een krachtig lente-detoxkruid voor lever en nieren.",
+    "dosage": "Tinctuur: 30-40 druppels voor maaltijd, 3x daags. Thee wortel: 2 tl, 15 min koken, 2x daags.",
+    "notes": "",
+    "caution": "Niet bij galwegobstructie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 41,
+    "name": "Paardenbloem pluis",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Paardenbloem",
+    "symptoms": [
+      "wensen",
+      "intenties",
+      "loslaten"
+    ],
+    "spiritual": [
+      "wensen",
+      "intentie zenden",
+      "loslaten",
+      "verbinding wind"
+    ],
+    "description": "Paardenbloempluis wordt spiritueel gebruikt — blazen op pluis als ritueel voor het uitzenden van wensen en intenties.",
+    "dosage": "Ritueel gebruik naar behoefte.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 42,
+    "name": "Passiebloemkruid",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Passiebloemkruid",
+    "symptoms": [
+      "angst",
+      "spanning",
+      "slaapproblemen",
+      "hartkloppingen",
+      "hoge bloeddruk",
+      "nervositeit",
+      "pijn"
+    ],
+    "spiritual": [
+      "vrede",
+      "overgave",
+      "spirituele bescherming",
+      "Christusbewustzijn"
+    ],
+    "description": "Passiebloemkruid is een van de krachtigste angst- en slaapkruiden — kalmeert het zenuwstelsel zonder sufheid. Uitstekend bij spanning-gerelateerde klachten.",
+    "dosage": "Tinctuur: 30-40 druppels voor bed of bij angst. Thee: 2 tl op 250ml, 10 min.",
+    "notes": "",
+    "caution": "Niet combineren met kalmerende medicatie zonder overleg.",
+    "category": "fysiek"
+  },
+  {
+    "id": 43,
+    "name": "Pepermunt",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Pepermunt",
+    "symptoms": [
+      "hoofdpijn",
+      "migraine",
+      "spijsvertering",
+      "misselijkheid",
+      "prikkelbaredarmsyndroom",
+      "koorts",
+      "verkoeling"
+    ],
+    "spiritual": [
+      "reinigend",
+      "helderheid",
+      "bescherming",
+      "communicatie",
+      "energie"
+    ],
+    "description": "Pepermunt is verkoelend, digestief en pijnverlichtend. Één van de meest gebruikte kruiden ter wereld.",
+    "dosage": "Thee: 2 tl op 250ml, 5 min (niet langer!), 3x daags. Tinctuur: 20-25 druppels. Olie verdund uitwendig op slapen.",
+    "notes": "",
+    "caution": "Niet bij zuigelingen en kleine kinderen. Niet bij reflux. Essentie nooit onverdund.",
+    "category": "fysiek"
+  },
+  {
+    "id": 44,
+    "name": "Rozemarijn",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Rozemarijn",
+    "symptoms": [
+      "geheugen",
+      "concentratie",
+      "hoofdpijn",
+      "haaruitval",
+      "bloedcirculatie",
+      "vermoeidheid",
+      "reuma"
+    ],
+    "spiritual": [
+      "geheugen",
+      "zuivering",
+      "bescherming",
+      "voorouderherinnering",
+      "helderzinnigheid"
+    ],
+    "description": "Rozemarijn stimuleert de bloedcirculatie naar hersenen en hoofdhuid — verbetert geheugen en helpt bij haaruitval. Uitwendig bij spierpijn.",
+    "dosage": "Thee: 1 tl op 200ml, 5 min, 2x daags. Tinctuur: 20-30 druppels. Haarwater: inrijgen, niet afspoelen.",
+    "notes": "",
+    "caution": "Grote hoeveelheden vermijden bij zwangerschap en epilepsie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 45,
+    "name": "Rozenbottel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Rozenbottel",
+    "symptoms": [
+      "vitamine C",
+      "immuunsysteem",
+      "verkoudheid",
+      "griep",
+      "vermoeidheid",
+      "gewrichten",
+      "nieren"
+    ],
+    "spiritual": [
+      "liefde",
+      "bescherming",
+      "vreugde",
+      "zachtheid"
+    ],
+    "description": "Rozenbottel is de rijkste plantaardige bron van vitamine C — tot 20x meer dan sinaasappel. Immunversterkend en antioxidatief.",
+    "dosage": "Thee: 2 tl op 250ml, 15 min weken in koud water of 10 min heet. 2-3x daags.",
+    "notes": "",
+    "caution": "Haartjes in rozenbottel verwijderen voor gebruik — irriteren het maagdarmkanaal.",
+    "category": "fysiek"
+  },
+  {
+    "id": 46,
+    "name": "Rozenknopjes",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Rozenknopjes",
+    "symptoms": [
+      "huid",
+      "stemming",
+      "menstruatie",
+      "hart",
+      "stress",
+      "antioxidant"
+    ],
+    "spiritual": [
+      "liefde",
+      "schoonheid",
+      "Venusenergie",
+      "vrouwelijke kracht",
+      "hart openen"
+    ],
+    "description": "Rozenknopjes zijn rijk aan antioxidanten en worden gebruikt bij huidverzorging, als stemmingverbeteraar en hartkruid.",
+    "dosage": "Thee: 1 tl op 200ml, 5-8 min, 2x daags. Olie: uitwendig voor huid en hart-chakra.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 47,
+    "name": "Salie",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Salie",
+    "symptoms": [
+      "keelontsteking",
+      "overgangsklachten",
+      "zweetaanvallen",
+      "tandvlees",
+      "spijsvertering",
+      "infectie",
+      "geheugen"
+    ],
+    "spiritual": [
+      "zuivering",
+      "wijsheid",
+      "bescherming",
+      "smudging",
+      "voorouderverbinding"
+    ],
+    "description": "Salie is antibacterieel, vermindert zweten en is een klassiek kruid bij keelklachten. Spiritueel als smudgekruid.",
+    "dosage": "Thee: 1 tl op 200ml, max 5 min, 2-3x daags. Gorgelen bij keelontsteking. Smudging naar behoefte.",
+    "notes": "",
+    "caution": "Niet langdurig in grote hoeveelheden bij zwangerschap of epilepsie. Bevat thujon.",
+    "category": "fysiek"
+  },
+  {
+    "id": 48,
+    "name": "Sint janskruid",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Sint janskruid",
+    "symptoms": [
+      "depressie",
+      "winterblues",
+      "zenuwpijn",
+      "spierpijn",
+      "brandwonden",
+      "angst",
+      "PMS"
+    ],
+    "spiritual": [
+      "zonnekracht",
+      "licht brengen",
+      "bescherming",
+      "vreugde",
+      "midzomerkracht"
+    ],
+    "description": "Sint-Janskruid is het antidepressivum uit de natuur — verhoogt serotonine en verlicht lichte tot matige depressie. Uitwendig pijnstillend.",
+    "dosage": "Tinctuur: 30-40 druppels 3x daags (minimaal 6 weken). Olie: uitwendig op pijnlijke plekken.",
+    "notes": "",
+    "caution": "INTERACTIES: vermindert werking anticonceptie, antidepressiva, HIV-medicatie, bloedverdunners. Verhoogt lichtgevoeligheid.",
+    "category": "fysiek"
+  },
+  {
+    "id": 49,
+    "name": "Smeerwortel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Smeerwortel",
+    "symptoms": [
+      "gewrichten",
+      "botbreuk",
+      "pezen",
+      "spierpijn",
+      "blauwe plekken",
+      "wonden",
+      "reuma"
+    ],
+    "spiritual": [
+      "heling",
+      "vastigheid",
+      "aarding",
+      "structuur"
+    ],
+    "description": "Smeerwortel (Symphytum) bevat allantoine en is krachtig wondhelend en bot-regenererend. Uitstekend als olie of zalf bij blessures.",
+    "dosage": "Olie/zalf: uitwendig 3-4x daags op de pijnlijke plek. Tinctuur: 20-30 druppels 3x daags (kortdurend).",
+    "notes": "",
+    "caution": "NIET op open wonden (geneest te snel dicht). Niet langdurig innemen — bevat pyrrolizidine-alkaloïden. Uitwendig vrijwel veilig.",
+    "category": "fysiek"
+  },
+  {
+    "id": 50,
+    "name": "Tijm",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "klein",
+    "ingredients": "Tijm",
+    "symptoms": [
+      "hoest",
+      "bronchitis",
+      "keelontsteking",
+      "luchtwegen",
+      "infectie",
+      "immuunsysteem",
+      "schimmel"
+    ],
+    "spiritual": [
+      "moed",
+      "reinigend",
+      "bescherming",
+      "heldenenergie"
+    ],
+    "description": "Tijm is een van de krachtigste antibacteriële kruiden — onmisbaar bij luchtwegklachten. Sterk antiseptisch en slijmoplossend.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min afgedekt, 3x daags. Tinctuur: 25-35 druppels. Glycerine: 20-30 druppels.",
+    "notes": "",
+    "caution": "Essentie nooit innemen. Grote hoeveelheden vermijden bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 51,
+    "name": "Vlierbessen",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Vlierbessen",
+    "symptoms": [
+      "griep",
+      "verkoudheid",
+      "immuunsysteem",
+      "koorts",
+      "antiviral",
+      "antioxidant",
+      "slijmvliezen"
+    ],
+    "spiritual": [
+      "bescherming",
+      "overgang",
+      "Holda",
+      "voorouderverbinding",
+      "dood en wedergeboorte"
+    ],
+    "description": "Vlierbes is krachtig antiviraal en immuunstimulerend — wetenschappelijk bewezen effectief bij influenza. Verkort ziekteduur.",
+    "dosage": "Tinctuur/stroop: 1 el 4x daags bij ziekte, 1x daags preventief. Glycerine: 30-40 druppels.",
+    "notes": "",
+    "caution": "Rauw eten maakt misselijk — altijd verhitten of als tinctuur. Niet bij auto-immuunziekten.",
+    "category": "fysiek"
+  },
+  {
+    "id": 52,
+    "name": "Vlierbloesem",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Vlierbloesem",
+    "symptoms": [
+      "koorts",
+      "verkoudheid",
+      "griep",
+      "slijmvliezen",
+      "allergie",
+      "huid",
+      "niercleanse"
+    ],
+    "spiritual": [
+      "overgang",
+      "Holda",
+      "vrouwelijke kracht",
+      "zuivering",
+      "zomerzonnewende"
+    ],
+    "description": "Vlierbloesem werkt zweet-opwekkend en slijmvliesverzachtend — klassiek bij verkoudheid en hooikoorts. Licht en fris van smaak.",
+    "dosage": "Thee: 2 tl bloemen op 250ml, 10 min afgedekt, zo heet mogelijk, 3x daags. Azijn: 1 el in water.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 53,
+    "name": "Vrouwenmantel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "middel",
+    "ingredients": "Vrouwenmantel",
+    "symptoms": [
+      "menstruatie",
+      "overgangsklachten",
+      "vruchtbaarheid",
+      "baarmoeder",
+      "bloeding",
+      "PMS",
+      "baarmoederverzakking"
+    ],
+    "spiritual": [
+      "vrouwelijke kracht",
+      "bescherming vrouwen",
+      "maanenergie",
+      "Onze Lieve Vrouwe"
+    ],
+    "description": "Vrouwenmantel is hét vrouwenkruid — reguleert de menstruatiecyclus, verlicht overgangsklachten en versterkt de baarmoeder.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 25-35 druppels 3x daags.",
+    "notes": "",
+    "caution": "Niet in eerste drie maanden zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 54,
+    "name": "Wilgenbast",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Wilgenbast",
+    "symptoms": [
+      "pijn",
+      "koorts",
+      "hoofdpijn",
+      "reuma",
+      "gewrichten",
+      "griep",
+      "ontsteking"
+    ],
+    "spiritual": [
+      "flexibiliteit",
+      "emotionele heling",
+      "loslaten",
+      "waterenergie",
+      "dromenwerk"
+    ],
+    "description": "Wilgenbast bevat salicine — de oorsprong van aspirine. Pijnstillend, koortswerende en ontstekingsremmend.",
+    "dosage": "Tinctuur: 30-40 druppels 3x daags. Thee: 2 tl bast op 250ml, 15 min koken, 3x daags. Olie: uitwendig.",
+    "notes": "",
+    "caution": "Niet bij aspirine-allergie. Niet bij kinderen met koorts.",
+    "category": "fysiek"
+  },
+  {
+    "id": 55,
+    "name": "Wilgenblad",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Wilgenblad",
+    "symptoms": [
+      "pijn",
+      "reuma",
+      "koorts",
+      "huid",
+      "eczeem",
+      "gewrichten"
+    ],
+    "spiritual": [
+      "flexibiliteit",
+      "loslaten",
+      "emotionele heling",
+      "waterenergie"
+    ],
+    "description": "Wilgenblad heeft vergelijkbare werking als wilgenbast maar milder. Goed in combinatie met bast.",
+    "dosage": "Thee: 2 tl blad op 250ml, 10 min, 2-3x daags.",
+    "notes": "",
+    "caution": "Niet bij aspirine-allergie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 56,
+    "name": "Zilverschoon",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Zilverschoon",
+    "symptoms": [
+      "menstruatie",
+      "krampen",
+      "diarree",
+      "maagklachten",
+      "baarmoeder",
+      "samentrekkend",
+      "huid"
+    ],
+    "spiritual": [
+      "zachtheid",
+      "vrouwelijke energie",
+      "bescherming",
+      "maan"
+    ],
+    "description": "Zilverschoon is samentrekkend en krampverlichtend — klassiek bij menstruatiekrampen en darmklachten. Vergelijkbaar met vrouwenmantel.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Niet bij zwangerschap in grote hoeveelheden.",
+    "category": "fysiek"
+  },
+  {
+    "id": 57,
+    "name": "Zoethout",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "groot",
+    "ingredients": "Zoethout",
+    "symptoms": [
+      "hoest",
+      "keelontsteking",
+      "maagzweer",
+      "spijsvertering",
+      "bijnieren",
+      "ontsteking",
+      "ademhaling"
+    ],
+    "spiritual": [
+      "zoete energie",
+      "harmonie",
+      "verbinding",
+      "vrouwelijk principe"
+    ],
+    "description": "Zoethout is een van de oudste geneeskruiden — verzacht slijmvliezen, is anti-inflammatoir en ondersteunt de bijnieren.",
+    "dosage": "Thee: 1 tl op 250ml, 10 min, max 2x daags. Tinctuur: 15-20 druppels (niet meer!).",
+    "notes": "",
+    "caution": "Niet langer dan 4-6 weken aaneengesloten. Niet bij hoge bloeddruk, nierproblemen of zwangerschap. Verhoogt bloeddruk bij overgebruik.",
+    "category": "fysiek"
+  },
+  {
+    "id": 58,
+    "name": "Anijszaad",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Anijszaad",
+    "symptoms": [
+      "opgeblazen gevoel",
+      "winderigheid",
+      "hoest",
+      "slijm",
+      "krampjes",
+      "slaap baby"
+    ],
+    "spiritual": [
+      "bescherming",
+      "dromenwerk",
+      "helderheid"
+    ],
+    "description": "Anijszaad is krampverlichtend en slijmoplossend. Klassiek middel bij baby-krampen en voor luchtwegklachten.",
+    "dosage": "Thee: 1 tl gekneusd zaad op 200ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Niet bij zwangerschap in grote hoeveelheden.",
+    "category": "fysiek"
+  },
+  {
+    "id": 59,
+    "name": "Appel",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Appel",
+    "symptoms": [
+      "diarree",
+      "darmbescherming",
+      "pectine",
+      "cholesterol",
+      "detox"
+    ],
+    "spiritual": [
+      "gezondheid",
+      "vitaliteit",
+      "kennis"
+    ],
+    "description": "Gedroogde appel is rijk aan pectine en ondersteunt de darmflora. Goed in kruidenthee-mengsels.",
+    "dosage": "Als thee-ingrediënt meekoken of weken. Vrij te gebruiken.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 60,
+    "name": "Bijvoet",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Bijvoet",
+    "symptoms": [
+      "menstruatieklachten",
+      "cyclus onregelmatig",
+      "dromen",
+      "vermoeidheid",
+      "spijsvertering",
+      "reisziekte"
+    ],
+    "spiritual": [
+      "dromenwerk",
+      "waarzeggerij",
+      "maanverbinding",
+      "vrouwelijke kracht",
+      "vooroudercontact",
+      "bescherming op reis"
+    ],
+    "description": "Bijvoet is het kruid van de volle maan en de reiziger. Stimuleert de cyclus, bevordert levendige dromen en versterkt de intuïtie.",
+    "dosage": "Thee: 1 tl op 200ml, niet langer dan 5 min trekken, 1-2x daags. Tinctuur: 20-30 druppels in water, 2x daags. Smudging: bundel branden naar behoefte.",
+    "notes": "",
+    "caution": "NIET tijdens zwangerschap — stimuleert baarmoedersamentrekkingen. Niet langdurig innemen.",
+    "category": "spiritueel"
+  },
+  {
+    "id": 61,
+    "name": "Cistus incana",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Cistus incana",
+    "symptoms": [
+      "immuunsysteem",
+      "virussen",
+      "teken",
+      "lyme",
+      "antioxidant",
+      "huid",
+      "slijmvliezen"
+    ],
+    "spiritual": [
+      "bescherming",
+      "zuivering",
+      "licht",
+      "zonkracht"
+    ],
+    "description": "Cistus incana is een krachtig antiviraal en antioxidatief kruid — populair bij Lyme-ondersteuning en als immunbooster.",
+    "dosage": "Tinctuur: 20-30 druppels 3x daags. Thee: 2 tl op 250ml, 10 min, 3x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 62,
+    "name": "Citroengras",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Citroengras",
+    "symptoms": [
+      "koorts",
+      "infectie",
+      "spierpijn",
+      "gewrichten",
+      "spijsvertering",
+      "stress"
+    ],
+    "spiritual": [
+      "zuivering",
+      "helderheid",
+      "positieve energie",
+      "aardend"
+    ],
+    "description": "Citroengras heeft antibacteriële en koortswerende werking. Ontspannend voor spieren en ondersteunend bij infecties.",
+    "dosage": "Thee: 1-2 stengels of 2 tl gedroogd op 250ml, 10 min, 2-3x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 63,
+    "name": "Citroenmelisse",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Citroenmelisse",
+    "symptoms": [
+      "stress",
+      "angst",
+      "onrust",
+      "slaapproblemen",
+      "herpes",
+      "spijsvertering",
+      "krampen"
+    ],
+    "spiritual": [
+      "vrede",
+      "liefde",
+      "heling",
+      "maanenergie",
+      "licht"
+    ],
+    "description": "Citroenmelisse is een van de zachtste en veelzijdigste zenuwkruiden. Kalmerend, antiviraal bij herpes en ondersteuning bij de spijsvertering.",
+    "dosage": "Thee: 2 tl vers of 1 tl gedroogd op 200ml, 5 min, 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Kan schildkliermedicatie beïnvloeden. Bij schildklierproblematiek overleggen.",
+    "category": "fysiek"
+  },
+  {
+    "id": 64,
+    "name": "Combi Vlierbes, vlierbloesem ma Linde, 1000 blad",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Combi Vlierbes, vlierbloesem ma Linde, 1000 blad",
+    "symptoms": [
+      "griep",
+      "verkoudheid",
+      "immuunsysteem",
+      "koorts",
+      "luchtwegen",
+      "antiviral"
+    ],
+    "spiritual": [
+      "bescherming",
+      "overgang",
+      "Holda",
+      "voorouderverbinding"
+    ],
+    "description": "Combinatietincture van vlierbes, vlierbloesem, linde en duizendblad — krachtige griepformule die het immuunsysteem activeert en koorts begeleidt.",
+    "dosage": "20-30 druppels in warm water, 4x daags bij ziekte. 15 druppels 1x daags preventief.",
+    "notes": "",
+    "caution": "Zie individuele kruiden. Niet bij auto-immuunziekten.",
+    "category": "fysiek"
+  },
+  {
+    "id": 65,
+    "name": "Den",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Den",
+    "symptoms": [
+      "luchtwegen",
+      "hoest",
+      "bronchitis",
+      "spierpijn",
+      "gewrichten",
+      "vermoeidheid",
+      "sinussen"
+    ],
+    "spiritual": [
+      "reinigend",
+      "bescherming",
+      "aarding",
+      "kracht van het noorden"
+    ],
+    "description": "Dennennaalden en -hars zijn sterk antiseptisch en slijmoplossend. Uitstekend als inhalatie, bad of tinctuur bij luchtwegklachten.",
+    "dosage": "Thee: 1 el verse naalden op 250ml, 10 min trekken. Tinctuur: 20-30 druppels 3x daags.",
+    "notes": "",
+    "caution": "Niet bij nierziekten in grote hoeveelheden. Essentie nooit inwendig.",
+    "category": "fysiek"
+  },
+  {
+    "id": 66,
+    "name": "Driekleurig viooltje",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Driekleurig viooltje",
+    "symptoms": [
+      "huidklachten",
+      "eczeem",
+      "acne",
+      "psoriasis",
+      "borst",
+      "slijmoplossend",
+      "reuma"
+    ],
+    "spiritual": [
+      "liefde",
+      "geheugen",
+      "dromenwerk",
+      "zachtheid"
+    ],
+    "description": "Driekleurig viooltje is een van de oudste huidkruiden. Zuivert het bloed en werkt ontstekingsremmend bij chronische huidproblemen.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels 3x daags.",
+    "notes": "",
+    "caution": "Langdurig gebruik bij kinderen onder 2 jaar vermijden.",
+    "category": "fysiek"
+  },
+  {
+    "id": 67,
+    "name": "Duivelsklauw",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Duivelsklauw",
+    "symptoms": [
+      "gewrichtspijn",
+      "reuma",
+      "artrose",
+      "rugpijn",
+      "spierpijn",
+      "ontstekingen",
+      "pijnstilling"
+    ],
+    "spiritual": [
+      "kracht",
+      "doorzettingsvermogen",
+      "gronden"
+    ],
+    "description": "Duivelsklauw is een van de krachtigste pijnstillende kruiden bij gewrichts- en spierpijn. Werkt ontstekingsremmend vergelijkbaar met NSAID's.",
+    "dosage": "Tinctuur: 30-40 druppels 3x daags bij maaltijd. Olie: insmeren op pijnlijke plekken.",
+    "notes": "",
+    "caution": "Niet bij maagzweer of gastritis. Niet combineren met bloedverdunners zonder overleg. Niet bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 68,
+    "name": "Duizendblad",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Duizendblad",
+    "symptoms": [
+      "wonden",
+      "bloedingen",
+      "menstruatie",
+      "koorts",
+      "reuma",
+      "nieren",
+      "huid"
+    ],
+    "spiritual": [
+      "bescherming",
+      "moed",
+      "grenswerk",
+      "liefde",
+      "helderziendheid"
+    ],
+    "description": "Duizendblad is het klassieke wondkruid — stelt bloedingen, reinigt wonden en werkt koortswerende. Ook bij menstruatieklachten.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels. Vers blad op wond.",
+    "notes": "",
+    "caution": "Kan allergische reactie geven (compositenfamilie). Niet bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 69,
+    "name": "Engelwortel",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Engelwortel",
+    "symptoms": [
+      "spijsvertering",
+      "maag",
+      "eetlust",
+      "luchtwegen",
+      "hoest",
+      "vermoeidheid",
+      "krampen"
+    ],
+    "spiritual": [
+      "engelverbinding",
+      "bescherming",
+      "zuivering",
+      "kracht"
+    ],
+    "description": "Engelwortel warmt en stimuleert — werkt op maag, darmen en luchtwegen. Traditioneel gebruikt als beschermend kruid en bij vermoeidheid.",
+    "dosage": "Tinctuur: 20-25 druppels voor de maaltijd, 3x daags. Thee: 1 tl wortel, 15 min koken.",
+    "notes": "",
+    "caution": "Verhoogt lichtgevoeligheid. Niet bij zwangerschap. Niet bij bloedverdunners.",
+    "category": "fysiek"
+  },
+  {
+    "id": 70,
+    "name": "Gember",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Gember",
+    "symptoms": [
+      "misselijkheid",
+      "reisziekte",
+      "spijsvertering",
+      "verkoudheid",
+      "spierpijn",
+      "gewrichten",
+      "bloedcirculatie"
+    ],
+    "spiritual": [
+      "vuur",
+      "wilskracht",
+      "bescherming",
+      "succes",
+      "energie"
+    ],
+    "description": "Gember is verwarmend, anti-misselijkheid en ontstekingsremmend. Een van de meest veelzijdige kruiden voor maag, circulatie en pijn.",
+    "dosage": "Thee: 1-2 tl vers geraspt op 250ml, 10 min. Tinctuur: 20-30 druppels. Vrij te doseren.",
+    "notes": "",
+    "caution": "Voorzichtig bij bloedverdunners en galstenen. Bij grote hoeveelheden maagirritatie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 71,
+    "name": "Heermoes",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Heermoes",
+    "symptoms": [
+      "botten",
+      "gewrichten",
+      "nieren",
+      "blaas",
+      "haaruitval",
+      "nagels",
+      "silica"
+    ],
+    "spiritual": [
+      "aarding",
+      "structuur",
+      "doorzettingsvermogen",
+      "verbinding aarde"
+    ],
+    "description": "Heermoes is extreem rijk aan kiezelzuur (silica) — ondersteunt botten, kraakbeen, haar en nagels. Sterk diuretisch.",
+    "dosage": "Thee: 2 tl op 250ml, 15 min koken (niet trekken!), 2x daags. Tinctuur: 25-35 druppels.",
+    "notes": "",
+    "caution": "Niet langdurig bij nierziekten. Niet bij hartproblemen zonder overleg (diuretisch).",
+    "category": "fysiek"
+  },
+  {
+    "id": 72,
+    "name": "Honingklaver",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Honingklaver",
+    "symptoms": [
+      "aders",
+      "spataderen",
+      "trombose",
+      "lymfe",
+      "aambeien",
+      "oedeem",
+      "bloedcirculatie"
+    ],
+    "spiritual": [
+      "geluk",
+      "bescherming",
+      "zuivering",
+      "zoete energie"
+    ],
+    "description": "Honingklaver bevat coumarine en ondersteunt de bloedcirculatie en het lymfestelsel. Klassiek bij veneuze insufficiëntie.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 2x daags. Tinctuur: 20-30 druppels 2x daags.",
+    "notes": "",
+    "caution": "Niet bij bloedverdunners (coumarine-interactie). Niet bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 73,
+    "name": "Kamille",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Kamille",
+    "symptoms": [
+      "maagkramp",
+      "darmklachten",
+      "onrust",
+      "slaap",
+      "huid",
+      "eczeem",
+      "ontsteking",
+      "menstruatie"
+    ],
+    "spiritual": [
+      "bescherming kinderen",
+      "reinigend",
+      "zonnekracht",
+      "vrede",
+      "dromenwerk"
+    ],
+    "description": "Kamille is het universele kruidenthee-kruid — krampverlichtend, ontstekingsremmend, kalmerend. Zacht genoeg voor baby's, krachtig genoeg voor chronische klachten.",
+    "dosage": "Thee: 2 tl op 250ml, 5-10 min afgedekt trekken, 3x daags. Tinctuur: 15-25 druppels. Olie: uitwendig.",
+    "notes": "",
+    "caution": "Allergie mogelijk bij compositenfamilie. Zelden, maar test bij gevoeligheid.",
+    "category": "fysiek"
+  },
+  {
+    "id": 74,
+    "name": "Kaneel",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Kaneel",
+    "symptoms": [
+      "bloedsuiker",
+      "spijsvertering",
+      "verkoudheid",
+      "anti-microbieel",
+      "warmte",
+      "luchtwegen"
+    ],
+    "spiritual": [
+      "vuur",
+      "wilskracht",
+      "bescherming",
+      "overvloed"
+    ],
+    "description": "Kaneelglycerinetincture — verwarmend, bloedsuikerbalancerend en antimicrobieel. Zoet van smaak, goed voor kinderen.",
+    "dosage": "20-30 druppels in warm water, 2-3x daags.",
+    "notes": "",
+    "caution": "Niet bij leveraandoeningen in grote hoeveelheden (cassia-kaneel). Ceylon-kaneel veiliger.",
+    "category": "fysiek"
+  },
+  {
+    "id": 75,
+    "name": "Kattenkruid",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Kattenkruid",
+    "symptoms": [
+      "stress",
+      "angst",
+      "slaap",
+      "hoofdpijn",
+      "menstruatie",
+      "spijsvertering",
+      "koorts"
+    ],
+    "spiritual": [
+      "kattenenergie",
+      "speelsheid",
+      "liefde",
+      "aantreksracht"
+    ],
+    "description": "Kattenkruid (Nepeta cataria) is kalmerend en krampverlichtend. Vergelijkbaar met valeraan maar zachter. Traditioneel bij spanning en menstruatiepijn.",
+    "dosage": "Thee: 2 tl op 250ml, 5 min (niet langer — vluchtige oliën!), 2-3x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 76,
+    "name": "Kliswortel",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Kliswortel",
+    "symptoms": [
+      "huid",
+      "acne",
+      "eczeem",
+      "psoriasis",
+      "lever",
+      "bloed zuiveren",
+      "haaruitval",
+      "nieren"
+    ],
+    "spiritual": [
+      "bescherming",
+      "aarding",
+      "vastigheid",
+      "reinigend"
+    ],
+    "description": "Kliswortel is een van de krachtigste bloedzuiverende kruiden. Uitstekend bij chronische huidklachten, lever en als algemene detox.",
+    "dosage": "Tinctuur: 25-35 druppels 3x daags. Thee van wortel: 2 tl op 250ml, 15 min koken, 2x daags.",
+    "notes": "",
+    "caution": "Langzame werking — minstens 6-8 weken voor resultaat.",
+    "category": "fysiek"
+  },
+  {
+    "id": 77,
+    "name": "Kruizemunt",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Kruizemunt",
+    "symptoms": [
+      "spijsvertering",
+      "misselijkheid",
+      "maag",
+      "winderigheid",
+      "hoofdpijn",
+      "verkoeling",
+      "hoest"
+    ],
+    "spiritual": [
+      "reinigend",
+      "helderheid",
+      "bescherming",
+      "communicatie"
+    ],
+    "description": "Kruizemunt is iets milder dan pepermunt maar vergelijkbaar werkzaam — digestief, verkoelend en hoofdpijnverlichtend.",
+    "dosage": "Thee: 2 tl op 250ml, 5 min (geen langer), 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Niet bij zuigelingen direct insmeren met menthol. Niet bij reflux.",
+    "category": "fysiek"
+  },
+  {
+    "id": 78,
+    "name": "Kurkuma",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Kurkuma",
+    "symptoms": [
+      "ontstekingen",
+      "gewrichten",
+      "lever",
+      "spijsvertering",
+      "immuunsysteem",
+      "cholesterol",
+      "depressie"
+    ],
+    "spiritual": [
+      "reinigend",
+      "zonnekracht",
+      "bescherming",
+      "transformatie"
+    ],
+    "description": "Kurkuma bevat curcumine — een van de krachtigste ontstekingsremmers in de plantenwereld. Ondersteunt lever, gewrichten en immuunsysteem.",
+    "dosage": "Tinctuur: 20-30 druppels 3x daags bij maaltijd. Altijd met zwarte peper combineren voor opname.",
+    "notes": "",
+    "caution": "Voorzichtig bij galstenen. Kan bloedverdunning versterken. Bij zwangerschap grote hoeveelheden vermijden.",
+    "category": "fysiek"
+  },
+  {
+    "id": 79,
+    "name": "Lavendel",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Lavendel",
+    "symptoms": [
+      "stress",
+      "angst",
+      "slaapproblemen",
+      "hoofdpijn",
+      "huidklachten",
+      "brandwonden",
+      "insecten"
+    ],
+    "spiritual": [
+      "zuivering",
+      "vrede",
+      "bescherming",
+      "liefde",
+      "heling"
+    ],
+    "description": "Lavendel is het universele kalmerende kruid — voor zenuwen, slaap en uitwendig voor huid en wonden. Zacht en veelzijdig.",
+    "dosage": "Thee: 1-2 tl bloemen op 200ml, 5 min, voor het slapen. Tinctuur: 20 druppels. Olie: uitwendig.",
+    "notes": "",
+    "caution": "Essentie nooit onverdund op huid. Tinctuur milde dosis voor kinderen.",
+    "category": "fysiek"
+  },
+  {
+    "id": 80,
+    "name": "Maretak",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Maretak",
+    "symptoms": [
+      "bloeddruk",
+      "hartkloppingen",
+      "kanker ondersteunend",
+      "immuunsysteem",
+      "duizeligheid",
+      "tumoren"
+    ],
+    "spiritual": [
+      "bescherming",
+      "vruchtbaarheid",
+      "healing",
+      "mystiek",
+      "druïden"
+    ],
+    "description": "Maretak verlaagt bloeddruk en wordt in de antroposofische geneeskunde gebruikt bij kankertherapie (Iscador). Immuunversterkend.",
+    "dosage": "Tinctuur: 10-15 druppels 2x daags — LAAG beginnen. Olie: uitwendig.",
+    "notes": "",
+    "caution": "GIFTIG in grote hoeveelheden — alleen bessen en stengels gedroogd/tinctuur. Nooit verse bessen eten. Overleg met arts bij kankertherapie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 81,
+    "name": "Meidoorn",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Meidoorn",
+    "symptoms": [
+      "hart",
+      "bloeddruk",
+      "hartkloppingen",
+      "angst",
+      "aders",
+      "cholesterol",
+      "slaap"
+    ],
+    "spiritual": [
+      "liefde",
+      "bescherming",
+      "verbinding hemel-aarde",
+      "magie"
+    ],
+    "description": "Meidoorn is het hartkruid — versterkt en reguleert het hart, verlaagt bloeddruk en kalmeert. Een van de veiligste hartkruiden.",
+    "dosage": "Thee: 2 tl bloemen/bessen op 250ml, 15 min, 2x daags. Tinctuur: 30-40 druppels 3x daags.",
+    "notes": "",
+    "caution": "Bij hartmedicatie overleg met arts. Langzame werking — minstens 6 weken.",
+    "category": "fysiek"
+  },
+  {
+    "id": 82,
+    "name": "Moeraspirea",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Moeraspirea",
+    "symptoms": [
+      "pijn",
+      "koorts",
+      "reuma",
+      "gewrichten",
+      "hoofdpijn",
+      "maagklachten",
+      "griep"
+    ],
+    "spiritual": [
+      "reinigend",
+      "loslaten",
+      "waterenergie",
+      "transformatie"
+    ],
+    "description": "Moeraspirea bevat salicylaten (verwant aan aspirine) — pijnstillend, koortswerende en ontstekingsremmend. Het 'kruidenaspirine'.",
+    "dosage": "Thee: 2 tl bloemen op 250ml, 10 min (niet koken!), 3x daags. Tinctuur: 25-35 druppels.",
+    "notes": "",
+    "caution": "Niet bij aspirine-allergie. Niet bij maagzweer. Niet bij kinderen onder 12 met koorts (Reye-syndroom risico).",
+    "category": "fysiek"
+  },
+  {
+    "id": 83,
+    "name": "Paardenbloem",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Paardenbloem",
+    "symptoms": [
+      "lever",
+      "gal",
+      "nieren",
+      "detox",
+      "eetlust",
+      "cholesterol",
+      "huid",
+      "spijsvertering"
+    ],
+    "spiritual": [
+      "doorzettingsvermogen",
+      "vrijheid",
+      "wensen",
+      "loslaten"
+    ],
+    "description": "Paardenbloemwortel is sterk cholagoog (galstimulerend) en diuretisch — een krachtig lente-detoxkruid voor lever en nieren.",
+    "dosage": "Tinctuur: 30-40 druppels voor maaltijd, 3x daags. Thee wortel: 2 tl, 15 min koken, 2x daags.",
+    "notes": "",
+    "caution": "Niet bij galwegobstructie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 84,
+    "name": "Passiebloemkruid",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Passiebloemkruid",
+    "symptoms": [
+      "angst",
+      "spanning",
+      "slaapproblemen",
+      "hartkloppingen",
+      "hoge bloeddruk",
+      "nervositeit",
+      "pijn"
+    ],
+    "spiritual": [
+      "vrede",
+      "overgave",
+      "spirituele bescherming",
+      "Christusbewustzijn"
+    ],
+    "description": "Passiebloemkruid is een van de krachtigste angst- en slaapkruiden — kalmeert het zenuwstelsel zonder sufheid. Uitstekend bij spanning-gerelateerde klachten.",
+    "dosage": "Tinctuur: 30-40 druppels voor bed of bij angst. Thee: 2 tl op 250ml, 10 min.",
+    "notes": "",
+    "caution": "Niet combineren met kalmerende medicatie zonder overleg.",
+    "category": "fysiek"
+  },
+  {
+    "id": 85,
+    "name": "Rode zonnehoed",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Rode zonnehoed",
+    "symptoms": [
+      "immuunsysteem",
+      "verkoudheid",
+      "griep",
+      "infectie",
+      "wonden",
+      "lymfe",
+      "vermoeidheid"
+    ],
+    "spiritual": [
+      "kracht",
+      "bescherming",
+      "inheemse wijsheid",
+      "heldenenergie"
+    ],
+    "description": "Rode zonnehoed (Echinacea) is het bekendste immunversterkende kruid — verhoogt weerstand en verkort ziekteduur.",
+    "dosage": "Tinctuur: 30-40 druppels 3-4x daags bij ziekte. NIET langer dan 8 weken aaneengesloten.",
+    "notes": "",
+    "caution": "Niet bij auto-immuunziekten. Pauze nemen na 8 weken gebruik.",
+    "category": "fysiek"
+  },
+  {
+    "id": 86,
+    "name": "Roos",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Roos",
+    "symptoms": [
+      "hart",
+      "stemming",
+      "huid",
+      "menstruatie",
+      "keel",
+      "stress",
+      "antioxidant"
+    ],
+    "spiritual": [
+      "liefde",
+      "hart openen",
+      "Venusenergie",
+      "schoonheid",
+      "zachtheid",
+      "troost"
+    ],
+    "description": "Roostincture van bloemblaadjes — versterkend voor het hart op alle niveaus, huidverzorgend en emotioneel balancerend.",
+    "dosage": "Tinctuur: 20-30 druppels 2-3x daags. Thee: 2 tl bloemblaadjes op 200ml, 5 min.",
+    "notes": "",
+    "caution": "",
+    "category": "spiritueel"
+  },
+  {
+    "id": 87,
+    "name": "Rozemarijn",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Rozemarijn",
+    "symptoms": [
+      "geheugen",
+      "concentratie",
+      "hoofdpijn",
+      "haaruitval",
+      "bloedcirculatie",
+      "vermoeidheid",
+      "reuma"
+    ],
+    "spiritual": [
+      "geheugen",
+      "zuivering",
+      "bescherming",
+      "voorouderherinnering",
+      "helderzinnigheid"
+    ],
+    "description": "Rozemarijn stimuleert de bloedcirculatie naar hersenen en hoofdhuid — verbetert geheugen en helpt bij haaruitval. Uitwendig bij spierpijn.",
+    "dosage": "Thee: 1 tl op 200ml, 5 min, 2x daags. Tinctuur: 20-30 druppels. Haarwater: inrijgen, niet afspoelen.",
+    "notes": "",
+    "caution": "Grote hoeveelheden vermijden bij zwangerschap en epilepsie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 88,
+    "name": "Rozenbottel",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Rozenbottel",
+    "symptoms": [
+      "vitamine C",
+      "immuunsysteem",
+      "verkoudheid",
+      "griep",
+      "vermoeidheid",
+      "gewrichten",
+      "nieren"
+    ],
+    "spiritual": [
+      "liefde",
+      "bescherming",
+      "vreugde",
+      "zachtheid"
+    ],
+    "description": "Rozenbottel is de rijkste plantaardige bron van vitamine C — tot 20x meer dan sinaasappel. Immunversterkend en antioxidatief.",
+    "dosage": "Thee: 2 tl op 250ml, 15 min weken in koud water of 10 min heet. 2-3x daags.",
+    "notes": "",
+    "caution": "Haartjes in rozenbottel verwijderen voor gebruik — irriteren het maagdarmkanaal.",
+    "category": "fysiek"
+  },
+  {
+    "id": 89,
+    "name": "sarsaparilla",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "sarsaparilla",
+    "symptoms": [
+      "reuma",
+      "huid",
+      "eczeem",
+      "psoriasis",
+      "bloedsuiker",
+      "hormonen",
+      "detox",
+      "libido"
+    ],
+    "spiritual": [
+      "aarding",
+      "mannelijke kracht",
+      "vitaliteit",
+      "transformatie"
+    ],
+    "description": "Sarsaparilla is een klassiek bloedzuiverend en hormonaal balancerend kruid — traditioneel bij huidklachten en reuma.",
+    "dosage": "Tinctuur: 25-35 druppels 3x daags. Langzame werking — 4-8 weken.",
+    "notes": "",
+    "caution": "Kan interactie geven met digitalis en lithium.",
+    "category": "fysiek"
+  },
+  {
+    "id": 90,
+    "name": "Smalle weegbree",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Smalle weegbree",
+    "symptoms": [
+      "hoest",
+      "bronchitis",
+      "slijmvliezen",
+      "wonden",
+      "eczeem",
+      "insectenbeten",
+      "blaas"
+    ],
+    "spiritual": [
+      "reizigerskruid",
+      "bescherming",
+      "heling",
+      "aarding"
+    ],
+    "description": "Smalle weegbree is een universeel huid- en luchtwegkruid — slijmoplossend bij hoest, wondhelend uitwendig.",
+    "dosage": "Tinctuur: 25-35 druppels 3x daags. Thee: 2 tl op 250ml, 10 min. Vers blad op wond.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 91,
+    "name": "Smeerwortel",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Smeerwortel",
+    "symptoms": [
+      "gewrichten",
+      "botbreuk",
+      "pezen",
+      "spierpijn",
+      "blauwe plekken",
+      "wonden",
+      "reuma"
+    ],
+    "spiritual": [
+      "heling",
+      "vastigheid",
+      "aarding",
+      "structuur"
+    ],
+    "description": "Smeerwortel (Symphytum) bevat allantoine en is krachtig wondhelend en bot-regenererend. Uitstekend als olie of zalf bij blessures.",
+    "dosage": "Olie/zalf: uitwendig 3-4x daags op de pijnlijke plek. Tinctuur: 20-30 druppels 3x daags (kortdurend).",
+    "notes": "",
+    "caution": "NIET op open wonden (geneest te snel dicht). Niet langdurig innemen — bevat pyrrolizidine-alkaloïden. Uitwendig vrijwel veilig.",
+    "category": "fysiek"
+  },
+  {
+    "id": 92,
+    "name": "Stinkende gouwe",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Stinkende gouwe",
+    "symptoms": [
+      "wratten",
+      "eczeem",
+      "psoriasis",
+      "lever",
+      "gal",
+      "ogen"
+    ],
+    "spiritual": [
+      "transformatie",
+      "bescherming",
+      "loslaten",
+      "onzichtbaarheid"
+    ],
+    "description": "Stinkende gouwe heeft sterk celremmende werking — het gele sap wordt uitwendig op wratten gebruikt. Inwendig bij lever en gal.",
+    "dosage": "Tinctuur: 5-10 druppels (!) 3x daags — LAAG DOSEREN. Uitwendig sap direct op wratten.",
+    "notes": "",
+    "caution": "GIFTIG bij overdosis — nooit meer dan 10 druppels per keer. Niet bij leverziekte. Niet bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 93,
+    "name": "Tijm",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Tijm",
+    "symptoms": [
+      "hoest",
+      "bronchitis",
+      "keelontsteking",
+      "luchtwegen",
+      "infectie",
+      "immuunsysteem",
+      "schimmel"
+    ],
+    "spiritual": [
+      "moed",
+      "reinigend",
+      "bescherming",
+      "heldenenergie"
+    ],
+    "description": "Tijm is een van de krachtigste antibacteriële kruiden — onmisbaar bij luchtwegklachten. Sterk antiseptisch en slijmoplossend.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min afgedekt, 3x daags. Tinctuur: 25-35 druppels. Glycerine: 20-30 druppels.",
+    "notes": "",
+    "caution": "Essentie nooit innemen. Grote hoeveelheden vermijden bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 94,
+    "name": "Vanille",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Vanille",
+    "symptoms": [
+      "stemming",
+      "energie",
+      "spijsvertering"
+    ],
+    "spiritual": [
+      "liefde",
+      "troost",
+      "warmte",
+      "sensualiteit"
+    ],
+    "description": "Vanilletincture op rumbasis — aromatisch en troostend. Traditioneel ingrediënt in kruidenlikeur en stemmingsondersteuning.",
+    "dosage": "10-20 druppels in drank of thee. Smaakmaker in combinaties.",
+    "notes": "",
+    "caution": "Alcoholbasis — niet voor kinderen.",
+    "category": "fysiek"
+  },
+  {
+    "id": 95,
+    "name": "Vlier zwarte",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Vlier zwarte",
+    "symptoms": [
+      "immuunsysteem",
+      "griep",
+      "verkoudheid",
+      "antiviral",
+      "antioxidant",
+      "gewrichten"
+    ],
+    "spiritual": [
+      "bescherming",
+      "overgang",
+      "Holda",
+      "dood en wedergeboorte"
+    ],
+    "description": "Zwarte vlier (Sambucus nigra) — bessen en bloesem samen. Krachtig antiviraal en immunversterkend.",
+    "dosage": "Tinctuur: 25-35 druppels 3-4x daags bij ziekte.",
+    "notes": "",
+    "caution": "Rauwe bessen zijn giftig — altijd verwerkt gebruiken.",
+    "category": "fysiek"
+  },
+  {
+    "id": 96,
+    "name": "Vlierbes",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Vlierbes",
+    "symptoms": [
+      "griep",
+      "verkoudheid",
+      "immuunsysteem",
+      "koorts",
+      "antiviral",
+      "antioxidant",
+      "slijmvliezen"
+    ],
+    "spiritual": [
+      "bescherming",
+      "overgang",
+      "Holda",
+      "voorouderverbinding",
+      "dood en wedergeboorte"
+    ],
+    "description": "Vlierbes is krachtig antiviraal en immuunstimulerend — wetenschappelijk bewezen effectief bij influenza. Verkort ziekteduur.",
+    "dosage": "Tinctuur/stroop: 1 el 4x daags bij ziekte, 1x daags preventief. Glycerine: 30-40 druppels.",
+    "notes": "",
+    "caution": "Rauw eten maakt misselijk — altijd verhitten of als tinctuur. Niet bij auto-immuunziekten.",
+    "category": "fysiek"
+  },
+  {
+    "id": 97,
+    "name": "Vlierbessen",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Vlierbessen",
+    "symptoms": [
+      "griep",
+      "verkoudheid",
+      "immuunsysteem",
+      "koorts",
+      "antiviral",
+      "antioxidant",
+      "slijmvliezen"
+    ],
+    "spiritual": [
+      "bescherming",
+      "overgang",
+      "Holda",
+      "voorouderverbinding",
+      "dood en wedergeboorte"
+    ],
+    "description": "Vlierbes is krachtig antiviraal en immuunstimulerend — wetenschappelijk bewezen effectief bij influenza. Verkort ziekteduur.",
+    "dosage": "Tinctuur/stroop: 1 el 4x daags bij ziekte, 1x daags preventief. Glycerine: 30-40 druppels.",
+    "notes": "",
+    "caution": "Rauw eten maakt misselijk — altijd verhitten of als tinctuur. Niet bij auto-immuunziekten.",
+    "category": "fysiek"
+  },
+  {
+    "id": 98,
+    "name": "Vlierbloesem",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Vlierbloesem",
+    "symptoms": [
+      "koorts",
+      "verkoudheid",
+      "griep",
+      "slijmvliezen",
+      "allergie",
+      "huid",
+      "niercleanse"
+    ],
+    "spiritual": [
+      "overgang",
+      "Holda",
+      "vrouwelijke kracht",
+      "zuivering",
+      "zomerzonnewende"
+    ],
+    "description": "Vlierbloesem werkt zweet-opwekkend en slijmvliesverzachtend — klassiek bij verkoudheid en hooikoorts. Licht en fris van smaak.",
+    "dosage": "Thee: 2 tl bloemen op 250ml, 10 min afgedekt, zo heet mogelijk, 3x daags. Azijn: 1 el in water.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 99,
+    "name": "Vrouwenmantel",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Vrouwenmantel",
+    "symptoms": [
+      "menstruatie",
+      "overgangsklachten",
+      "vruchtbaarheid",
+      "baarmoeder",
+      "bloeding",
+      "PMS",
+      "baarmoederverzakking"
+    ],
+    "spiritual": [
+      "vrouwelijke kracht",
+      "bescherming vrouwen",
+      "maanenergie",
+      "Onze Lieve Vrouwe"
+    ],
+    "description": "Vrouwenmantel is hét vrouwenkruid — reguleert de menstruatiecyclus, verlicht overgangsklachten en versterkt de baarmoeder.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 25-35 druppels 3x daags.",
+    "notes": "",
+    "caution": "Niet in eerste drie maanden zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 100,
+    "name": "Zwarte bes",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Zwarte bes",
+    "symptoms": [
+      "immuunsysteem",
+      "antioxidant",
+      "gewrichten",
+      "reuma",
+      "bloeddruk",
+      "vitamine C",
+      "ogen"
+    ],
+    "spiritual": [
+      "bescherming",
+      "overvloed",
+      "donkere kracht",
+      "winterenergie"
+    ],
+    "description": "Zwarte bes is extreem rijk aan antioxidanten en vitamine C — immunversterkend, ontstekingsremmend en beschermend voor ogen.",
+    "dosage": "Tinctuur: 25-35 druppels 2-3x daags. Vers sap: 50ml per dag.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 101,
+    "name": "Zwarte bes knoppen maceraat",
+    "type": "tinctuur",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Zwarte bes knoppen maceraat",
+    "symptoms": [
+      "immuunsysteem",
+      "bijnieren",
+      "cortisol",
+      "allergieën",
+      "reuma",
+      "chronische vermoeidheid"
+    ],
+    "spiritual": [
+      "oerkracht",
+      "regeneratie",
+      "nieuw begin"
+    ],
+    "description": "Knoppenmaceraat van zwarte bes (gemmotherapie) — werkt op de bijnieren en heeft sterk anti-allergisch en anti-inflammatoir effect.",
+    "dosage": "15-25 druppels in water voor ontbijt, 1x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 102,
+    "name": "Bijvoet",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Bijvoet",
+    "symptoms": [
+      "menstruatieklachten",
+      "cyclus onregelmatig",
+      "dromen",
+      "vermoeidheid",
+      "spijsvertering",
+      "reisziekte"
+    ],
+    "spiritual": [
+      "dromenwerk",
+      "waarzeggerij",
+      "maanverbinding",
+      "vrouwelijke kracht",
+      "vooroudercontact",
+      "bescherming op reis"
+    ],
+    "description": "Bijvoet is het kruid van de volle maan en de reiziger. Stimuleert de cyclus, bevordert levendige dromen en versterkt de intuïtie.",
+    "dosage": "Thee: 1 tl op 200ml, niet langer dan 5 min trekken, 1-2x daags. Tinctuur: 20-30 druppels in water, 2x daags. Smudging: bundel branden naar behoefte.",
+    "notes": "",
+    "caution": "NIET tijdens zwangerschap — stimuleert baarmoedersamentrekkingen. Niet langdurig innemen.",
+    "category": "spiritueel"
+  },
+  {
+    "id": 103,
+    "name": "Duivelsklauw",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Duivelsklauw",
+    "symptoms": [
+      "gewrichtspijn",
+      "reuma",
+      "artrose",
+      "rugpijn",
+      "spierpijn",
+      "ontstekingen",
+      "pijnstilling"
+    ],
+    "spiritual": [
+      "kracht",
+      "doorzettingsvermogen",
+      "gronden"
+    ],
+    "description": "Duivelsklauw is een van de krachtigste pijnstillende kruiden bij gewrichts- en spierpijn. Werkt ontstekingsremmend vergelijkbaar met NSAID's.",
+    "dosage": "Tinctuur: 30-40 druppels 3x daags bij maaltijd. Olie: insmeren op pijnlijke plekken.",
+    "notes": "",
+    "caution": "Niet bij maagzweer of gastritis. Niet combineren met bloedverdunners zonder overleg. Niet bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 104,
+    "name": "Duizendblad",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Duizendblad",
+    "symptoms": [
+      "wonden",
+      "bloedingen",
+      "menstruatie",
+      "koorts",
+      "reuma",
+      "nieren",
+      "huid"
+    ],
+    "spiritual": [
+      "bescherming",
+      "moed",
+      "grenswerk",
+      "liefde",
+      "helderziendheid"
+    ],
+    "description": "Duizendblad is het klassieke wondkruid — stelt bloedingen, reinigt wonden en werkt koortswerende. Ook bij menstruatieklachten.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels. Vers blad op wond.",
+    "notes": "",
+    "caution": "Kan allergische reactie geven (compositenfamilie). Niet bij zwangerschap.",
+    "category": "fysiek"
+  },
+  {
+    "id": 105,
+    "name": "Goudsbloem",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Goudsbloem",
+    "symptoms": [
+      "huid",
+      "wonden",
+      "eczeem",
+      "schimmel",
+      "ontsteking",
+      "menstruatie",
+      "lymfe"
+    ],
+    "spiritual": [
+      "zonkracht",
+      "bescherming",
+      "heling",
+      "licht"
+    ],
+    "description": "Goudsbloem is hét huidkruid — antiseptisch, wondhelend en ontstekingsremmend. Uitstekend als olie of zalf voor alle huidklachten.",
+    "dosage": "Olie/zalf: uitwendig naar behoefte. Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Allergie mogelijk (compositenfamilie). Test altijd eerst op kleine huidplek.",
+    "category": "fysiek"
+  },
+  {
+    "id": 106,
+    "name": "Hazelnoot blad",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Hazelnoot blad",
+    "symptoms": [
+      "aders",
+      "spataderen",
+      "aambeien",
+      "bloedcirculatie",
+      "lever"
+    ],
+    "spiritual": [
+      "wijsheid",
+      "geluk",
+      "vruchtbaarheid",
+      "wensen"
+    ],
+    "description": "Hazelnootblad versterkt de aderwanden en verbetert de bloedcirculatie. Traditioneel bij spataderen en aambeien.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 2-3x daags.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 107,
+    "name": "Heermoes",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Heermoes",
+    "symptoms": [
+      "botten",
+      "gewrichten",
+      "nieren",
+      "blaas",
+      "haaruitval",
+      "nagels",
+      "silica"
+    ],
+    "spiritual": [
+      "aarding",
+      "structuur",
+      "doorzettingsvermogen",
+      "verbinding aarde"
+    ],
+    "description": "Heermoes is extreem rijk aan kiezelzuur (silica) — ondersteunt botten, kraakbeen, haar en nagels. Sterk diuretisch.",
+    "dosage": "Thee: 2 tl op 250ml, 15 min koken (niet trekken!), 2x daags. Tinctuur: 25-35 druppels.",
+    "notes": "",
+    "caution": "Niet langdurig bij nierziekten. Niet bij hartproblemen zonder overleg (diuretisch).",
+    "category": "fysiek"
+  },
+  {
+    "id": 108,
+    "name": "Kamille",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Kamille",
+    "symptoms": [
+      "maagkramp",
+      "darmklachten",
+      "onrust",
+      "slaap",
+      "huid",
+      "eczeem",
+      "ontsteking",
+      "menstruatie"
+    ],
+    "spiritual": [
+      "bescherming kinderen",
+      "reinigend",
+      "zonnekracht",
+      "vrede",
+      "dromenwerk"
+    ],
+    "description": "Kamille is het universele kruidenthee-kruid — krampverlichtend, ontstekingsremmend, kalmerend. Zacht genoeg voor baby's, krachtig genoeg voor chronische klachten.",
+    "dosage": "Thee: 2 tl op 250ml, 5-10 min afgedekt trekken, 3x daags. Tinctuur: 15-25 druppels. Olie: uitwendig.",
+    "notes": "",
+    "caution": "Allergie mogelijk bij compositenfamilie. Zelden, maar test bij gevoeligheid.",
+    "category": "fysiek"
+  },
+  {
+    "id": 109,
+    "name": "Maretak",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Maretak",
+    "symptoms": [
+      "bloeddruk",
+      "hartkloppingen",
+      "kanker ondersteunend",
+      "immuunsysteem",
+      "duizeligheid",
+      "tumoren"
+    ],
+    "spiritual": [
+      "bescherming",
+      "vruchtbaarheid",
+      "healing",
+      "mystiek",
+      "druïden"
+    ],
+    "description": "Maretak verlaagt bloeddruk en wordt in de antroposofische geneeskunde gebruikt bij kankertherapie (Iscador). Immuunversterkend.",
+    "dosage": "Tinctuur: 10-15 druppels 2x daags — LAAG beginnen. Olie: uitwendig.",
+    "notes": "",
+    "caution": "GIFTIG in grote hoeveelheden — alleen bessen en stengels gedroogd/tinctuur. Nooit verse bessen eten. Overleg met arts bij kankertherapie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 110,
+    "name": "Moerasspirea",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Moerasspirea",
+    "symptoms": [
+      "pijn",
+      "koorts",
+      "reuma",
+      "gewrichten",
+      "hoofdpijn",
+      "maagklachten",
+      "griep"
+    ],
+    "spiritual": [
+      "reinigend",
+      "loslaten",
+      "waterenergie",
+      "transformatie"
+    ],
+    "description": "Moeraspirea bevat salicylaten (verwant aan aspirine) — pijnstillend, koortswerende en ontstekingsremmend. Het 'kruidenaspirine'.",
+    "dosage": "Thee: 2 tl bloemen op 250ml, 10 min (niet koken!), 3x daags. Tinctuur: 25-35 druppels.",
+    "notes": "",
+    "caution": "Niet bij aspirine-allergie. Niet bij maagzweer. Niet bij kinderen onder 12 met koorts (Reye-syndroom risico).",
+    "category": "fysiek"
+  },
+  {
+    "id": 111,
+    "name": "Ogentroost",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Ogentroost",
+    "symptoms": [
+      "ogen",
+      "conjunctivitis",
+      "oogirritatie",
+      "hooikoorts",
+      "bijholten",
+      "hoest"
+    ],
+    "spiritual": [
+      "helderziendheid",
+      "innerlijk zien",
+      "waarheid"
+    ],
+    "description": "Ogentroost is hét oogkruid — verlichting bij rode, geïrriteerde of ontstoken ogen. Ook bij hooikoorts en sinusitis.",
+    "dosage": "Oogwassing: sterke thee (3 tl op 250ml), koud zeven, spoelen. Thee: 2 tl op 250ml, 2-3x daags. Tinctuur: 20 druppels.",
+    "notes": "",
+    "caution": "Oogwassing: steriel bereiden en altijd vers.",
+    "category": "fysiek"
+  },
+  {
+    "id": 112,
+    "name": "Rozemarijn",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Rozemarijn",
+    "symptoms": [
+      "geheugen",
+      "concentratie",
+      "hoofdpijn",
+      "haaruitval",
+      "bloedcirculatie",
+      "vermoeidheid",
+      "reuma"
+    ],
+    "spiritual": [
+      "geheugen",
+      "zuivering",
+      "bescherming",
+      "voorouderherinnering",
+      "helderzinnigheid"
+    ],
+    "description": "Rozemarijn stimuleert de bloedcirculatie naar hersenen en hoofdhuid — verbetert geheugen en helpt bij haaruitval. Uitwendig bij spierpijn.",
+    "dosage": "Thee: 1 tl op 200ml, 5 min, 2x daags. Tinctuur: 20-30 druppels. Haarwater: inrijgen, niet afspoelen.",
+    "notes": "",
+    "caution": "Grote hoeveelheden vermijden bij zwangerschap en epilepsie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 113,
+    "name": "Rozenknop",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Rozenknop",
+    "symptoms": [
+      "huid",
+      "stemming",
+      "menstruatie",
+      "hart",
+      "stress",
+      "antioxidant"
+    ],
+    "spiritual": [
+      "liefde",
+      "schoonheid",
+      "Venusenergie",
+      "vrouwelijke kracht",
+      "hart openen"
+    ],
+    "description": "Rozenknopjes zijn rijk aan antioxidanten en worden gebruikt bij huidverzorging, als stemmingverbeteraar en hartkruid.",
+    "dosage": "Thee: 1 tl op 200ml, 5-8 min, 2x daags. Olie: uitwendig voor huid en hart-chakra.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 114,
+    "name": "Smeerwortel",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Smeerwortel",
+    "symptoms": [
+      "gewrichten",
+      "botbreuk",
+      "pezen",
+      "spierpijn",
+      "blauwe plekken",
+      "wonden",
+      "reuma"
+    ],
+    "spiritual": [
+      "heling",
+      "vastigheid",
+      "aarding",
+      "structuur"
+    ],
+    "description": "Smeerwortel (Symphytum) bevat allantoine en is krachtig wondhelend en bot-regenererend. Uitstekend als olie of zalf bij blessures.",
+    "dosage": "Olie/zalf: uitwendig 3-4x daags op de pijnlijke plek. Tinctuur: 20-30 druppels 3x daags (kortdurend).",
+    "notes": "",
+    "caution": "NIET op open wonden (geneest te snel dicht). Niet langdurig innemen — bevat pyrrolizidine-alkaloïden. Uitwendig vrijwel veilig.",
+    "category": "fysiek"
+  },
+  {
+    "id": 115,
+    "name": "Wilgenbast",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Wilgenbast",
+    "symptoms": [
+      "pijn",
+      "koorts",
+      "hoofdpijn",
+      "reuma",
+      "gewrichten",
+      "griep",
+      "ontsteking"
+    ],
+    "spiritual": [
+      "flexibiliteit",
+      "emotionele heling",
+      "loslaten",
+      "waterenergie",
+      "dromenwerk"
+    ],
+    "description": "Wilgenbast bevat salicine — de oorsprong van aspirine. Pijnstillend, koortswerende en ontstekingsremmend.",
+    "dosage": "Tinctuur: 30-40 druppels 3x daags. Thee: 2 tl bast op 250ml, 15 min koken, 3x daags. Olie: uitwendig.",
+    "notes": "",
+    "caution": "Niet bij aspirine-allergie. Niet bij kinderen met koorts.",
+    "category": "fysiek"
+  },
+  {
+    "id": 116,
+    "name": "Zilverschoon",
+    "type": "olie",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Zilverschoon",
+    "symptoms": [
+      "menstruatie",
+      "krampen",
+      "diarree",
+      "maagklachten",
+      "baarmoeder",
+      "samentrekkend",
+      "huid"
+    ],
+    "spiritual": [
+      "zachtheid",
+      "vrouwelijke energie",
+      "bescherming",
+      "maan"
+    ],
+    "description": "Zilverschoon is samentrekkend en krampverlichtend — klassiek bij menstruatiekrampen en darmklachten. Vergelijkbaar met vrouwenmantel.",
+    "dosage": "Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Niet bij zwangerschap in grote hoeveelheden.",
+    "category": "fysiek"
+  },
+  {
+    "id": 117,
+    "name": "Gewrichten/ kneuzingen     Smeerwortel",
+    "type": "zalf",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Gewrichten/ kneuzingen     Smeerwortel",
+    "symptoms": [
+      "gewrichtspijn",
+      "spierpijn",
+      "kneuzingen",
+      "blauwe plekken",
+      "blessures",
+      "reuma"
+    ],
+    "spiritual": [
+      "heling",
+      "vastigheid",
+      "aarding"
+    ],
+    "description": "Zalf op basis van smeerwortel voor gewrichten en kneuzingen. Uitstekend bij sportblessures en reumapijn.",
+    "dosage": "Uitwendig: 3-4x daags insmeren op de pijnlijke plek. Niet op open wond.",
+    "notes": "",
+    "caution": "NIET op open wonden. Niet langdurig op grote huidoppervlakken.",
+    "category": "fysiek"
+  },
+  {
+    "id": 118,
+    "name": "Huid/ Eczeem/ wondjes/ verbranding    Goudsbloem/ uizendblad",
+    "type": "zalf",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Huid/ Eczeem/ wondjes/ verbranding    Goudsbloem/ uizendblad",
+    "symptoms": [
+      "huid",
+      "wonden",
+      "eczeem",
+      "schimmel",
+      "ontsteking",
+      "menstruatie",
+      "lymfe"
+    ],
+    "spiritual": [
+      "zonkracht",
+      "bescherming",
+      "heling",
+      "licht"
+    ],
+    "description": "Goudsbloem is hét huidkruid — antiseptisch, wondhelend en ontstekingsremmend. Uitstekend als olie of zalf voor alle huidklachten.",
+    "dosage": "Olie/zalf: uitwendig naar behoefte. Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Allergie mogelijk (compositenfamilie). Test altijd eerst op kleine huidplek.",
+    "category": "fysiek"
+  },
+  {
+    "id": 119,
+    "name": "Huid/Verzachtend    Goudsbloem",
+    "type": "zalf",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Huid/Verzachtend    Goudsbloem",
+    "symptoms": [
+      "huid",
+      "wonden",
+      "eczeem",
+      "schimmel",
+      "ontsteking",
+      "menstruatie",
+      "lymfe"
+    ],
+    "spiritual": [
+      "zonkracht",
+      "bescherming",
+      "heling",
+      "licht"
+    ],
+    "description": "Goudsbloem is hét huidkruid — antiseptisch, wondhelend en ontstekingsremmend. Uitstekend als olie of zalf voor alle huidklachten.",
+    "dosage": "Olie/zalf: uitwendig naar behoefte. Thee: 2 tl op 250ml, 10 min, 3x daags. Tinctuur: 20-30 druppels.",
+    "notes": "",
+    "caution": "Allergie mogelijk (compositenfamilie). Test altijd eerst op kleine huidplek.",
+    "category": "fysiek"
+  },
+  {
+    "id": 120,
+    "name": "Spiritueel/ Ik neem mijn plaats in   Scharlei/Goudsbloem",
+    "type": "zalf",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Spiritueel/ Ik neem mijn plaats in   Scharlei/Goudsbloem",
+    "symptoms": [
+      "huid"
+    ],
+    "spiritual": [
+      "eigenwaarde",
+      "ik neem mijn plaats in",
+      "grenzen",
+      "zelfexpressie",
+      "eigenheid"
+    ],
+    "description": "Rituele zalf van scharlei en goudsbloem — voor bewustzijn van eigenwaarde en het innemen van je plek.",
+    "dosage": "Uitwendig: insmeren op hartchakra, polsen of voorhoofd tijdens ritueel of meditatie.",
+    "notes": "",
+    "caution": "",
+    "category": "spiritueel"
+  },
+  {
+    "id": 121,
+    "name": "gewrichten  / pijnstillend / verzachtend / ontstekingremmend   Smeerwortel/duivelsklauw / moeraspirea/ rozemarijn",
+    "type": "zalf",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "gewrichten  / pijnstillend / verzachtend / ontstekingremmend   Smeerwortel/duivelsklauw / moeraspirea/ rozemarijn",
+    "symptoms": [
+      "gewrichtspijn",
+      "spierpijn",
+      "kneuzingen",
+      "blauwe plekken",
+      "blessures",
+      "reuma"
+    ],
+    "spiritual": [
+      "heling",
+      "vastigheid",
+      "aarding"
+    ],
+    "description": "Zalf op basis van smeerwortel voor gewrichten en kneuzingen. Uitstekend bij sportblessures en reumapijn.",
+    "dosage": "Uitwendig: 3-4x daags insmeren op de pijnlijke plek. Niet op open wond.",
+    "notes": "",
+    "caution": "NIET op open wonden. Niet langdurig op grote huidoppervlakken.",
+    "category": "fysiek"
+  },
+  {
+    "id": 122,
+    "name": "Alantwortel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Alantwortel",
+    "symptoms": [
+      "lever",
+      "gal",
+      "nieren",
+      "detox",
+      "eetlust",
+      "cholesterol",
+      "huid",
+      "spijsvertering"
+    ],
+    "spiritual": [
+      "doorzettingsvermogen",
+      "vrijheid",
+      "wensen",
+      "loslaten"
+    ],
+    "description": "Paardenbloemwortel is sterk cholagoog (galstimulerend) en diuretisch — een krachtig lente-detoxkruid voor lever en nieren.",
+    "dosage": "Tinctuur: 30-40 druppels voor maaltijd, 3x daags. Thee wortel: 2 tl, 15 min koken, 2x daags.",
+    "notes": "",
+    "caution": "Niet bij galwegobstructie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 123,
+    "name": "Appel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Appel",
+    "symptoms": [
+      "diarree",
+      "darmbescherming",
+      "pectine",
+      "cholesterol",
+      "detox"
+    ],
+    "spiritual": [
+      "gezondheid",
+      "vitaliteit",
+      "kennis"
+    ],
+    "description": "Gedroogde appel is rijk aan pectine en ondersteunt de darmflora. Goed in kruidenthee-mengsels.",
+    "dosage": "Als thee-ingrediënt meekoken of weken. Vrij te gebruiken.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 124,
+    "name": "Berk",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Berk",
+    "symptoms": [],
+    "spiritual": [],
+    "description": "",
+    "dosage": "",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 125,
+    "name": "Braam",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Braam",
+    "symptoms": [],
+    "spiritual": [],
+    "description": "",
+    "dosage": "",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 126,
+    "name": "Eik",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Eik",
+    "symptoms": [
+      "diarree",
+      "tandvlees",
+      "keelontsteking",
+      "huid",
+      "eczeem",
+      "bloeding",
+      "aften"
+    ],
+    "spiritual": [
+      "kracht",
+      "standvastigheid",
+      "bescherming",
+      "aarding"
+    ],
+    "description": "Eikenbast is sterk samentrekkend door de hoge tanninegehalte. Klassiek bij diarree, tandvleesontstekingen en uitwendig bij huidproblemen.",
+    "dosage": "Thee: 1 tl op 250ml, 15 min koken, voor gorgelen of drinken. Max 3x daags.",
+    "notes": "",
+    "caution": "Niet langdurig innemen. Niet bij obstipatie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 127,
+    "name": "Heemst",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Heemst",
+    "symptoms": [],
+    "spiritual": [],
+    "description": "",
+    "dosage": "",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 128,
+    "name": "Jenerverbes",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Jenerverbes",
+    "symptoms": [],
+    "spiritual": [],
+    "description": "",
+    "dosage": "",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 129,
+    "name": "Kaasjeskruid",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Kaasjeskruid",
+    "symptoms": [],
+    "spiritual": [],
+    "description": "",
+    "dosage": "",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 130,
+    "name": "Klitwortel",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Klitwortel",
+    "symptoms": [
+      "lever",
+      "gal",
+      "nieren",
+      "detox",
+      "eetlust",
+      "cholesterol",
+      "huid",
+      "spijsvertering"
+    ],
+    "spiritual": [
+      "doorzettingsvermogen",
+      "vrijheid",
+      "wensen",
+      "loslaten"
+    ],
+    "description": "Paardenbloemwortel is sterk cholagoog (galstimulerend) en diuretisch — een krachtig lente-detoxkruid voor lever en nieren.",
+    "dosage": "Tinctuur: 30-40 druppels voor maaltijd, 3x daags. Thee wortel: 2 tl, 15 min koken, 2x daags.",
+    "notes": "",
+    "caution": "Niet bij galwegobstructie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 131,
+    "name": "Paardenbloem",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Paardenbloem",
+    "symptoms": [
+      "lever",
+      "gal",
+      "nieren",
+      "detox",
+      "eetlust",
+      "cholesterol",
+      "huid",
+      "spijsvertering"
+    ],
+    "spiritual": [
+      "doorzettingsvermogen",
+      "vrijheid",
+      "wensen",
+      "loslaten"
+    ],
+    "description": "Paardenbloemwortel is sterk cholagoog (galstimulerend) en diuretisch — een krachtig lente-detoxkruid voor lever en nieren.",
+    "dosage": "Tinctuur: 30-40 druppels voor maaltijd, 3x daags. Thee wortel: 2 tl, 15 min koken, 2x daags.",
+    "notes": "",
+    "caution": "Niet bij galwegobstructie.",
+    "category": "fysiek"
+  },
+  {
+    "id": 132,
+    "name": "Rode klaver",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Rode klaver",
+    "symptoms": [],
+    "spiritual": [],
+    "description": "",
+    "dosage": "",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 133,
+    "name": "Rode zonnehoed",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Rode zonnehoed",
+    "symptoms": [
+      "immuunsysteem",
+      "verkoudheid",
+      "griep",
+      "infectie",
+      "wonden",
+      "lymfe",
+      "vermoeidheid"
+    ],
+    "spiritual": [
+      "kracht",
+      "bescherming",
+      "inheemse wijsheid",
+      "heldenenergie"
+    ],
+    "description": "Rode zonnehoed (Echinacea) is het bekendste immunversterkende kruid — verhoogt weerstand en verkort ziekteduur.",
+    "dosage": "Tinctuur: 30-40 druppels 3-4x daags bij ziekte. NIET langer dan 8 weken aaneengesloten.",
+    "notes": "",
+    "caution": "Niet bij auto-immuunziekten. Pauze nemen na 8 weken gebruik.",
+    "category": "fysiek"
+  },
+  {
+    "id": 134,
+    "name": "Tea Tree",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Tea Tree",
+    "symptoms": [],
+    "spiritual": [],
+    "description": "",
+    "dosage": "",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 135,
+    "name": "Toorts",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Toorts",
+    "symptoms": [],
+    "spiritual": [],
+    "description": "",
+    "dosage": "",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 136,
+    "name": "Valeriaan",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Valeriaan",
+    "symptoms": [],
+    "spiritual": [],
+    "description": "",
+    "dosage": "",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 137,
+    "name": "Vlier",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Vlier",
+    "symptoms": [
+      "griep",
+      "verkoudheid",
+      "immuunsysteem",
+      "koorts",
+      "antiviral",
+      "antioxidant",
+      "slijmvliezen"
+    ],
+    "spiritual": [
+      "bescherming",
+      "overgang",
+      "Holda",
+      "voorouderverbinding",
+      "dood en wedergeboorte"
+    ],
+    "description": "Vlierbes is krachtig antiviraal en immuunstimulerend — wetenschappelijk bewezen effectief bij influenza. Verkort ziekteduur.",
+    "dosage": "Tinctuur/stroop: 1 el 4x daags bij ziekte, 1x daags preventief. Glycerine: 30-40 druppels.",
+    "notes": "",
+    "caution": "Rauw eten maakt misselijk — altijd verhitten of als tinctuur. Niet bij auto-immuunziekten.",
+    "category": "fysiek"
+  },
+  {
+    "id": 138,
+    "name": "Weegbree",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Weegbree",
+    "symptoms": [
+      "hoest",
+      "bronchitis",
+      "slijmvliezen",
+      "wonden",
+      "eczeem",
+      "insectenbeten",
+      "blaas"
+    ],
+    "spiritual": [
+      "reizigerskruid",
+      "bescherming",
+      "heling",
+      "aarding"
+    ],
+    "description": "Smalle weegbree is een universeel huid- en luchtwegkruid — slijmoplossend bij hoest, wondhelend uitwendig.",
+    "dosage": "Tinctuur: 25-35 druppels 3x daags. Thee: 2 tl op 250ml, 10 min. Vers blad op wond.",
+    "notes": "",
+    "caution": "",
+    "category": "fysiek"
+  },
+  {
+    "id": 139,
+    "name": "Wilg",
+    "type": "kruid",
+    "selfMade": true,
+    "active": true,
+    "flesgrootte": "",
+    "ingredients": "Wilg",
+    "symptoms": [
+      "pijn",
+      "koorts",
+      "hoofdpijn",
+      "reuma",
+      "gewrichten",
+      "griep",
+      "ontsteking"
+    ],
+    "spiritual": [
+      "flexibiliteit",
+      "emotionele heling",
+      "loslaten",
+      "waterenergie",
+      "dromenwerk"
+    ],
+    "description": "Wilgenbast bevat salicine — de oorsprong van aspirine. Pijnstillend, koortswerende en ontstekingsremmend.",
+    "dosage": "Tinctuur: 30-40 druppels 3x daags. Thee: 2 tl bast op 250ml, 15 min koken, 3x daags. Olie: uitwendig.",
+    "notes": "",
+    "caution": "Niet bij aspirine-allergie. Niet bij kinderen met koorts.",
+    "category": "fysiek"
+  }
+]
